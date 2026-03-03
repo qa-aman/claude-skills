@@ -1,79 +1,114 @@
-# Claude Code Skills
+# Claude Skills
 
-A collection of reusable skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Each skill is a self-contained `SKILL.md` that teaches Claude a specific content creation or product thinking pattern. Drop them into your `.claude/skills/` directory and invoke with `/skill-name`.
+> Role-based Claude Code skills for every team. Install what your team needs, skip what they don't.
 
-## Skills
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Validate Skills](https://github.com/[your-username]/claude-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/[your-username]/claude-skills/actions/workflows/validate.yml)
 
-| Skill | Category | Description |
-|-------|----------|-------------|
-| [linkedin-post](skills/linkedin-post/) | Content | Write high-performing LinkedIn posts with hook patterns, post structures, and anti-patterns |
-| [reddit-post](skills/reddit-post/) | Content | Write Reddit posts that earn upvotes without triggering self-promotion flags |
-| [newsletter-ideation](skills/newsletter-ideation/) | Content | Generate 5-7 topic angles using SCAMPER, JTBD, Contrarian, and other frameworks |
-| [substack-post](skills/substack-post/) | Content | Write long-form Substack articles with narrative arc and sustained depth |
-| [substack-notes](skills/substack-notes/) | Content | Generate short-form Substack notes using 10 proven structural formulas |
-| [substack-toc](skills/substack-toc/) | Content | Create numbered table of contents with working Substack anchor links |
-| [presentation-builder](skills/presentation-builder/) | Productivity | Transform ideas into structured slide content for pitch decks, reviews, and talks |
-| [11-star-framework](skills/11-star-framework/) | Product | Rate any product or feature on the 11-star experience scale (Brian Chesky method) |
+## What This Is
+
+A curated collection of [Claude Code](https://claude.ai/claude-code) skills organized by job role. Each skill is a packaged workflow that Claude invokes automatically - or that you trigger with a `/skill-name` command.
+
+**PM?** Install PM skills. **QA?** Install QA skills. No bloat, no irrelevant prompts.
 
 ## Install
 
-### Option 1: Copy manually
+```bash
+# Clone once
+git clone https://github.com/[your-username]/claude-skills.git
+cd claude-skills
 
-Copy any skill folder into your Claude Code skills directory:
+# Install skills for your role
+bash scripts/install.sh --role pm
+bash scripts/install.sh --role qa
+bash scripts/install.sh --role content-creator
+
+# Install for multiple roles
+bash scripts/install.sh --role pm,content-creator
+
+# Install everything
+bash scripts/install.sh --all
+
+# See what's available
+bash scripts/install.sh --list
+```
+
+Skills install to `~/.claude/skills/` and are immediately available in any Claude Code session.
+
+## Available Skills
+
+### Product Manager (`--role pm`)
+| Skill | What it does |
+|-------|-------------|
+| 11-star-framework | Apply the 11-star experience framework to product decisions |
+
+### Content Creator (`--role content-creator`)
+| Skill | What it does |
+|-------|-------------|
+| linkedin-post | Write LinkedIn posts for [your niche] |
+| reddit-post | Write Reddit posts for [your community] |
+| newsletter-ideation | Ideate newsletter topics |
+| substack-post | Write full Substack posts |
+| substack-notes | Write Substack notes |
+| substack-toc | Generate Substack table of contents |
+
+### Shared (installed with every role)
+| Skill | What it does |
+|-------|-------------|
+| presentation-builder | Build structured presentations for any audience |
+
+### Coming Soon
+- `--role engineer` - Code review, debugging, PR workflows
+- `--role qa` - Test plans, bug reports, coverage analysis
+- `--role designer` - Design critique, component specs, handoff docs
+- `--role devops` - Incident response, runbooks, deployment checklists
+
+**Want to add skills for your role?** [Contribute](#contributing)
+
+## Personalize Skills for Your Context
+
+Generic skills get smarter when they know your context. After installing, run:
 
 ```bash
-cp -r skills/linkedin-post ~/.claude/skills/
+bash scripts/install.sh --role qa --init
 ```
 
-### Option 2: Use the install script
+This creates `~/.claude/skills/skill-context.md` - a file that skills read at invocation time to tailor output to your industry, stack, and compliance needs. Edit it anytime.
+
+Example `skill-context.md`:
+```markdown
+- Industry: Fintech
+- Stack: React Native + Node.js
+- Compliance: PCI-DSS
+```
+
+Skills stay generic and update-safe. Your context stays persistent.
+
+## Update Skills
 
 ```bash
-# Install specific skills
-./scripts/install.sh linkedin-post substack-post
-
-# Install all skills
-./scripts/install.sh --all
-
-# Install to a custom directory
-./scripts/install.sh --target ./my-project/.claude/skills/ --all
-
-# List available skills
-./scripts/install.sh --list
+bash scripts/install.sh --update
 ```
 
-## Customizing
+## Remove Skills
 
-Many skills contain placeholder brackets like `[your niche]`, `[your newsletter]`, or `[your-domain]`. After installing, edit the `SKILL.md` to replace these with your specifics:
-
-- `[your niche]` - your professional focus area (e.g., "AI/tech/PM")
-- `[your newsletter]` - your newsletter name
-- `[your-domain]` - your Substack domain (e.g., `yourname.substack.com`)
-- `[your topic]` - the subject area you write about
-
-## Skill Format
-
-Each skill follows the [Anthropic skill standard](https://github.com/anthropics/skills/tree/main/skills/skill-creator):
-
+```bash
+bash scripts/install.sh --uninstall qa
 ```
-skills/
-  skill-name/
-    SKILL.md          # YAML frontmatter (name + description) + instructions
-    references/       # Optional: examples, templates
-```
-
-The `description` field in frontmatter controls when Claude suggests the skill. The body contains the actual instructions, frameworks, and quality checklists.
 
 ## Contributing
 
-To add a new skill:
+We welcome skills for every role and industry. Adding a skill takes about 10 minutes.
 
-1. Create a folder under `skills/` with a descriptive kebab-case name
-2. Add a `SKILL.md` with YAML frontmatter (`name` + `description`) and a markdown body
-3. Keep the body under 500 lines - use `references/` for overflow
-4. Remove any personal or project-specific content - use `[placeholder]` brackets instead
-5. Include at least: a workflow (step-by-step), anti-patterns, and a quality checklist
-6. Open a PR
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for the full guide. The short version:
+
+1. Create `skills/by-role/<role>/<skill-name>/SKILL.md`
+2. Register it in `skills.json`
+3. Run `python3 scripts/validate_skill.py`
+4. Open a PR
+
+CI validates every PR automatically.
 
 ## License
 
-MIT
+MIT - see [LICENSE](LICENSE)
