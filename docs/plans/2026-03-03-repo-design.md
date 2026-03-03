@@ -3,6 +3,11 @@
 ## Goal
 Public GitHub repo of Claude Code skills organized by job role. Target: 1M stars, community contributions via PRs, used by teams across industries.
 
+## GitHub Repo Name
+**Decided: `claude-code-skills`** (pending - change when creating the repo)
+- Searchable, specific to Claude Code, clean
+- Rejected: `claude-skills` (too generic), `awesome-claude-skills` (overused pattern)
+
 ---
 
 ## Key Decisions
