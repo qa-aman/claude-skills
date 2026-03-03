@@ -501,6 +501,207 @@
         "flow",
         "kanban"
       ]
+    },
+    "founder/customer-discovery": {
+      "role": "founder",
+      "description": "Run structured customer discovery interviews using The Mom Test to surface real problems without leading the witness",
+      "tags": [
+        "founder",
+        "discovery",
+        "research",
+        "mom-test"
+      ]
+    },
+    "founder/pitch-narrative": {
+      "role": "founder",
+      "description": "Craft a compelling startup pitch narrative using Zero to One's secret-first framework",
+      "tags": [
+        "founder",
+        "pitch",
+        "storytelling",
+        "fundraising"
+      ]
+    },
+    "founder/investor-update": {
+      "role": "founder",
+      "description": "Write a structured monthly or quarterly investor update with wins, struggles, and specific asks",
+      "tags": [
+        "founder",
+        "investors",
+        "communication",
+        "reporting"
+      ]
+    },
+    "founder/business-model-canvas": {
+      "role": "founder",
+      "description": "Design and stress-test a business model canvas using Lean Startup build-measure-learn loops",
+      "tags": [
+        "founder",
+        "business-model",
+        "lean-startup",
+        "strategy"
+      ]
+    },
+    "founder/fundraising-email": {
+      "role": "founder",
+      "description": "Write a cold investor outreach email using Traction's traction-first framing",
+      "tags": [
+        "founder",
+        "fundraising",
+        "outreach",
+        "email"
+      ]
+    },
+    "data-scientist/eda-report": {
+      "role": "data-scientist",
+      "description": "Run structured exploratory data analysis and produce an audit report with quality findings and recommended treatments",
+      "tags": [
+        "data-science",
+        "eda",
+        "data-quality",
+        "analysis"
+      ]
+    },
+    "data-scientist/data-story": {
+      "role": "data-scientist",
+      "description": "Communicate data insights to non-technical stakeholders using Storytelling with Data's conclusion-first narrative structure",
+      "tags": [
+        "data-science",
+        "communication",
+        "visualization",
+        "stakeholders"
+      ]
+    },
+    "data-scientist/experiment-design": {
+      "role": "data-scientist",
+      "description": "Design statistically rigorous A/B tests and hypothesis tests with pre-committed sample sizes and stopping rules",
+      "tags": [
+        "data-science",
+        "experimentation",
+        "statistics",
+        "ab-testing"
+      ]
+    },
+    "data-scientist/feature-engineering": {
+      "role": "data-scientist",
+      "description": "Design and implement features from raw data including encoding, transformations, interactions, and leakage prevention",
+      "tags": [
+        "data-science",
+        "feature-engineering",
+        "ml",
+        "modeling"
+      ]
+    },
+    "data-scientist/model-card": {
+      "role": "data-scientist",
+      "description": "Document a machine learning model with performance metrics, subgroup analysis, failure modes, and monitoring plan",
+      "tags": [
+        "data-science",
+        "ml",
+        "documentation",
+        "model-card",
+        "fairness"
+      ]
+    },
+    "marketing/positioning-doc": {
+      "role": "marketing",
+      "description": "Write a product positioning document using Ries and Trout's competitive alternatives framework and owned attributes",
+      "tags": [
+        "marketing",
+        "positioning",
+        "messaging",
+        "strategy"
+      ]
+    },
+    "marketing/messaging-framework": {
+      "role": "marketing",
+      "description": "Build a brand messaging framework and homepage copy using StoryBrand's customer-as-hero structure",
+      "tags": [
+        "marketing",
+        "messaging",
+        "storybrand",
+        "copywriting"
+      ]
+    },
+    "marketing/campaign-brief": {
+      "role": "marketing",
+      "description": "Write a marketing campaign brief with One Metric That Matters, audience definition, and channel plan using Lean Analytics",
+      "tags": [
+        "marketing",
+        "campaign",
+        "brief",
+        "planning"
+      ]
+    },
+    "marketing/growth-experiment": {
+      "role": "marketing",
+      "description": "Design and document a channel growth experiment using Traction's Bullseye Framework with pre-committed success thresholds",
+      "tags": [
+        "marketing",
+        "growth",
+        "experimentation",
+        "traction"
+      ]
+    },
+    "marketing/customer-persona": {
+      "role": "marketing",
+      "description": "Build a buyer persona anchored to buying context, trigger, and job-to-be-done using Obviously Awesome's framework",
+      "tags": [
+        "marketing",
+        "persona",
+        "research",
+        "jtbd"
+      ]
+    },
+    "sales/discovery-call": {
+      "role": "sales",
+      "description": "Structure a sales discovery call using SPIN Selling's situation, problem, implication, and need-payoff question sequence",
+      "tags": [
+        "sales",
+        "discovery",
+        "spin-selling",
+        "qualification"
+      ]
+    },
+    "sales/deal-qualification": {
+      "role": "sales",
+      "description": "Qualify a deal using the MEDDIC framework to assess metrics, economic buyer, decision criteria, and champion",
+      "tags": [
+        "sales",
+        "qualification",
+        "meddic",
+        "pipeline"
+      ]
+    },
+    "sales/sales-proposal": {
+      "role": "sales",
+      "description": "Write a compelling sales proposal using The Challenger Sale's teach-tailor-take-control structure",
+      "tags": [
+        "sales",
+        "proposal",
+        "challenger-sale",
+        "closing"
+      ]
+    },
+    "sales/objection-handling": {
+      "role": "sales",
+      "description": "Handle sales objections using Never Split the Difference's tactical empathy and labeling techniques",
+      "tags": [
+        "sales",
+        "objections",
+        "negotiation",
+        "communication"
+      ]
+    },
+    "sales/account-plan": {
+      "role": "sales",
+      "description": "Build a strategic account plan identifying key players, buying influences, and expansion paths using Miller Heiman's framework",
+      "tags": [
+        "sales",
+        "account-planning",
+        "strategic-selling",
+        "enterprise"
+      ]
     }
   }
 }

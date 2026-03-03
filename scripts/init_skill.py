@@ -6,7 +6,7 @@ import json
 import sys
 from pathlib import Path
 
-VALID_ROLES = ["pm", "engineer", "qa", "designer", "content-creator", "devops", "shared"]
+VALID_ROLES = ["pm", "engineer", "qa", "designer", "content-creator", "devops", "shared", "leadership", "program-delivery-manager"]
 
 SKILL_TEMPLATE = """\
 ---
