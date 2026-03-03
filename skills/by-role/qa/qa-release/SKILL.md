@@ -3,6 +3,10 @@ name: qa-release
 description: Manage QA release gates - go/no-go decisions, release sign-off reports, defect triage, and release readiness communication. Use this skill whenever a QA lead or manager needs to formally assess whether a build is ready to ship. Trigger on phrases like "release sign-off", "go or no-go", "is this ready to release", "defect triage", "release gate", "approve the release", "block the release", "release readiness", "quality gate", "sign off on this build", "triage these bugs", or any request to make or document a formal release decision. Also trigger when a release manager or PM asks "what's the QA status?" or "can we ship this?".
 ---
 
+## Overview
+
+Based on the **Google SRE Book** and **"Accelerate"** by Forsgren, Humble & Kim. Google SRE's error budget concept reframes the release gate: instead of "is it good enough to ship?", ask "how much of the error budget does this risk consuming?" Accelerate's research shows that high-performing teams ship more frequently AND have lower change failure rates - speed and quality are not a tradeoff, they're correlated.
+
 # QA Release
 
 Run release gates, triage defects, and produce formal sign-off decisions.
@@ -80,6 +84,20 @@ Evaluate against pre-agreed thresholds. If no thresholds exist, use these defaul
 | Performance regression | ≤ 10% degradation vs baseline | PASS / FAIL |
 
 All gates must pass for a GO decision unless an explicit exception is documented.
+
+**SRE Error Budget framing (for teams with defined SLOs):**
+If your team operates with SLOs and error budgets, frame the release decision as:
+- What is the current error budget remaining this month?
+- What is the estimated error budget cost if this release causes a typical incident?
+- If estimated cost > remaining budget: NO-GO (or scope reduction required)
+
+**Accelerate's change failure rate benchmark:**
+- Elite: 0-15% of releases cause production incidents
+- High: 16-30%
+- Medium: 16-30% (same range, different velocity)
+- Low: 46-60%
+
+Track your team's rolling change failure rate. If it exceeds 30%, the release gate thresholds are too permissive or the root causes are systemic.
 
 ### Step 4: Go/No-Go Decision
 
