@@ -381,6 +381,126 @@
         "heuristics",
         "qa"
       ]
+    },
+    "leadership/team-health-check": {
+      "role": "leadership",
+      "description": "Assess team health using the Five Dysfunctions model across trust, conflict, commitment, accountability, and results",
+      "tags": [
+        "leadership",
+        "team",
+        "health",
+        "five-dysfunctions"
+      ]
+    },
+    "leadership/feedback-delivery": {
+      "role": "leadership",
+      "description": "Deliver feedback using Radical Candor's care personally + challenge directly framework",
+      "tags": [
+        "leadership",
+        "feedback",
+        "radical-candor",
+        "communication"
+      ]
+    },
+    "leadership/one-on-one": {
+      "role": "leadership",
+      "description": "Run structured 1:1s with direct reports using Manager's Path and High Output Management frameworks",
+      "tags": [
+        "leadership",
+        "1on1",
+        "management",
+        "communication"
+      ]
+    },
+    "leadership/leadership-transition": {
+      "role": "leadership",
+      "description": "Navigate a leadership role transition using the First 90 Days 30/60/90 framework",
+      "tags": [
+        "leadership",
+        "transition",
+        "onboarding",
+        "strategy"
+      ]
+    },
+    "leadership/team-multiplier": {
+      "role": "leadership",
+      "description": "Assess and shift your leadership style from Diminisher to Multiplier using Liz Wiseman's framework",
+      "tags": [
+        "leadership",
+        "multipliers",
+        "coaching",
+        "empowerment"
+      ]
+    },
+    "leadership/psychological-safety": {
+      "role": "leadership",
+      "description": "Build psychological safety in your team using Leaders Eat Last Circle of Safety model",
+      "tags": [
+        "leadership",
+        "safety",
+        "culture",
+        "trust"
+      ]
+    },
+    "program-delivery-manager/dependency-mapping": {
+      "role": "program-delivery-manager",
+      "description": "Surface and visualize hidden dependencies blocking delivery using Making Work Visible (DeGrandis)",
+      "tags": [
+        "delivery",
+        "dependencies",
+        "flow",
+        "kanban"
+      ]
+    },
+    "program-delivery-manager/release-planning": {
+      "role": "program-delivery-manager",
+      "description": "Build a velocity-based release roadmap with risk buffers using Agile Estimating and Planning (Cohn)",
+      "tags": [
+        "delivery",
+        "planning",
+        "velocity",
+        "release"
+      ]
+    },
+    "program-delivery-manager/delivery-risk-review": {
+      "role": "program-delivery-manager",
+      "description": "Identify, score, and mitigate delivery risks using The Phoenix Project and The Art of Project Management",
+      "tags": [
+        "delivery",
+        "risk",
+        "program-management"
+      ]
+    },
+    "program-delivery-manager/program-status-report": {
+      "role": "program-delivery-manager",
+      "description": "Write a structured weekly or bi-weekly program status report with RAG status, blockers, and decisions needed",
+      "tags": [
+        "delivery",
+        "reporting",
+        "stakeholders",
+        "rag-status"
+      ]
+    },
+    "program-delivery-manager/milestone-scoping": {
+      "role": "program-delivery-manager",
+      "description": "Scope a milestone to a fixed time window with variable scope using Shape Up and The Art of Project Management",
+      "tags": [
+        "delivery",
+        "scoping",
+        "milestones",
+        "shape-up"
+      ]
+    },
+    "program-delivery-manager/flow-metrics-review": {
+      "role": "program-delivery-manager",
+      "description": "Analyze cycle time, WIP, throughput, and DORA metrics to identify delivery bottlenecks",
+      "tags": [
+        "delivery",
+        "metrics",
+        "dora",
+        "flow",
+        "kanban"
+      ]
     }
   }
 }
