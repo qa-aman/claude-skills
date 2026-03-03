@@ -9,7 +9,7 @@
 
 A curated collection of [Claude Code](https://claude.ai/claude-code) skills organized by job role. Each skill is a packaged workflow grounded in a proven book or methodology - Claude invokes it automatically, or you trigger it with a `/skill-name` command.
 
-**86 skills across 14 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, and more.
+**95 skills across 17 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Security, Researcher, and more.
 
 ## Install
 
@@ -167,6 +167,27 @@ Skills install to `~/.claude/skills/` and are immediately available in any Claud
 | `business-model-canvas` | Design and stress-test a business model canvas | Lean Startup - Ries |
 | `investor-update` | Write a structured monthly/quarterly investor update | Venture-backed startup norms |
 | `fundraising-email` | Write a cold investor outreach email using traction-first framing | Traction - Weinberg |
+
+### Data Engineer (`--role data-engineer`)
+| Skill | What it does | Grounded in |
+|-------|-------------|-------------|
+| `pipeline-design-doc` | Document a data pipeline's architecture, data flow, contracts, and failure modes | Fundamentals of Data Engineering - Reis & Housley |
+| `schema-spec` | Write a schema spec with field definitions, constraints, business rules, and evolution policy | DDIA - Kleppmann |
+| `etl-runbook` | Operational runbook for ETL jobs covering monitoring, diagnosis, and backfill | Data Pipelines Pocket Reference - Densmore |
+
+### Security (`--role security`)
+| Skill | What it does | Grounded in |
+|-------|-------------|-------------|
+| `threat-model` | Identify and prioritize threats using STRIDE per system component | Threat Modeling - Shostack |
+| `pentest-scope` | Define pentest targets, rules of engagement, and deliverables | Penetration Testing - Weidman |
+| `vuln-report` | Write a vulnerability report with reproduction steps, impact, and remediation | Penetration Testing - Weidman |
+
+### Researcher (`--role researcher`)
+| Skill | What it does | Grounded in |
+|-------|-------------|-------------|
+| `literature-review` | Synthesize prior research by theme, surface contradictions, frame the gap | Research Design - Creswell |
+| `hypothesis-framing` | Write falsifiable hypotheses with operationalized variables and null/alternative forms | Research Methodology - Kumar |
+| `study-design` | Design a study with method selection, sample size, procedure, instruments, and analysis plan | Research Design - Creswell |
 
 ### Shared (installed with every role)
 | Skill | What it does |

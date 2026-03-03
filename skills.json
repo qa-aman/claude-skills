@@ -830,6 +830,96 @@
         "pyramid-principle",
         "storytelling"
       ]
+    },
+    "data-engineer/pipeline-design-doc": {
+      "role": "data-engineer",
+      "description": "Write a data pipeline design document covering architecture, data flow, contracts, failure modes, and operational details",
+      "tags": [
+        "data-engineering",
+        "pipeline",
+        "architecture",
+        "documentation"
+      ]
+    },
+    "data-engineer/schema-spec": {
+      "role": "data-engineer",
+      "description": "Write a data schema specification with field definitions, constraints, business rules, and schema evolution policy",
+      "tags": [
+        "data-engineering",
+        "schema",
+        "data-modeling",
+        "documentation"
+      ]
+    },
+    "data-engineer/etl-runbook": {
+      "role": "data-engineer",
+      "description": "Write an ETL operational runbook covering monitoring, failure diagnosis, data quality checks, and backfill procedures",
+      "tags": [
+        "data-engineering",
+        "etl",
+        "operations",
+        "runbook"
+      ]
+    },
+    "security/threat-model": {
+      "role": "security",
+      "description": "Write a threat model document using STRIDE framework to identify, assess, and prioritize threats per system component",
+      "tags": [
+        "security",
+        "threat-modeling",
+        "stride",
+        "architecture"
+      ]
+    },
+    "security/pentest-scope": {
+      "role": "security",
+      "description": "Write a penetration test scope document with targets, rules of engagement, prohibited techniques, and deliverables",
+      "tags": [
+        "security",
+        "penetration-testing",
+        "red-team",
+        "engagement"
+      ]
+    },
+    "security/vuln-report": {
+      "role": "security",
+      "description": "Write a vulnerability report with executive summary, technical description, reproduction steps, evidence, impact, and remediation",
+      "tags": [
+        "security",
+        "vulnerability",
+        "bug-bounty",
+        "reporting"
+      ]
+    },
+    "researcher/literature-review": {
+      "role": "researcher",
+      "description": "Write a literature review that synthesizes research by theme, identifies contradictions, and frames a research gap",
+      "tags": [
+        "research",
+        "literature-review",
+        "academic",
+        "synthesis"
+      ]
+    },
+    "researcher/hypothesis-framing": {
+      "role": "researcher",
+      "description": "Write or refine a research hypothesis with operationalized variables, null and alternative hypotheses, and theoretical basis",
+      "tags": [
+        "research",
+        "hypothesis",
+        "academic",
+        "methodology"
+      ]
+    },
+    "researcher/study-design": {
+      "role": "researcher",
+      "description": "Design a research study with paradigm selection, sample size, procedure, instruments, analysis plan, and ethics",
+      "tags": [
+        "research",
+        "study-design",
+        "methodology",
+        "academic"
+      ]
     }
   }
 }
