@@ -1,54 +1,6 @@
 {
   "version": "1.0",
   "skills": {
-    "content-creator/linkedin-post": {
-      "role": "content-creator",
-      "description": "Write LinkedIn posts for [your niche]",
-      "tags": [
-        "content",
-        "social"
-      ]
-    },
-    "content-creator/reddit-post": {
-      "role": "content-creator",
-      "description": "Write Reddit posts for [your community]",
-      "tags": [
-        "content",
-        "social"
-      ]
-    },
-    "content-creator/newsletter-ideation": {
-      "role": "content-creator",
-      "description": "Ideate newsletter topics for [your newsletter]",
-      "tags": [
-        "content",
-        "newsletter"
-      ]
-    },
-    "content-creator/substack-post": {
-      "role": "content-creator",
-      "description": "Write Substack posts for [your newsletter]",
-      "tags": [
-        "content",
-        "newsletter"
-      ]
-    },
-    "content-creator/substack-notes": {
-      "role": "content-creator",
-      "description": "Write Substack notes for [your newsletter]",
-      "tags": [
-        "content",
-        "newsletter"
-      ]
-    },
-    "content-creator/substack-toc": {
-      "role": "content-creator",
-      "description": "Generate Substack table of contents",
-      "tags": [
-        "content",
-        "newsletter"
-      ]
-    },
     "pm/11-star-framework": {
       "role": "pm",
       "description": "Apply 11-star experience framework to product decisions",
