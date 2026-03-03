@@ -164,6 +164,63 @@
         "engineering",
         "spec"
       ]
+    },
+    "pm/product-discovery": {
+      "role": "pm",
+      "description": "Run structured product discovery to identify what to build before building it",
+      "tags": [
+        "product",
+        "discovery",
+        "research"
+      ]
+    },
+    "pm/team-brief": {
+      "role": "pm",
+      "description": "Write an empowered team brief that gives engineers a problem to solve, not a solution to build",
+      "tags": [
+        "product",
+        "leadership",
+        "empowerment"
+      ]
+    },
+    "pm/outcome-vs-output": {
+      "role": "pm",
+      "description": "Audit a roadmap or backlog to distinguish outcomes from outputs and escape the build trap",
+      "tags": [
+        "product",
+        "strategy",
+        "outcomes"
+      ]
+    },
+    "pm/retention-design": {
+      "role": "pm",
+      "description": "Design habit-forming product features using the Hook Model",
+      "tags": [
+        "product",
+        "retention",
+        "engagement",
+        "ux"
+      ]
+    },
+    "pm/experiment-design": {
+      "role": "pm",
+      "description": "Design product experiments using build-measure-learn loops and validated learning",
+      "tags": [
+        "product",
+        "experimentation",
+        "lean",
+        "growth"
+      ]
+    },
+    "pm/product-market-fit": {
+      "role": "pm",
+      "description": "Assess and improve product-market fit using the PMF pyramid",
+      "tags": [
+        "product",
+        "strategy",
+        "pmf",
+        "growth"
+      ]
     }
   }
 }
