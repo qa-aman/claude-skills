@@ -1,6 +1,9 @@
 CLAUDE.md
 .claude/
 
+# Internal docs
+docs/
+
 # macOS
 .DS_Store
 
