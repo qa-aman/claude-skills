@@ -1,2 +1,24 @@
 CLAUDE.md
 .claude/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Skill dev artifacts
+*-workspace/
+evals.json
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Test output
+/tmp/
