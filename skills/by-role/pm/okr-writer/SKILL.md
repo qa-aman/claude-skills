@@ -3,74 +3,81 @@ name: okr-writer
 description: >
   Write OKRs (Objectives and Key Results). Use when the user says "write OKRs",
   "help me set goals", "create objectives and key results", "quarterly goals",
-  "team OKRs", "I need to define success for this quarter", or wants to translate
-  a strategic direction into measurable targets - even if they don't say "OKRs".
+  "team OKRs", "I need to define success for this quarter", "Doerr method",
+  or wants to translate a strategic direction into measurable targets
+  - even if they don't explicitly say "OKRs".
 ---
 
 ## Overview
 
-An Objective answers "where do we want to go?" It is aspirational and qualitative. Key Results answer "how will we know we got there?" They are measurable and binary at quarter end - either you hit them or you didn't.
+Based on **"Measure What Matters"** by John Doerr, who brought OKRs from Intel to Google. Doerr's core distinction: Objectives are the "what" (inspirational, qualitative), Key Results are the "how we know" (measurable, binary at quarter end). CFRs - Conversations, Feedback, Recognition - are what make OKRs work in practice.
 
-Bad OKRs are activity-based ("launch feature X"). Good OKRs are outcome-based ("reduce churn by 15%").
+Two types of OKRs (Doerr):
+- **Committed OKRs** - Must be achieved 100%. Missing them requires explanation.
+- **Aspirational OKRs** - Stretch goals. 70% attainment is success. 100% means you aimed too low.
 
 ## Workflow
 
-### Step 1: Extract the strategic intent
-Ask or infer: what is the team trying to achieve this quarter? What problem are they solving or opportunity are they capturing?
+### Step 1: Identify the type
+Ask: is this a committed OKR (must hit) or aspirational (stretch)? This changes how you write the Key Results.
 
 ### Step 2: Write the Objective
-- 1 sentence, aspirational, qualitative
-- Should be memorable and motivating
-- Answers: "what do we want to be true at the end of the quarter?"
+- Inspirational and qualitative
+- Memorable - a team should be able to recite it
+- Time-bound to the quarter
+- Answers: "What do we want to be true in 90 days?"
 
-Example: "Become the fastest onboarding experience in [your industry]."
+Doerr's test: "Does this objective make you uncomfortable in a good way?" If it's easy, it's not aspirational enough.
 
 ### Step 3: Write 3-5 Key Results per Objective
 Each KR must:
 - Be measurable with a specific number
-- Be outcome-based, not task-based
-- Be achievable but ambitious (70% confidence is ideal)
-- Have a clear baseline and target
+- Be outcome-based, not output-based ("30% reduction in churn" not "launch retention feature")
+- Have a baseline and a target
+- Be independently verifiable
 
-Format: `[Metric] from [baseline] to [target] by [date]`
+Format: `[Metric] from [baseline] to [target]`
 
-Example:
-- Reduce time-to-first-value from 14 days to 3 days
-- Increase onboarding completion rate from 45% to 70%
-- Decrease onboarding support tickets by 50%
+### Step 4: Apply the Doerr CFR check
+For each OKR set, identify:
+- **Conversation:** What weekly check-in question will track this?
+- **Feedback:** How will the team know mid-quarter if they're on track?
+- **Recognition:** What does hitting this KR mean for the team?
 
-### Step 4: Check alignment
-Do the KRs actually measure the Objective? If all KRs are hit but the Objective still feels unachieved, the KRs are wrong.
+OKRs without CFRs become forgotten spreadsheets.
 
-### Step 5: Flag missing baselines
-If the user doesn't know current metrics, flag this: "You'll need a baseline for this KR before you can track it. Who owns this data?"
+### Step 5: Check vertical alignment
+Doerr's "cascading" principle: team OKRs should visibly connect to company OKRs. Flag any team OKR that doesn't trace to a company-level objective.
+
+### Step 6: Flag missing baselines
+"You'll need a baseline for this KR. Who owns this metric and can pull the current number?"
 
 ## Anti-Patterns
 
-**1. Activity-based Key Results**
+**1. Output-based Key Results**
 Bad: "Launch new onboarding flow by March 31"
 Good: "Increase onboarding completion rate from 45% to 70%"
-Shipping is not success. Outcomes are success.
+Shipping is activity. Outcomes are results.
 
-**2. Too many Objectives**
-Bad: 5+ Objectives per team per quarter.
-Good: 1-3 Objectives. Focus is the point of OKRs.
+**2. Treating aspirational OKRs as committed**
+Bad: Team marks 70% attainment as failure because "we didn't hit it."
+Good: For aspirational OKRs, 70% = success. Recalibrate at quarter end, don't punish stretch.
 
-**3. KRs that are always 100% achievable**
-Bad: "Maintain NPS above 40" when NPS is already 55.
-Good: KRs should have ~70% confidence. Too easy means no stretch; too hard means teams game the system.
+**3. Too many Objectives**
+Bad: 5-7 Objectives per team.
+Good: 1-3 Objectives max. Doerr: "A few well-chosen OKRs send a clear message about what we say no to."
 
 **4. No baseline**
 Bad: "Improve conversion rate to 10%"
 Good: "Improve conversion rate from 6% to 10%"
-Without a baseline, you can't measure progress or claim success.
 
 ## Quality Checklist
 
-- [ ] Objective is aspirational and qualitative (not a task)
+- [ ] OKR type stated: committed or aspirational
+- [ ] Objective is inspirational and qualitative (not a task)
 - [ ] 3-5 Key Results per Objective
-- [ ] Each KR is measurable with a specific number
-- [ ] Each KR has a baseline and a target
+- [ ] Each KR has baseline and target
 - [ ] KRs are outcome-based, not output-based
-- [ ] No more than 3 Objectives per team
-- [ ] Missing baselines are flagged with owners
+- [ ] CFR check done: conversation, feedback, recognition defined
+- [ ] Team OKRs connect to company OKRs
+- [ ] Missing baselines flagged with owners

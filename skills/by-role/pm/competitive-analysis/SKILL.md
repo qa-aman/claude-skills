@@ -2,86 +2,80 @@
 name: competitive-analysis
 description: >
   Conduct a competitive analysis. Use when the user says "competitive analysis",
-  "how do competitors handle X", "market landscape", "what does [competitor] do",
-  "compare us to X", "positioning analysis", or wants to understand how a product
-  or feature compares to alternatives - even if they don't say "competitive analysis".
+  "how do competitors handle X", "market landscape", "blue ocean", "strategy canvas",
+  "what does [competitor] do", "compare us to X", "positioning analysis", "value curve",
+  or wants to understand how a product or feature compares to alternatives
+  - even if they don't explicitly say "competitive analysis".
 ---
 
 ## Overview
 
-A competitive analysis answers two questions: where are you stronger, and where are you weaker? The output should inform product decisions, not just describe what competitors built.
+Based on **"Blue Ocean Strategy"** by W. Chan Kim & Renee Mauborgne. Most competitive analysis maps what competitors do and tries to do it better - this is red ocean thinking. Blue Ocean Strategy asks a different question: what can we eliminate, reduce, raise, or create to make competition irrelevant?
 
 ## Workflow
 
 ### Step 1: Define the scope
-Clarify with the user:
 - Is this for a specific feature or the whole product?
-- Who are the known competitors? (direct, indirect, adjacent)
-- What's the decision this analysis will inform?
+- What decision will this analysis inform?
+- Who are the direct and indirect competitors?
 
-Scope determines depth. A pricing decision needs different analysis than a roadmap decision.
+Cap at 5-7 competitors. More dilutes the analysis.
 
-### Step 2: Identify competitors
-Group into:
-- **Direct** - Same user, same problem, similar solution
-- **Indirect** - Same user, same problem, different solution
-- **Adjacent** - Different user or problem, but overlapping features
+### Step 2: Build the Strategy Canvas
+Plot competitors on a graph:
+- **X-axis:** Competing factors (price, speed, features, support, UX, etc.)
+- **Y-axis:** Offering level (low to high) for each factor
 
-Cap at 5-7 competitors. More than that dilutes the analysis.
+This is the "as-is" state. Where do all competitors cluster? That cluster is the red ocean.
 
-### Step 3: Define comparison dimensions
-Choose 5-8 dimensions relevant to the decision. Common ones:
-- Core feature set
-- Pricing model
-- Target user segment
-- Onboarding experience
-- Integration ecosystem
-- Performance / reliability
-- Mobile experience
+### Step 3: Apply the Four Actions Framework
+For each competing factor, ask:
 
-### Step 4: Build the comparison matrix
-Present as a table:
+| Action | Question | Example |
+|--------|----------|---------|
+| **Eliminate** | What do all competitors offer that adds no real value? | Eliminate: complex onboarding wizards |
+| **Reduce** | What can we offer well below industry standard? | Reduce: feature count, focus on core use case |
+| **Raise** | What should we raise well above the industry standard? | Raise: response time, documentation quality |
+| **Create** | What should we offer that no competitor does? | Create: role-based install, skill-context personalization |
 
-| Dimension | [Your Product] | Competitor A | Competitor B | Competitor C |
-|-----------|---------------|--------------|--------------|--------------|
+### Step 4: Draw the "to-be" value curve
+Plot where your product sits after applying the four actions. A differentiated value curve:
+- Has a different shape than competitors
+- Focuses on a few factors rather than spreading thin
+- Has a compelling tagline: "The only X that does Y for Z"
 
-Use: Strong / Partial / Missing / Not applicable
-
-### Step 5: Identify gaps and opportunities
-Answer explicitly:
-- Where do competitors consistently outperform you?
-- Where do you consistently outperform them?
-- What do users want that nobody is building?
+### Step 5: Identify non-customers
+Blue Ocean insight: the biggest opportunity is often in people who don't use any competitor today. Who are the non-customers, and why aren't they buying? Three tiers:
+- **Tier 1:** Soon-to-be non-customers (use reluctantly, would switch)
+- **Tier 2:** Refusing non-customers (consciously chose alternatives)
+- **Tier 3:** Unexplored non-customers (never considered this category)
 
 ### Step 6: State implications
-End with 2-3 bullet points: "Given this analysis, we should consider..."
-
-Analysis without implications is research, not strategy.
+"Given this analysis, we should consider..." - 2-3 concrete takeaways. No implications = just research, not strategy.
 
 ## Anti-Patterns
 
-**1. Feature-listing without insight**
-Bad: "Competitor X has a dashboard. Competitor Y has a dashboard. Competitor Z has a dashboard."
-Good: "All major competitors offer dashboards. Our lack of one is a table-stakes gap, not a differentiator opportunity."
+**1. Red ocean thinking**
+Bad: "Competitor X has feature Y, so we need feature Y."
+Good: Apply the four actions. Maybe feature Y should be eliminated or reduced.
 
-**2. Scope creep**
-Bad: Analyzing 12 competitors across 20 dimensions.
-Good: 5 competitors, 7 dimensions, focused on the decision at hand.
+**2. Competing on all dimensions**
+Bad: Value curve that tries to be high on every factor.
+Good: A focused curve that excels on 2-3 factors and consciously deprioritizes others.
 
-**3. Static analysis**
-Bad: "Competitor X doesn't have mobile support."
-Good: Note when the data was collected. Competitive landscapes shift. Flag anything likely to change.
+**3. Ignoring non-customers**
+Bad: Analysis only covers existing market users.
+Good: Tier 1/2/3 non-customer analysis often reveals larger opportunities than competing for existing users.
 
-**4. No implications**
-Bad: Analysis ends with the comparison table.
-Good: Always ends with: "What this means for us is..."
+**4. No strategy canvas**
+Bad: Bullet list of what competitors do.
+Good: Visual strategy canvas that makes the competitive landscape scannable.
 
 ## Quality Checklist
 
-- [ ] Scope is defined (feature vs. product, decision it informs)
-- [ ] Competitors categorized as direct / indirect / adjacent
-- [ ] No more than 7 competitors
-- [ ] Dimensions are relevant to the decision, not generic
-- [ ] Comparison matrix is clear and scannable
-- [ ] Gaps and opportunities are stated explicitly
-- [ ] Analysis ends with implications, not just observations
+- [ ] Scope defined - feature vs. product, decision it informs
+- [ ] Strategy canvas built with competing factors on X-axis
+- [ ] Four Actions Framework applied: eliminate, reduce, raise, create
+- [ ] "To-be" value curve drawn and differentiated from competitors
+- [ ] Non-customer tiers considered
+- [ ] Analysis ends with concrete implications

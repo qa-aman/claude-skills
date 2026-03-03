@@ -3,70 +3,73 @@ name: write-user-stories
 description: >
   Write user stories with acceptance criteria. Use when the user says "write user stories",
   "convert this to stories", "create acceptance criteria", "break this into tickets",
-  "story for this feature", or wants to translate a feature idea into sprint-ready items
-  - even if they don't explicitly say "user stories".
+  "story map", "walking skeleton", "story for this feature", or wants to translate
+  a feature idea into sprint-ready items - even if they don't explicitly say "user stories".
 ---
 
 ## Overview
 
-A user story is a unit of work from the user's perspective. It forces the team to think about value before implementation. Acceptance criteria define "done" - without them, stories are ambiguous and sprints are unpredictable.
+Based on **User Story Mapping** by Jeff Patton. Stories aren't just tickets - they tell a narrative. A story map has two dimensions: the user's journey across the top (the backbone), and depth below each step showing increasing detail. Releases are horizontal slices through the map, not vertical feature silos.
 
 ## Workflow
 
-### Step 1: Identify the users
-List the distinct user types affected by the feature. Each user type may need separate stories.
+### Step 1: Build the Narrative Spine
+Before writing individual stories, map the user's journey end-to-end. List the high-level activities in sequence - this is the backbone.
 
-### Step 2: Write the story headline
+Example backbone for a checkout flow:
+`Browse -> Select -> Review Cart -> Enter Details -> Pay -> Confirm`
+
+### Step 2: Identify the Walking Skeleton
+The walking skeleton is the thinnest possible slice that completes the full journey. It's not an MVP of features - it's an MVP of the flow. Every step in the backbone needs at least one story.
+
+### Step 3: Write story headlines
 Format: `As a [user type], I want [goal], so that [benefit].`
 
-The "so that" clause is critical - it ties the story to user value. If you can't write it, the story may not be worth building.
+The "so that" clause is non-negotiable. If you can't write it, the story may not be worth building.
 
-### Step 3: Write Acceptance Criteria
-Use Given/When/Then format for each criterion:
+### Step 4: Write Acceptance Criteria
+Use Given/When/Then for each criterion:
 ```
 Given [precondition]
 When [action]
 Then [expected outcome]
 ```
 
-Write 3-7 criteria per story. Fewer means incomplete; more means the story is too large.
+3-7 criteria per story. Cover: happy path, error states, empty state, edge cases.
 
-### Step 4: Add edge cases
-List edge cases as additional AC items:
-- What happens on error?
-- What happens with empty state?
-- What happens at limits (0 items, max items)?
+### Step 5: Slice into releases
+Group stories into horizontal release slices:
+- **Release 1:** Walking skeleton only - the minimum to complete the journey
+- **Release 2:** Fill in the most important gaps
+- **Release 3:** Polish, edge cases, power-user features
 
-### Step 5: Estimate complexity (optional)
-Flag stories as Small / Medium / Large based on AC complexity. Stories larger than Medium should be split.
-
-### Step 6: Link dependencies
-Note any stories that must complete before this one. Untracked dependencies cause sprint failures.
+### Step 6: Flag dependencies
+Note stories that must complete before others. Untracked dependencies cause sprint failures.
 
 ## Anti-Patterns
 
-**1. Technical stories written as user stories**
-Bad: "As a developer, I want to refactor the auth module so that code is cleaner."
-Good: Technical work goes in a tech debt ticket, not a user story. If there's no user value, say so explicitly.
+**1. Vertical slices by feature**
+Bad: "Sprint 1: Build entire payment module."
+Good: A thin horizontal slice that covers the full user journey, even if basic.
 
 **2. Missing "so that" clause**
 Bad: "As a user, I want to reset my password."
-Good: "As a user, I want to reset my password so that I can regain access to my account without contacting support."
+Good: "As a user, I want to reset my password so that I can regain access without contacting support."
 
-**3. Acceptance criteria that describe implementation**
-Bad: "Given the user clicks the button, when the API call returns 200, then..."
-Good: AC describes behavior, not implementation. "Given the user is logged out, when they request a password reset, then they receive an email within 2 minutes."
+**3. Technical stories disguised as user stories**
+Bad: "As a developer, I want to refactor the auth module."
+Good: Tech work belongs in tech debt tickets. If there's no user value, say so explicitly.
 
-**4. One mega-story**
-Bad: "As a user, I want to manage my account settings."
-Good: Split into separate stories for each setting type. Each story is independently deployable.
+**4. No walking skeleton**
+Bad: Writing 50 stories with no sense of minimum viable flow.
+Good: Identify the walking skeleton first. Every story outside it is enhancement.
 
 ## Quality Checklist
 
+- [ ] Backbone (user journey) mapped before writing individual stories
+- [ ] Walking skeleton identified - thinnest slice that completes the flow
 - [ ] Each story follows "As a [user], I want [goal], so that [benefit]"
 - [ ] "So that" clause ties to real user value
-- [ ] Each story has 3-7 acceptance criteria
-- [ ] AC uses Given/When/Then format
-- [ ] Edge cases (empty state, errors, limits) are covered
-- [ ] Stories are independently deployable
-- [ ] No implementation details in AC
+- [ ] AC uses Given/When/Then with 3-7 criteria per story
+- [ ] Stories sliced into releases (R1 = walking skeleton)
+- [ ] Dependencies flagged

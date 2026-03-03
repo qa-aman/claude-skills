@@ -1,17 +1,15 @@
 ---
 name: feature-spec
 description: >
-  Write a feature spec for engineering handoff. Use when the user says "write a spec",
+  Write a concise feature spec for engineering handoff. Use when the user says "write a spec",
   "feature spec", "one-pager for eng", "spec this out", "write up this feature",
-  "I need to hand this off to engineering", or wants a concise technical brief
-  for a feature - even if they don't say "feature spec".
+  "I need to hand this off to engineering", "shape this up", or wants a concise
+  technical brief - even if they don't say "feature spec".
 ---
 
 ## Overview
 
-A feature spec is not a PRD. A PRD justifies building something. A spec tells engineers exactly what to build. It is a contract: ambiguity in the spec becomes a bug in production.
-
-Keep it to one page. If it needs more than one page, the feature is too large and should be split.
+Based on **Shape Up** by Ryan Singer (Basecamp). A feature spec is not a PRD. A PRD justifies building something. A spec tells engineers exactly what to build - but at the right altitude. Shape Up's principle: give engineers a shaped problem with clear boundaries, not a detailed recipe. Ambiguity in the spec becomes a bug in production. Over-specification kills ownership.
 
 ## Workflow
 
@@ -20,73 +18,79 @@ Keep it to one page. If it needs more than one page, the feature is too large an
 # Feature Spec: [Feature Name]
 **PM:** [your name]
 **Eng Lead:** [engineer name]
+**Appetite:** [1-2 weeks / 4-6 weeks]
 **Status:** Draft | In Review | Approved
-**Target Sprint:** [sprint or date]
 **Related PRD / Ticket:** [link]
 ```
 
 ### Step 2: Write the Problem (2-3 sentences)
-What is broken or missing? Who is affected? What is the measurable cost?
+What is broken or missing? Who is affected? Shape Up framing: "Jobs to be done" - what job is the user hiring this feature to do?
 
-### Step 3: Write the Proposed Solution (3-5 sentences)
-What are we building? How does it solve the problem? What does it NOT do?
-
-### Step 4: Write Functional Requirements
-Number each requirement. Be exhaustive. Engineers should not need to ask "what happens when X?" if X is a realistic scenario.
+### Step 3: Write the Solution at the right altitude
+Shape Up's "fat marker sketch" - describe the solution broadly. Engineers need room to make technical decisions. Write at the level of user-visible behavior, not implementation.
 
 Structure:
-- Happy path first
-- Error states second
-- Edge cases third
+- **Key interactions** - what users can do (not how)
+- **Boundaries** - explicit scope limits
+- **Rabbit holes** - specific traps to avoid
+
+### Step 4: Write Functional Requirements
+Number each. Cover in order:
+1. Happy path
+2. Error states
+3. Empty states
+4. Edge cases
 
 ### Step 5: Write Non-Functional Requirements
-- Performance targets (load time, response time)
-- Accessibility requirements
-- Browser / device support
-- Security or compliance constraints
+Only include what's genuinely constrained:
+- Performance targets
+- Accessibility level (WCAG AA minimum)
+- Browser/device support
+- Security or compliance requirements
 
-Only include what's relevant. Don't pad.
+Don't pad. If there's no real constraint, don't list one.
 
-### Step 6: Define Out of Scope
-Explicit list of things this spec does NOT cover. This prevents engineers from over-building or making assumptions about future phases.
+### Step 6: Define No-Gos (Shape Up)
+Explicit list of what this spec does NOT include. This is Shape Up's most important contribution to spec writing - stating what you're NOT building is as important as what you are.
 
-### Step 7: Add Open Questions
-Format:
+### Step 7: List Open Questions
 ```
 Q: [question]
 Owner: [name]
 Due: [date]
 ```
+No spec should be approved with unresolved questions. Assign owners.
 
-Unresolved questions block engineering. Assign owners and deadlines.
-
-### Step 8: Link to assets
-Mockups, Figma files, API specs, data models. A spec without visuals is incomplete for any UI work.
+### Step 8: Link assets
+Figma files, API specs, data models. A spec without visuals is incomplete for UI work.
 
 ## Anti-Patterns
 
-**1. Specs that describe the UI instead of the behavior**
-Bad: "There is a blue button in the top right corner."
-Good: "Users can trigger X from the [feature area]. Exact placement per Figma [link]."
+**1. Over-specifying implementation**
+Bad: "The button is blue, 48px, positioned top-right with 16px margin."
+Good: "Users can trigger X from the main action area. Exact placement per Figma [link]."
+Shape Up: over-speccing removes creative ownership from engineers and designers.
 
 **2. Missing error states**
-Bad: "User submits the form and sees a confirmation."
+Bad: "User submits the form and sees confirmation."
 Good: Cover success, validation error, server error, empty state, and loading state.
 
-**3. Assumptions instead of requirements**
-Bad: "This should work on mobile." (assumes engineer knows what "work" means)
-Good: "Feature is fully functional on iOS Safari and Chrome Android at 375px width."
+**3. No rabbit holes section**
+Bad: Spec that describes what to build but not what to avoid.
+Good: "Don't rebuild the notification system for this - use existing email infrastructure."
 
-**4. Spec approved with open questions unresolved**
-Bad: Moving to engineering with "TBD" items.
-Good: All open questions resolved or explicitly deferred to a named owner with a date before approval.
+**4. Spec approved with open questions**
+Bad: "TBD" items in an approved spec.
+Good: All open questions resolved or explicitly deferred with a named owner and date.
 
 ## Quality Checklist
 
-- [ ] Header has PM, eng lead, status, target sprint
-- [ ] Problem is 2-3 sentences, outcome-focused
-- [ ] Requirements cover happy path, error states, and edge cases
-- [ ] Out of scope section exists
+- [ ] Appetite defined (small or big batch)
+- [ ] Problem framed as "job to be done"
+- [ ] Solution at the right altitude - behavior not implementation
+- [ ] Requirements cover happy path, errors, empty states, edge cases
+- [ ] No-Gos explicitly listed
+- [ ] Rabbit holes called out
 - [ ] Open questions have owners and due dates
-- [ ] Figma / mockup links included for any UI work
+- [ ] Figma / mockup links included for UI work
 - [ ] Spec fits on one page (split if it doesn't)
