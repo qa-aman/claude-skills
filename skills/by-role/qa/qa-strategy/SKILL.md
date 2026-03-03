@@ -3,6 +3,10 @@ name: qa-strategy
 description: Create QA test strategy documents, coverage matrices, and risk-based test prioritization plans. Use this skill whenever a QA lead or manager needs to plan what to test, why, and at what depth. Trigger on phrases like "write a test strategy", "test strategy document", "what should we test", "prioritize testing", "risk-based testing", "test coverage plan", "QA approach for this project", "coverage matrix", "test scope", "how should we approach testing this quarter", "where are our coverage gaps", or any request to define the strategic plan for testing - not the execution of it. Also trigger at project kickoff when a QA lead asks "how do we approach quality on this?"
 ---
 
+## Overview
+
+Based on **"How Google Tests Software"** by Whittaker, Arbon & Carollo, and **"Agile Testing"** by Lisa Crispin & Janet Gregory. Google's core insight: quality is not QA's job - it's the whole team's job. QA's role is to accelerate quality by enabling developers to test better, not by testing everything themselves. Crispin & Gregory: the QA strategy starts at requirements, not at the end of the sprint.
+
 # QA Strategy
 
 Define what to test, why, at what depth, and in what order.
@@ -91,6 +95,15 @@ Coverage depth guide:
 - **P1 areas** - unit + integration + E2E + exploratory. Full depth.
 - **P2 areas** - integration + E2E. Spot exploratory.
 - **P3 areas** - integration or E2E only. No dedicated exploratory time.
+
+**Google's test distribution target (70/20/10 rule):**
+- **70% unit tests** - fast, cheap, developer-owned, run on every commit
+- **20% integration tests** - verify component interactions, shared ownership
+- **10% E2E tests** - cover critical user journeys only, expensive to maintain
+
+If your distribution is inverted (heavy E2E, light unit), the suite will be slow, brittle, and expensive to maintain. Shift left.
+
+**Crispin & Gregory - whole team quality:** QA participates in story refinement, not just sprint testing. Flag untestable stories before sprint start, not after code is written.
 
 ### Step 4: Test Types and Ownership
 
