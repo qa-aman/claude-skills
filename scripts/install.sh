@@ -98,25 +98,30 @@ init_context() {
     return
   fi
 
-  echo "Setting up skill-context.md for personalized skill behavior..."
-  echo ""
-  read -rp "Your industry (e.g. Fintech, EdTech, SaaS): " industry
-  read -rp "Your primary tech stack (e.g. React + Node.js): " stack
-  read -rp "Compliance requirements (e.g. PCI-DSS, HIPAA, or none): " compliance
-
+  local template="$REPO_DIR/skill-context.example.md"
   mkdir -p "$TARGET_DIR"
-  cat > "$context_file" <<CONTEXT
+
+  if [ -f "$template" ]; then
+    cp "$template" "$context_file"
+    echo "Created: $context_file"
+    echo "Fill in your values - skills read this file at invocation time."
+    echo "Open it with: open $context_file"
+  else
+    # Fallback if template missing
+    cat > "$context_file" <<CONTEXT
 # Skill Context
-# This file personalizes generic skills for your project.
-# Skills read this at invocation time. Edit anytime.
+# Skills read this file at invocation time to personalize their output.
+# Edit anytime - skills never modify this file.
 
-- Industry: $industry
-- Stack: $stack
-- Compliance: $compliance
+- Industry: [e.g. Fintech, EdTech, SaaS]
+- Stack: [e.g. React + Node.js]
+- Compliance: [e.g. PCI-DSS, HIPAA, or none]
+- Defect tracker: [e.g. Jira, Linear, GitHub Issues]
+- Test framework: [e.g. Jest, Cypress, Playwright]
 CONTEXT
-
-  echo ""
-  echo "Created: $context_file"
+    echo "Created: $context_file"
+    echo "Fill in your values - skills read this file at invocation time."
+  fi
 }
 
 list_skills() {
@@ -241,21 +246,23 @@ elif [ ${#ROLES[@]} -gt 0 ]; then
   done < <(get_shared_skills)
 fi
 
-if [ ${#SKILLS_TO_INSTALL[@]} -eq 0 ]; then
+if [ ${#SKILLS_TO_INSTALL[@]} -eq 0 ] && [ "$DO_INIT" = false ]; then
   echo "No skills to install. Use --role, --all, or --update."
   usage
   exit 1
 fi
 
-echo "Installing to $TARGET_DIR..."
-installed=0
-for skill in "${SKILLS_TO_INSTALL[@]}"; do
-  if install_skill "$skill"; then
-    ((installed++)) || true
-  fi
-done
-echo ""
-echo "$installed skill(s) installed."
+if [ ${#SKILLS_TO_INSTALL[@]} -gt 0 ]; then
+  echo "Installing to $TARGET_DIR..."
+  installed=0
+  for skill in "${SKILLS_TO_INSTALL[@]}"; do
+    if install_skill "$skill"; then
+      ((installed++)) || true
+    fi
+  done
+  echo ""
+  echo "$installed skill(s) installed."
+fi
 
 if [ "$DO_INIT" = true ]; then
   echo ""

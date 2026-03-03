@@ -40,6 +40,31 @@
       "role": "shared",
       "description": "Build structured presentations for any audience",
       "tags": ["productivity", "presentations"]
+    },
+    "qa/qa-test-design": {
+      "role": "qa",
+      "description": "Write test cases, acceptance criteria, API test specs, and PR testability reviews",
+      "tags": ["qa", "testing", "test-design"]
+    },
+    "qa/qa-execution": {
+      "role": "qa",
+      "description": "Run and document smoke tests, regression cycles, and exploratory testing sessions",
+      "tags": ["qa", "testing", "execution"]
+    },
+    "qa/qa-release": {
+      "role": "qa",
+      "description": "Go/no-go decisions, release sign-off reports, and defect triage",
+      "tags": ["qa", "release", "sign-off"]
+    },
+    "qa/qa-strategy": {
+      "role": "qa",
+      "description": "Test strategy documents, coverage matrices, and risk-based prioritization",
+      "tags": ["qa", "strategy", "planning"]
+    },
+    "qa/qa-metrics": {
+      "role": "qa",
+      "description": "Quality dashboards, defect density, escape rate, and trend reporting",
+      "tags": ["qa", "metrics", "reporting"]
     }
   }
 }

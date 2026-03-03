@@ -15,7 +15,7 @@ A curated collection of [Claude Code](https://claude.ai/claude-code) skills orga
 
 ```bash
 # Clone once
-git clone https://github.com/[your-username]/claude-skills.git
+git clone https://github.com/[qa-aman]/claude-skills.git
 cd claude-skills
 
 # Install skills for your role
@@ -57,9 +57,17 @@ Skills install to `~/.claude/skills/` and are immediately available in any Claud
 |-------|-------------|
 | presentation-builder | Build structured presentations for any audience |
 
+### QA (`--role qa`)
+| Skill | Level | What it does |
+|-------|-------|-------------|
+| qa-test-design | IC | Write test cases, acceptance criteria, API test specs, PR testability reviews |
+| qa-execution | IC | Run smoke tests, regression cycles, and exploratory testing sessions |
+| qa-release | Lead | Go/no-go decisions, release sign-off reports, and defect triage |
+| qa-strategy | Lead | Test strategy docs, coverage matrices, risk-based prioritization |
+| qa-metrics | Lead | Quality dashboards, defect density, escape rate, trend reporting |
+
 ### Coming Soon
 - `--role engineer` - Code review, debugging, PR workflows
-- `--role qa` - Test plans, bug reports, coverage analysis
 - `--role designer` - Design critique, component specs, handoff docs
 - `--role devops` - Incident response, runbooks, deployment checklists
 
@@ -67,22 +75,28 @@ Skills install to `~/.claude/skills/` and are immediately available in any Claud
 
 ## Personalize Skills for Your Context
 
-Generic skills get smarter when they know your context. After installing, run:
+Skills stay generic and immutable. Personalization lives in a separate file that skills read at invocation time - your edits are never overwritten by `--update`.
 
+**Step 1:** Copy the template from this repo:
 ```bash
 bash scripts/install.sh --role qa --init
+# Creates ~/.claude/skills/skill-context.md from skill-context.example.md
 ```
 
-This creates `~/.claude/skills/skill-context.md` - a file that skills read at invocation time to tailor output to your industry, stack, and compliance needs. Edit it anytime.
-
-Example `skill-context.md`:
+**Step 2:** Fill in your values:
 ```markdown
+# ~/.claude/skills/skill-context.md
+
 - Industry: Fintech
 - Stack: React Native + Node.js
+- Test framework: Playwright
+- Defect tracker: Jira
 - Compliance: PCI-DSS
 ```
 
-Skills stay generic and update-safe. Your context stays persistent.
+See [`skill-context.example.md`](skill-context.example.md) for the full template with all role-specific fields.
+
+Skills read this file at invocation time. Edit it anytime - it never gets overwritten.
 
 ## Update Skills
 
