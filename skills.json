@@ -221,6 +221,145 @@
         "pmf",
         "growth"
       ]
+    },
+    "engineer/code-review": {
+      "role": "engineer",
+      "description": "Review code for quality, bugs, and design issues using Clean Code principles. Use when asked to review code, do a code review, check a PR, review a diff, or assess code quality.",
+      "tags": [
+        "engineering",
+        "code-quality",
+        "review"
+      ]
+    },
+    "engineer/debug": {
+      "role": "engineer",
+      "description": "Debug systematically using reproduce-isolate-fix methodology. Use when encountering a bug, unexpected behavior, test failure, or error that needs diagnosis.",
+      "tags": [
+        "engineering",
+        "debugging",
+        "troubleshooting"
+      ]
+    },
+    "engineer/write-tests": {
+      "role": "engineer",
+      "description": "Write unit and integration tests using TDD red-green-refactor cycle. Use when asked to write tests, add test coverage, or test a function or module.",
+      "tags": [
+        "engineering",
+        "testing",
+        "tdd"
+      ]
+    },
+    "engineer/tech-debt": {
+      "role": "engineer",
+      "description": "Document, scope, and prioritize technical debt using Feathers' seam-finding approach. Use when assessing legacy code, planning refactors, or making a case for paying down tech debt.",
+      "tags": [
+        "engineering",
+        "tech-debt",
+        "refactoring"
+      ]
+    },
+    "engineer/api-design": {
+      "role": "engineer",
+      "description": "Design clean, consistent REST or GraphQL APIs using deep module principles. Use when designing API endpoints, reviewing API contracts, or creating API documentation.",
+      "tags": [
+        "engineering",
+        "api",
+        "design",
+        "architecture"
+      ]
+    },
+    "engineer/pr-description": {
+      "role": "engineer",
+      "description": "Write clear, reviewable pull request descriptions that communicate what changed and why. Use when opening a PR, writing a commit message, or documenting a code change.",
+      "tags": [
+        "engineering",
+        "git",
+        "communication",
+        "pull-request"
+      ]
+    },
+    "designer/design-critique": {
+      "role": "designer",
+      "description": "Critique a design for usability, hierarchy, and accessibility using Don Norman's principles. Use when reviewing screens, flows, mockups, or UI designs.",
+      "tags": [
+        "design",
+        "critique",
+        "usability",
+        "ux"
+      ]
+    },
+    "designer/ux-audit": {
+      "role": "designer",
+      "description": "Audit a user flow for friction and drop-off points using Krug's usability principles. Use when analyzing a user journey, onboarding flow, or feature flow for usability problems.",
+      "tags": [
+        "design",
+        "ux",
+        "audit",
+        "usability"
+      ]
+    },
+    "designer/component-spec": {
+      "role": "designer",
+      "description": "Write a component spec for engineering handoff using Atomic Design principles. Use when handing off a UI component to engineering, documenting a design system component, or speccing a new component.",
+      "tags": [
+        "design",
+        "components",
+        "handoff",
+        "atomic-design"
+      ]
+    },
+    "designer/design-system-doc": {
+      "role": "designer",
+      "description": "Document a design system component with usage rules, tokens, and examples using Atomic Design principles. Use when building or maintaining a design system.",
+      "tags": [
+        "design",
+        "design-system",
+        "documentation",
+        "atomic-design"
+      ]
+    },
+    "devops/incident-response": {
+      "role": "devops",
+      "description": "Structure and run an incident response using SRE principles. Use when a production incident occurs, a service is degraded, or on-call engineer needs to run a structured response.",
+      "tags": [
+        "devops",
+        "incident",
+        "sre",
+        "on-call"
+      ]
+    },
+    "devops/runbook": {
+      "role": "devops",
+      "description": "Write an operational runbook for a service or on-call procedure using SRE standards. Use when documenting how to operate, troubleshoot, or respond to alerts for a service.",
+      "tags": [
+        "devops",
+        "runbook",
+        "sre",
+        "operations",
+        "on-call"
+      ]
+    },
+    "devops/deployment-checklist": {
+      "role": "devops",
+      "description": "Run a pre and post-deployment checklist to reduce change failure rate. Use when deploying to production, planning a release, or reviewing deployment readiness.",
+      "tags": [
+        "devops",
+        "deployment",
+        "checklist",
+        "release",
+        "ci-cd"
+      ]
+    },
+    "devops/postmortem": {
+      "role": "devops",
+      "description": "Write a blameless postmortem after a production incident using human factors principles. Use when conducting a post-incident review, learning from an outage, or documenting what happened and why.",
+      "tags": [
+        "devops",
+        "postmortem",
+        "incident",
+        "sre",
+        "learning"
+      ]
     }
   }
 }
