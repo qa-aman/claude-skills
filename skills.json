@@ -110,6 +110,60 @@
         "metrics",
         "reporting"
       ]
+    },
+    "pm/write-prd": {
+      "role": "pm",
+      "description": "Write a Product Requirements Document from a brief or problem statement",
+      "tags": [
+        "product",
+        "requirements",
+        "documentation"
+      ]
+    },
+    "pm/write-user-stories": {
+      "role": "pm",
+      "description": "Convert requirements into user stories with acceptance criteria",
+      "tags": [
+        "product",
+        "agile",
+        "user-stories"
+      ]
+    },
+    "pm/prioritization": {
+      "role": "pm",
+      "description": "Prioritize a backlog using RICE or MoSCoW scoring",
+      "tags": [
+        "product",
+        "prioritization",
+        "backlog"
+      ]
+    },
+    "pm/okr-writer": {
+      "role": "pm",
+      "description": "Write measurable OKRs from strategic goals or intent",
+      "tags": [
+        "product",
+        "okrs",
+        "strategy"
+      ]
+    },
+    "pm/competitive-analysis": {
+      "role": "pm",
+      "description": "Structure a competitive analysis for a feature, product, or market",
+      "tags": [
+        "product",
+        "research",
+        "strategy"
+      ]
+    },
+    "pm/feature-spec": {
+      "role": "pm",
+      "description": "Write a concise feature spec one-pager for engineering handoff",
+      "tags": [
+        "product",
+        "engineering",
+        "spec"
+      ]
     }
   }
 }
