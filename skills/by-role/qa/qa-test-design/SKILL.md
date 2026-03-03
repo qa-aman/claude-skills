@@ -3,6 +3,10 @@ name: qa-test-design
 description: Design and write QA test artifacts - test cases, test plans, acceptance criteria, API test specs, and PR testability reviews. Use this skill whenever a QA engineer or SDET needs to translate requirements, user stories, or feature specs into structured test documentation. Trigger on phrases like "write test cases", "create a test plan", "define acceptance criteria", "review this PR for testability", "write API test specs", "test coverage for this feature", "what should we test", "how do we test this", or any request to structure what and how to test before execution begins. Also trigger when a developer asks "is this testable?" or a PM asks "what are the edge cases?".
 ---
 
+## Overview
+
+Based on **"The Art of Software Testing"** by Glenford Myers. Myers established three systematic techniques that catch the most defects per test written: equivalence partitioning, boundary value analysis, and decision table testing. Applied together, they replace ad-hoc test design with a method that maximizes defect detection within a fixed time budget.
+
 # QA Test Design
 
 Turn requirements, user stories, and feature specs into structured, executable test documentation.
@@ -46,6 +50,12 @@ Read the spec or story. Identify:
 - Edge cases (boundary values, empty states, large data, concurrent users)
 - Integration points (APIs called, DB writes, external services)
 - Non-functional requirements (performance thresholds, accessibility, security)
+
+**Apply Myers' three techniques:**
+
+- **Equivalence Partitioning** - Divide inputs into classes where any value in the class is equally likely to reveal a bug. Test one value per class (not all). Example: age input - classes are negative, 0-17, 18-120, >120. Test one from each.
+- **Boundary Value Analysis** - Bugs cluster at boundaries. For each equivalence class, test the boundary values (min, min+1, max-1, max). Example: a form accepting 1-255 characters → test 0, 1, 2, 254, 255, 256.
+- **Decision Table Testing** - For features with complex logic (multiple conditions → multiple outcomes), build a table mapping all condition combinations to expected actions. Catches combinations that informal testing misses.
 
 ### Step 2: Write Test Cases
 
