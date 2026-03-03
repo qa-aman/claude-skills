@@ -60,7 +60,7 @@ Include:
 Every skill body should include these components:
 
 ### 1. Overview (optional, 1-2 paragraphs)
-What this skill does and the critical distinction that shapes how it works.
+What this skill does and the critical distinction that shapes how it works. Name the book or methodology the skill is grounded in.
 
 ### 2. Workflow (required)
 Step-by-step process. Use `### Step N:` headings. Each step should be actionable and specific.
@@ -107,27 +107,61 @@ Write instructions that work across varied inputs. Avoid narrow tweaks targeting
 ### Examples Are Valuable
 Include concrete examples. Format with Input/Output or Bad/Good pairs. Examples calibrate the model's output better than abstract rules.
 
+### Ground Every Skill in a Book or Methodology
+Skills grounded in a proven framework (book, methodology, model) are more credible, consistent, and unique. Name the source in the Overview section.
+
+Good examples: Radical Candor (feedback), The Pyramid Principle (exec summaries), SPIN Selling (discovery calls), How Google Tests Software (risk-based testing).
+
+## Scaffolding a New Skill
+
+Use `init_skill.py` to create the folder and register in `skills.json` in one step:
+
+```bash
+python3 scripts/init_skill.py <skill-name> --role <role> --description "<one-liner>" --tags "<tag1,tag2>"
+```
+
+Valid roles: `pm`, `engineer`, `qa`, `designer`, `content-creator`, `devops`, `shared`, `leadership`, `program-delivery-manager`, `customer-success`, `recruiter`, `consultant`, `sales`, `marketing`, `founder`, `data-scientist`, `data-engineer`, `security`
+
+This creates `skills/by-role/<role>/<skill-name>/SKILL.md` and adds an entry to `skills.json`. Always scaffold first, then write the SKILL.md content.
+
+After writing, validate:
+```bash
+python3 scripts/validate_skill.py
+```
+
 ## Placeholders (for this repo)
 
 When creating skills for the claude-skills public repo, replace all personal/project references:
-- `[your name]` - personal name
-- `[your newsletter]` - newsletter or blog name
-- `[your-domain]` - website domain
-- `[your niche]` - professional niche
-- `[your topic]` - specific subject area
-- `[your audience]` - target audience
+
+| Context | Placeholder |
+|---------|------------|
+| Personal name | `[your name]` |
+| Newsletter or blog | `[your newsletter]` |
+| Website domain | `[your-domain]` |
+| Professional niche | `[your niche]` |
+| Subject area | `[your topic]` |
+| Target audience | `[your audience]` |
+| Company name | `[your company]` |
+| Team name | `[your team]` |
+| Client name | `[your client]` |
+| Customer name | `[customer name]` |
+| Program or project | `[your program]` |
 
 ## Creation Checklist
 
 Before finalizing any skill:
 
+- [ ] Scaffolded with `init_skill.py` (creates folder + registers in skills.json)
 - [ ] YAML frontmatter has `name` and `description`
 - [ ] Description is pushy with multiple trigger phrases
 - [ ] Body is under 500 lines
-- [ ] Workflow has clear numbered steps
+- [ ] Overview names the book or methodology the skill is grounded in
+- [ ] Workflow has clear numbered steps with `### Step N:` headings
 - [ ] Anti-patterns section exists with Bad/Good pairs
 - [ ] Quality checklist exists
 - [ ] Directives explain "why", not just "what"
 - [ ] Examples are concrete and specific
 - [ ] No personal/project-specific content (if for public repo)
+- [ ] Placeholder brackets used for any context-specific references
 - [ ] Overflow content moved to `references/` with clear pointers
+- [ ] `python3 scripts/validate_skill.py` passes
