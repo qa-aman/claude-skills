@@ -1,5 +1,5 @@
+# Claude Code - local only, never public
 .claude/settings.local.json
-.claude/archieve/
 
 # Internal docs
 docs/
