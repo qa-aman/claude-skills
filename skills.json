@@ -702,6 +702,182 @@
         "strategic-selling",
         "enterprise"
       ]
+    },
+    "customer-success/qbr-deck": {
+      "role": "customer-success",
+      "description": "Build a structured Quarterly Business Review deck: value delivered, health score, goals vs actuals, next 90-day plan",
+      "tags": [
+        "customer-success",
+        "qbr",
+        "renewals",
+        "retention"
+      ]
+    },
+    "customer-success/churn-risk-analysis": {
+      "role": "customer-success",
+      "description": "Analyze customer health signals, identify churn risk flags, and generate an intervention playbook",
+      "tags": [
+        "customer-success",
+        "churn",
+        "health-score",
+        "retention"
+      ]
+    },
+    "customer-success/escalation-playbook": {
+      "role": "customer-success",
+      "description": "De-escalate a customer crisis using acknowledge-triage-DRI-cadence-resolution framework",
+      "tags": [
+        "customer-success",
+        "escalation",
+        "crisis",
+        "communication"
+      ]
+    },
+    "customer-success/health-scorecard": {
+      "role": "customer-success",
+      "description": "Build a customer health scorecard across usage, engagement, adoption, NPS, support load, and financial risk",
+      "tags": [
+        "customer-success",
+        "health-score",
+        "metrics",
+        "churn"
+      ]
+    },
+    "customer-success/onboarding-plan": {
+      "role": "customer-success",
+      "description": "Design a 100-day customer onboarding plan with phase gates from Never Lose a Customer Again",
+      "tags": [
+        "customer-success",
+        "onboarding",
+        "activation",
+        "adoption"
+      ]
+    },
+    "customer-success/expansion-discovery": {
+      "role": "customer-success",
+      "description": "Identify expansion signals and structure upsell or cross-sell conversations using land-and-expand principles",
+      "tags": [
+        "customer-success",
+        "expansion",
+        "upsell",
+        "nrr"
+      ]
+    },
+    "recruiter/job-description": {
+      "role": "recruiter",
+      "description": "Write a performance-based job description using Hire With Your Head outcomes model",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "job-description"
+      ]
+    },
+    "recruiter/interview-scorecard": {
+      "role": "recruiter",
+      "description": "Build a structured interview scorecard using the Who method: outcomes, competencies, A/B/C rubric",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "interview",
+        "scorecard"
+      ]
+    },
+    "recruiter/candidate-debrief": {
+      "role": "recruiter",
+      "description": "Run a structured post-interview debrief meeting with calibration protocol and hire/no-hire framework",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "debrief",
+        "calibration"
+      ]
+    },
+    "recruiter/offer-letter": {
+      "role": "recruiter",
+      "description": "Construct a compelling offer with comp philosophy, equity explanation, total comp summary, and negotiation guidance",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "offer",
+        "compensation"
+      ]
+    },
+    "recruiter/sourcing-strategy": {
+      "role": "recruiter",
+      "description": "Build a multi-channel sourcing pipeline with outbound templates, boolean search, and response rate tactics",
+      "tags": [
+        "recruiting",
+        "sourcing",
+        "pipeline",
+        "outreach"
+      ]
+    },
+    "recruiter/intake-meeting": {
+      "role": "recruiter",
+      "description": "Run a recruiter-hiring manager intake meeting to define the scorecard, align on process, and set timeline expectations",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "intake",
+        "alignment"
+      ]
+    },
+    "consultant/client-proposal": {
+      "role": "consultant",
+      "description": "Write a consulting proposal with situation summary, proposed approach, deliverables, investment, and value ROI",
+      "tags": [
+        "consulting",
+        "proposal",
+        "business-development"
+      ]
+    },
+    "consultant/engagement-scoping": {
+      "role": "consultant",
+      "description": "Define engagement scope, success criteria, roles, and boundaries using Flawless Consulting contracting phase",
+      "tags": [
+        "consulting",
+        "scoping",
+        "contracting"
+      ]
+    },
+    "consultant/exec-summary": {
+      "role": "consultant",
+      "description": "Write an executive summary using Pyramid Principle SCQA structure: Situation, Complication, Question, Answer",
+      "tags": [
+        "consulting",
+        "writing",
+        "pyramid-principle"
+      ]
+    },
+    "consultant/issue-tree": {
+      "role": "consultant",
+      "description": "Decompose a problem MECE using issue trees, generate hypotheses, and prioritize branches for investigation",
+      "tags": [
+        "consulting",
+        "problem-solving",
+        "mece",
+        "mckinsey"
+      ]
+    },
+    "consultant/status-report": {
+      "role": "consultant",
+      "description": "Write a structured client status report with RAG status, accomplishments, blockers, decisions needed, and next steps",
+      "tags": [
+        "consulting",
+        "reporting",
+        "status",
+        "stakeholders"
+      ]
+    },
+    "consultant/findings-presentation": {
+      "role": "consultant",
+      "description": "Structure a consulting findings presentation using Pyramid Principle storyline: situation-complication-resolution with evidence before recommendation",
+      "tags": [
+        "consulting",
+        "presentations",
+        "pyramid-principle",
+        "storytelling"
+      ]
     }
   }
 }
