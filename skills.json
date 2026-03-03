@@ -360,6 +360,27 @@
         "sre",
         "learning"
       ]
+    },
+    "qa/risk-based-testing": {
+      "role": "qa",
+      "description": "Allocate testing effort based on risk and likelihood of failure using Google's SET/SWE/TE model",
+      "tags": [
+        "testing",
+        "risk",
+        "strategy",
+        "qa"
+      ]
+    },
+    "qa/exploratory-testing": {
+      "role": "qa",
+      "description": "Run structured exploratory testing sessions using charters, timeboxing, and heuristics",
+      "tags": [
+        "testing",
+        "exploratory",
+        "charters",
+        "heuristics",
+        "qa"
+      ]
     }
   }
 }
