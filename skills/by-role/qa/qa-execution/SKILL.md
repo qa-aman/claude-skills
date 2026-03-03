@@ -3,6 +3,10 @@ name: qa-execution
 description: Run and document QA test execution cycles - smoke tests, regression suites, exploratory testing sessions, and release readiness checklists. Use this skill whenever a QA engineer needs to structure or report on active testing work. Trigger on phrases like "run smoke tests", "start a regression cycle", "exploratory testing session", "test this build", "release checklist", "is this build stable", "log test results", "what passed and what failed", "document my testing", "create a test run report", or any request to execute and record test outcomes. Also trigger when someone says "we need to test before release" or "can you help me track what I've tested".
 ---
 
+## Overview
+
+Based on **"Exploratory Software Testing"** by James Whittaker. Whittaker's Session-Based Test Management (SBTM) gives exploratory testing the rigor of scripted testing without losing the adaptability that makes it powerful. The charter is the unit of work. The time box is the constraint. The debrief is the accountability mechanism.
+
 # QA Execution
 
 Structure, run, and document test execution cycles from smoke checks to full regression.
@@ -123,6 +127,18 @@ Risks to probe:
   - [specific risk 2]
 Out of scope: [what not to test this session]
 ```
+
+**Whittaker's HICCUPPS heuristic** - use to identify what to probe during a session:
+- **H**istory - has this area broken before? Test it harder.
+- **I**mage - does this match what the product claims to do?
+- **C**omparable products - does it behave like similar products users expect?
+- **C**laims - test every explicit claim in the spec, marketing, or docs
+- **U**ser expectations - what would a reasonable user expect?
+- **P**roduct - is it consistent with the rest of the product?
+- **P**urpose - does it actually accomplish its intended job?
+- **S**tatutes - does it comply with legal/regulatory requirements?
+
+Run through HICCUPPS at the start of each charter to identify the sharpest angles of attack.
 
 **During the session:**
 - Note everything you tried, not just what failed
