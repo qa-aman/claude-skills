@@ -3,6 +3,10 @@ name: qa-metrics
 description: Build QA quality dashboards, calculate defect metrics, analyze escape rates, and produce quality trend reports. Use this skill whenever a QA lead or manager needs to measure and communicate quality outcomes. Trigger on phrases like "quality metrics", "defect density", "escape rate", "bug trends", "quality dashboard", "sprint quality report", "test coverage metrics", "QA KPIs", "how is quality trending", "defect leakage", "production bugs this quarter", "mean time to detect", "quality scorecard", or any request to quantify, visualize, or report on the quality of a product or testing process. Also trigger when a manager asks "how is QA performing?" or an engineering lead asks "what does our defect data tell us?".
 ---
 
+## Overview
+
+Based on **"Accelerate"** by Nicole Forsgren, Jez Humble & Gene Kim. The DORA research (DevOps Research and Assessment) identified four metrics that predict both software delivery performance and organizational outcomes. High-performing teams excel on all four. QA directly influences two of them - change failure rate and mean time to restore - and enables the other two through fast, reliable test automation.
+
 # QA Metrics
 
 Measure, analyze, and communicate quality outcomes through data.
@@ -27,6 +31,19 @@ If the file does not exist, use generic placeholders and proceed normally.
 - Demonstrating the value of QA investment to leadership
 
 ## Core Metrics
+
+### DORA Metrics (Accelerate Framework)
+
+The four metrics that differentiate elite from low-performing engineering teams:
+
+| Metric | What it measures | Elite benchmark | QA influence |
+|--------|-----------------|-----------------|-------------|
+| **Deployment Frequency** | How often code ships to production | On-demand (multiple/day) | Fast, reliable automation enables frequent deploys |
+| **Lead Time for Changes** | Commit to production time | < 1 hour | Slow QA cycles lengthen lead time |
+| **Change Failure Rate** | % of releases causing production incidents | 0-15% | Test coverage directly reduces this |
+| **Mean Time to Restore (MTTR)** | Time to recover from production failure | < 1 hour | Good observability + runbooks reduce this |
+
+**QA's accountability:** Own change failure rate and contribute to lead time. If change failure rate is above 15%, testing strategy needs a root cause review. If QA is a bottleneck in lead time, automate or parallelize.
 
 ### Defect Metrics
 
