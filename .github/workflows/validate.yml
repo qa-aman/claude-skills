@@ -1,0 +1,24 @@
+name: Validate Skills
+
+on:
+  pull_request:
+    paths:
+      - 'skills/**'
+      - 'skills.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate skills.json
+        run: python3 -c "import json; json.load(open('skills.json')); print('skills.json valid')"
+
+      - name: Validate all SKILL.md files
+        run: python3 scripts/validate_skill.py
