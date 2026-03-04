@@ -1,6 +1,6 @@
 # Skill Context
-# Copy this file to ~/.claude/skills/skill-context.md and fill in your values.
 # Run: bash scripts/install.sh --init
+# Creates ./.claude/skills/skill-context.md in your project directory.
 # Skills read this file at invocation time to personalize their output.
 # Edit anytime - skills never modify this file.
 

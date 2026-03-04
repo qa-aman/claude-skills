@@ -92,19 +92,24 @@ uninstall_role() {
 }
 
 init_context() {
-  local context_file="$TARGET_DIR/skill-context.md"
+  local context_dir="$(pwd)/.claude/skills"
+  local context_file="$context_dir/skill-context.md"
+
   if [ -f "$context_file" ]; then
-    echo "skill-context.md already exists at $context_file"
+    echo "skill-context.md already exists:"
+    echo "  $context_file"
     echo "Edit it directly to update your context."
     return
   fi
 
   local template="$REPO_DIR/skill-context.example.md"
-  mkdir -p "$TARGET_DIR"
+  mkdir -p "$context_dir"
 
   if [ -f "$template" ]; then
     cp "$template" "$context_file"
-    echo "Created: $context_file"
+    echo "Created skill-context.md in your project:"
+    echo "  $context_file"
+    echo ""
     echo "Fill in your values - skills read this file at invocation time."
     echo "Open it with: open $context_file"
   else
@@ -120,7 +125,9 @@ init_context() {
 - Defect tracker: [e.g. Jira, Linear, GitHub Issues]
 - Test framework: [e.g. Jest, Cypress, Playwright]
 CONTEXT
-    echo "Created: $context_file"
+    echo "Created skill-context.md in your project:"
+    echo "  $context_file"
+    echo ""
     echo "Fill in your values - skills read this file at invocation time."
   fi
 }
@@ -283,14 +290,12 @@ if [ ${#SKILLS_TO_INSTALL[@]} -gt 0 ]; then
     fi
   done
   echo ""
-  echo "$installed skill(s) installed to $TARGET_DIR"
-  echo ""
+  echo "$installed skill(s) installed."
   if [ "$INSTALL_SCOPE" = "project" ]; then
-    echo "Scope: PROJECT — skills are available only when Claude Code is opened in $(pwd)"
-    echo "To install globally instead, run without --project."
+    echo "Scope: project — skills are available only when Claude Code is opened in $(pwd)"
   fi
   echo ""
-  echo "Open Claude Code and type /skill-name or describe your task — Claude will invoke the right skill."
+  echo "Open Claude Code and type /skill-name to invoke a skill."
 fi
 
 if [ "$DO_INIT" = true ]; then
