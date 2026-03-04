@@ -3,7 +3,7 @@
 > Role-based Claude Code skills for every team. Install what your team needs, skip what they don't.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Validate Skills](https://github.com/[your-username]/claude-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/[your-username]/claude-skills/actions/workflows/validate.yml)
+[![Validate Skills](https://github.com/qa-aman/claude-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/[your-username]/claude-skills/actions/workflows/validate.yml)
 
 ## What This Is
 
@@ -15,7 +15,7 @@ A curated collection of [Claude Code](https://claude.ai/claude-code) skills orga
 
 ```bash
 # Clone once
-git clone https://github.com/[your-username]/claude-skills.git
+git clone https://github.com/qa-aman/claude-skills.git
 cd claude-skills
 
 # Install skills for your role
