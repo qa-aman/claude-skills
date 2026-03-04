@@ -36,7 +36,7 @@ For each competing factor, ask:
 | **Eliminate** | What do all competitors offer that adds no real value? | Eliminate: complex onboarding wizards |
 | **Reduce** | What can we offer well below industry standard? | Reduce: feature count, focus on core use case |
 | **Raise** | What should we raise well above the industry standard? | Raise: response time, documentation quality |
-| **Create** | What should we offer that no competitor does? | Create: role-based install, skill-context personalization |
+| **Create** | What should we offer that no competitor does? | Create: role-based install, book-grounded methodology |
 
 ### Step 4: Draw the "to-be" value curve
 Plot where your product sits after applying the four actions. A differentiated value curve:

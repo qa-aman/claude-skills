@@ -213,31 +213,6 @@ bash scripts/install.sh --role pm --project
 |-------|-------------|
 | `presentation-builder` | Build structured presentations for any audience |
 
-## Personalize Skills for Your Context
-
-Skills stay generic and immutable. Personalization lives in a separate file that skills read at invocation time - your edits are never overwritten by `--update`.
-
-**Step 1:** Run install with `--init` to create your context file in the current project:
-```bash
-bash scripts/install.sh --role qa --init
-# Creates ./.claude/skills/skill-context.md in your current directory
-```
-
-**Step 2:** Fill in your values:
-```markdown
-# .claude/skills/skill-context.md
-
-- Industry: Fintech
-- Stack: React Native + Node.js
-- Test framework: Playwright
-- Defect tracker: Jira
-- Compliance: PCI-DSS
-```
-
-Skills installed globally (`~/.claude/skills/`) automatically read your project-level context file when Claude Code is opened in that project.
-
-See [`skill-context.example.md`](skill-context.example.md) for the full template with all role-specific fields.
-
 ## Update Skills
 
 ```bash

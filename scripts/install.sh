@@ -91,47 +91,6 @@ uninstall_role() {
   done < <(get_skills_for_role "$role")
 }
 
-init_context() {
-  local context_dir="$(pwd)/.claude/skills"
-  local context_file="$context_dir/skill-context.md"
-
-  if [ -f "$context_file" ]; then
-    echo "skill-context.md already exists:"
-    echo "  $context_file"
-    echo "Edit it directly to update your context."
-    return
-  fi
-
-  local template="$REPO_DIR/skill-context.example.md"
-  mkdir -p "$context_dir"
-
-  if [ -f "$template" ]; then
-    cp "$template" "$context_file"
-    echo "Created skill-context.md in your project:"
-    echo "  $context_file"
-    echo ""
-    echo "Fill in your values - skills read this file at invocation time."
-    echo "Open it with: open $context_file"
-  else
-    # Fallback if template missing
-    cat > "$context_file" <<CONTEXT
-# Skill Context
-# Skills read this file at invocation time to personalize their output.
-# Edit anytime - skills never modify this file.
-
-- Industry: [e.g. Fintech, EdTech, SaaS]
-- Stack: [e.g. React + Node.js]
-- Compliance: [e.g. PCI-DSS, HIPAA, or none]
-- Defect tracker: [e.g. Jira, Linear, GitHub Issues]
-- Test framework: [e.g. Jest, Cypress, Playwright]
-CONTEXT
-    echo "Created skill-context.md in your project:"
-    echo "  $context_file"
-    echo ""
-    echo "Fill in your values - skills read this file at invocation time."
-  fi
-}
-
 list_skills() {
   echo "Available skills:"
   echo ""
@@ -164,7 +123,6 @@ usage() {
   echo "  --all                Install all skills"
   echo "  --update             Re-install all currently installed skills"
   echo "  --uninstall ROLE     Remove skills for a role"
-  echo "  --init               Set up skill-context.md for personalization"
   echo "  --list               List all available skills by role"
   echo "  --target DIR         Override install directory"
   echo "  --help               Show this help"
@@ -173,7 +131,6 @@ usage() {
   echo "  $0 --role qa                    # install QA skills globally (all projects)"
   echo "  $0 --role pm --project          # install PM skills in current project only"
   echo "  $0 --role pm,qa                 # install multiple roles globally"
-  echo "  $0 --role qa --init             # install + set up personalization"
   echo "  $0 --all"
   echo "  $0 --update"
   echo "  $0 --uninstall qa"
@@ -182,9 +139,7 @@ usage() {
 ROLES=()
 DO_ALL=false
 DO_UPDATE=false
-DO_INIT=false
 UNINSTALL_ROLE=""
-DO_PROJECT=false
 
 if [ $# -eq 0 ]; then
   usage
@@ -208,10 +163,6 @@ while [ $# -gt 0 ]; do
     --uninstall)
       UNINSTALL_ROLE="$2"
       shift 2
-      ;;
-    --init)
-      DO_INIT=true
-      shift
       ;;
     --list)
       list_skills
@@ -270,35 +221,29 @@ elif [ ${#ROLES[@]} -gt 0 ]; then
   done < <(get_shared_skills)
 fi
 
-if [ ${#SKILLS_TO_INSTALL[@]} -eq 0 ] && [ "$DO_INIT" = false ]; then
+if [ ${#SKILLS_TO_INSTALL[@]} -eq 0 ]; then
   echo "No skills to install. Use --role, --all, or --update."
   usage
   exit 1
 fi
 
-if [ ${#SKILLS_TO_INSTALL[@]} -gt 0 ]; then
-  if [ "$INSTALL_SCOPE" = "project" ]; then
-    echo "Installing to $(pwd)/.claude/skills/ (project scope)..."
-  else
-    echo "Installing to ~/.claude/skills/ (global scope)..."
-  fi
-  echo ""
-  installed=0
-  for skill in "${SKILLS_TO_INSTALL[@]}"; do
-    if install_skill "$skill"; then
-      ((installed++)) || true
-    fi
-  done
-  echo ""
-  echo "$installed skill(s) installed."
-  if [ "$INSTALL_SCOPE" = "project" ]; then
-    echo "Scope: project — skills are available only when Claude Code is opened in $(pwd)"
-  fi
-  echo ""
-  echo "Open Claude Code and type /skill-name to invoke a skill."
+if [ "$INSTALL_SCOPE" = "project" ]; then
+  echo "Installing to $(pwd)/.claude/skills/ (project scope)..."
+else
+  echo "Installing to ~/.claude/skills/ (global scope)..."
 fi
-
-if [ "$DO_INIT" = true ]; then
-  echo ""
-  init_context
+echo ""
+installed=0
+for skill in "${SKILLS_TO_INSTALL[@]}"; do
+  if install_skill "$skill"; then
+    ((installed++)) || true
+  fi
+done
+echo ""
+echo "$installed skill(s) installed."
+if [ "$INSTALL_SCOPE" = "project" ]; then
+  echo "Scope: project — skills are available only when Claude Code is opened in $(pwd)"
 fi
+echo ""
+echo "Open Claude Code and type /skills to see all installed skills."
+echo "Or type /skill-name to invoke a specific skill."

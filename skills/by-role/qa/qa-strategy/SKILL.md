@@ -11,17 +11,6 @@ Based on **"How Google Tests Software"** by Whittaker, Arbon & Carollo, and **"A
 
 Define what to test, why, at what depth, and in what order.
 
-## Context Personalization
-
-At the start of every invocation, read `~/.claude/skills/skill-context.md` if it exists. Use the values there to replace generic placeholders in your output:
-- `[your industry]` → actual industry (e.g. Fintech, HealthTech)
-- `[your stack]` → actual tech stack (e.g. React + Node.js)
-- `[your compliance]` → actual compliance requirements (e.g. PCI-DSS, HIPAA, none)
-- `[your test framework]` → actual framework (e.g. Jest, Cypress, Playwright)
-- `[your defect tracker]` → actual tool (e.g. Jira, Linear, GitHub Issues)
-
-If the file does not exist, use generic placeholders and proceed normally.
-
 ## When to Use
 
 - Writing a test strategy for a new product, project, or major feature

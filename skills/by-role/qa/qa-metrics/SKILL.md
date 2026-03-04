@@ -11,17 +11,6 @@ Based on **"Accelerate"** by Nicole Forsgren, Jez Humble & Gene Kim. The DORA re
 
 Measure, analyze, and communicate quality outcomes through data.
 
-## Context Personalization
-
-At the start of every invocation, read `~/.claude/skills/skill-context.md` if it exists. Use the values there to replace generic placeholders in your output:
-- `[your industry]` → actual industry (e.g. Fintech, HealthTech)
-- `[your stack]` → actual tech stack (e.g. React + Node.js)
-- `[your compliance]` → actual compliance requirements (e.g. PCI-DSS, HIPAA, none)
-- `[your defect tracker]` → actual tool (e.g. Jira, Linear, GitHub Issues)
-- `[your monitoring tool]` → actual tool (e.g. Datadog, PagerDuty, Sentry)
-
-If the file does not exist, use generic placeholders and proceed normally.
-
 ## When to Use
 
 - Building a quality dashboard for a sprint review or exec report
