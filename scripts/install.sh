@@ -6,6 +6,7 @@ REPO_DIR="$SCRIPT_DIR/.."
 SKILLS_DIR="$REPO_DIR/skills"
 REGISTRY="$REPO_DIR/skills.json"
 TARGET_DIR="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
+INSTALL_SCOPE="global"  # global = ~/.claude/skills, project = ./.claude/skills
 
 if ! command -v python3 &>/dev/null; then
   echo "Error: python3 is required"
@@ -74,7 +75,7 @@ install_skill() {
   local dest="$TARGET_DIR/$name"
   mkdir -p "$dest"
   cp -r "$src"/. "$dest"/
-  echo "  Installed: $name"
+  echo "  ✓ $name"
 }
 
 uninstall_role() {
@@ -147,6 +148,10 @@ list_skills() {
 usage() {
   echo "Usage: $0 [options]"
   echo ""
+  echo "Install scope (default: --global):"
+  echo "  --global             Install to ~/.claude/skills/ — available in ALL Claude Code sessions"
+  echo "  --project            Install to ./.claude/skills/ — available in THIS project only"
+  echo ""
   echo "Options:"
   echo "  --role ROLE[,ROLE]   Install skills for one or more roles (also installs shared)"
   echo "  --all                Install all skills"
@@ -154,13 +159,14 @@ usage() {
   echo "  --uninstall ROLE     Remove skills for a role"
   echo "  --init               Set up skill-context.md for personalization"
   echo "  --list               List all available skills by role"
-  echo "  --target DIR         Override install directory (default: ~/.claude/skills)"
+  echo "  --target DIR         Override install directory"
   echo "  --help               Show this help"
   echo ""
   echo "Examples:"
-  echo "  $0 --role qa"
-  echo "  $0 --role pm,content-creator"
-  echo "  $0 --role qa --init"
+  echo "  $0 --role qa                    # install QA skills globally (all projects)"
+  echo "  $0 --role pm --project          # install PM skills in current project only"
+  echo "  $0 --role pm,qa                 # install multiple roles globally"
+  echo "  $0 --role qa --init             # install + set up personalization"
   echo "  $0 --all"
   echo "  $0 --update"
   echo "  $0 --uninstall qa"
@@ -171,6 +177,7 @@ DO_ALL=false
 DO_UPDATE=false
 DO_INIT=false
 UNINSTALL_ROLE=""
+DO_PROJECT=false
 
 if [ $# -eq 0 ]; then
   usage
@@ -202,6 +209,16 @@ while [ $# -gt 0 ]; do
     --list)
       list_skills
       exit 0
+      ;;
+    --global)
+      INSTALL_SCOPE="global"
+      TARGET_DIR="$HOME/.claude/skills"
+      shift
+      ;;
+    --project)
+      INSTALL_SCOPE="project"
+      TARGET_DIR="$(pwd)/.claude/skills"
+      shift
       ;;
     --target)
       TARGET_DIR="$2"
@@ -253,7 +270,12 @@ if [ ${#SKILLS_TO_INSTALL[@]} -eq 0 ] && [ "$DO_INIT" = false ]; then
 fi
 
 if [ ${#SKILLS_TO_INSTALL[@]} -gt 0 ]; then
-  echo "Installing to $TARGET_DIR..."
+  if [ "$INSTALL_SCOPE" = "project" ]; then
+    echo "Installing to $(pwd)/.claude/skills/ (project scope)..."
+  else
+    echo "Installing to ~/.claude/skills/ (global scope)..."
+  fi
+  echo ""
   installed=0
   for skill in "${SKILLS_TO_INSTALL[@]}"; do
     if install_skill "$skill"; then
@@ -261,7 +283,17 @@ if [ ${#SKILLS_TO_INSTALL[@]} -gt 0 ]; then
     fi
   done
   echo ""
-  echo "$installed skill(s) installed."
+  echo "$installed skill(s) installed to $TARGET_DIR"
+  echo ""
+  if [ "$INSTALL_SCOPE" = "project" ]; then
+    echo "Scope: PROJECT — skills are available only when Claude Code is opened in $(pwd)"
+    echo "Tip:   Use --global to make skills available across all your projects."
+  else
+    echo "Scope: GLOBAL — skills are available in every Claude Code session, across all projects."
+    echo "Tip:   Use --project to install skills for a specific project only."
+  fi
+  echo ""
+  echo "Open Claude Code and type /skill-name or describe your task — Claude will invoke the right skill."
 fi
 
 if [ "$DO_INIT" = true ]; then

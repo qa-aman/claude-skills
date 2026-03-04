@@ -33,7 +33,26 @@ bash scripts/install.sh --all
 bash scripts/install.sh --list
 ```
 
-Skills install to `~/.claude/skills/` and are immediately available in any Claude Code session.
+## Global vs Project Install
+
+Skills can be installed in two scopes:
+
+| Scope | Command | Where | Available |
+|-------|---------|-------|-----------|
+| **Global** (default) | `--global` or no flag | `~/.claude/skills/` | Every Claude Code session, across all projects |
+| **Project** | `--project` | `./.claude/skills/` | Only when Claude Code is opened in that specific project |
+
+**Global install** is right for most people. Your role skills (write-prd, qa-strategy, feedback-delivery) follow you everywhere — not tied to any single codebase.
+
+```bash
+# Global — skills available in all projects (default)
+bash scripts/install.sh --role pm
+
+# Project — skills available in this project only
+bash scripts/install.sh --role pm --project
+```
+
+**When to use `--project`:** Team-specific workflows where everyone on the project needs the same skills, or project-specific conventions that don't apply to your other work.
 
 ## Available Skills
 
