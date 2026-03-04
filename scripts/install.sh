@@ -287,8 +287,7 @@ if [ ${#SKILLS_TO_INSTALL[@]} -gt 0 ]; then
   echo ""
   if [ "$INSTALL_SCOPE" = "project" ]; then
     echo "Scope: PROJECT — skills are available only when Claude Code is opened in $(pwd)"
-  else
-    echo "Scope: GLOBAL — skills are available in every Claude Code session, across all projects."
+    echo "To install globally instead, run without --project."
   fi
   echo ""
   echo "Open Claude Code and type /skill-name or describe your task — Claude will invoke the right skill."
