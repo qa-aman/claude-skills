@@ -11,16 +11,6 @@ Based on **"Exploratory Software Testing"** by James Whittaker. Whittaker's Sess
 
 Structure, run, and document test execution cycles from smoke checks to full regression.
 
-## Context Personalization
-
-At the start of every invocation, read `~/.claude/skills/skill-context.md` if it exists. Use the values there to replace generic placeholders in your output:
-- `[your industry]` → actual industry (e.g. Fintech, HealthTech)
-- `[your stack]` → actual tech stack (e.g. React + Node.js)
-- `[your compliance]` → actual compliance requirements (e.g. PCI-DSS, HIPAA, none)
-- `[your test framework]` → actual framework (e.g. Jest, Cypress, Playwright)
-
-If the file does not exist, use generic placeholders and proceed normally.
-
 ## When to Use
 
 - Running a smoke test on a new build

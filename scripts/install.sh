@@ -6,6 +6,7 @@ REPO_DIR="$SCRIPT_DIR/.."
 SKILLS_DIR="$REPO_DIR/skills"
 REGISTRY="$REPO_DIR/skills.json"
 TARGET_DIR="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
+INSTALL_SCOPE="global"  # global = ~/.claude/skills, project = ./.claude/skills
 
 if ! command -v python3 &>/dev/null; then
   echo "Error: python3 is required"
@@ -74,7 +75,7 @@ install_skill() {
   local dest="$TARGET_DIR/$name"
   mkdir -p "$dest"
   cp -r "$src"/. "$dest"/
-  echo "  Installed: $name"
+  echo "  ✓ $name"
 }
 
 uninstall_role() {
@@ -88,40 +89,6 @@ uninstall_role() {
       echo "  Removed: $name"
     fi
   done < <(get_skills_for_role "$role")
-}
-
-init_context() {
-  local context_file="$TARGET_DIR/skill-context.md"
-  if [ -f "$context_file" ]; then
-    echo "skill-context.md already exists at $context_file"
-    echo "Edit it directly to update your context."
-    return
-  fi
-
-  local template="$REPO_DIR/skill-context.example.md"
-  mkdir -p "$TARGET_DIR"
-
-  if [ -f "$template" ]; then
-    cp "$template" "$context_file"
-    echo "Created: $context_file"
-    echo "Fill in your values - skills read this file at invocation time."
-    echo "Open it with: open $context_file"
-  else
-    # Fallback if template missing
-    cat > "$context_file" <<CONTEXT
-# Skill Context
-# Skills read this file at invocation time to personalize their output.
-# Edit anytime - skills never modify this file.
-
-- Industry: [e.g. Fintech, EdTech, SaaS]
-- Stack: [e.g. React + Node.js]
-- Compliance: [e.g. PCI-DSS, HIPAA, or none]
-- Defect tracker: [e.g. Jira, Linear, GitHub Issues]
-- Test framework: [e.g. Jest, Cypress, Playwright]
-CONTEXT
-    echo "Created: $context_file"
-    echo "Fill in your values - skills read this file at invocation time."
-  fi
 }
 
 list_skills() {
@@ -147,20 +114,23 @@ list_skills() {
 usage() {
   echo "Usage: $0 [options]"
   echo ""
+  echo "Install scope (default: --global):"
+  echo "  --global             Install to ~/.claude/skills/ — available in ALL Claude Code sessions"
+  echo "  --project            Install to ./.claude/skills/ — available in THIS project only"
+  echo ""
   echo "Options:"
   echo "  --role ROLE[,ROLE]   Install skills for one or more roles (also installs shared)"
   echo "  --all                Install all skills"
   echo "  --update             Re-install all currently installed skills"
   echo "  --uninstall ROLE     Remove skills for a role"
-  echo "  --init               Set up skill-context.md for personalization"
   echo "  --list               List all available skills by role"
-  echo "  --target DIR         Override install directory (default: ~/.claude/skills)"
+  echo "  --target DIR         Override install directory"
   echo "  --help               Show this help"
   echo ""
   echo "Examples:"
-  echo "  $0 --role qa"
-  echo "  $0 --role pm,content-creator"
-  echo "  $0 --role qa --init"
+  echo "  $0 --role qa                    # install QA skills globally (all projects)"
+  echo "  $0 --role pm --project          # install PM skills in current project only"
+  echo "  $0 --role pm,qa                 # install multiple roles globally"
   echo "  $0 --all"
   echo "  $0 --update"
   echo "  $0 --uninstall qa"
@@ -169,7 +139,6 @@ usage() {
 ROLES=()
 DO_ALL=false
 DO_UPDATE=false
-DO_INIT=false
 UNINSTALL_ROLE=""
 
 if [ $# -eq 0 ]; then
@@ -195,13 +164,19 @@ while [ $# -gt 0 ]; do
       UNINSTALL_ROLE="$2"
       shift 2
       ;;
-    --init)
-      DO_INIT=true
-      shift
-      ;;
     --list)
       list_skills
       exit 0
+      ;;
+    --global)
+      INSTALL_SCOPE="global"
+      TARGET_DIR="$HOME/.claude/skills"
+      shift
+      ;;
+    --project)
+      INSTALL_SCOPE="project"
+      TARGET_DIR="$(pwd)/.claude/skills"
+      shift
       ;;
     --target)
       TARGET_DIR="$2"
@@ -246,25 +221,29 @@ elif [ ${#ROLES[@]} -gt 0 ]; then
   done < <(get_shared_skills)
 fi
 
-if [ ${#SKILLS_TO_INSTALL[@]} -eq 0 ] && [ "$DO_INIT" = false ]; then
+if [ ${#SKILLS_TO_INSTALL[@]} -eq 0 ]; then
   echo "No skills to install. Use --role, --all, or --update."
   usage
   exit 1
 fi
 
-if [ ${#SKILLS_TO_INSTALL[@]} -gt 0 ]; then
-  echo "Installing to $TARGET_DIR..."
-  installed=0
-  for skill in "${SKILLS_TO_INSTALL[@]}"; do
-    if install_skill "$skill"; then
-      ((installed++)) || true
-    fi
-  done
-  echo ""
-  echo "$installed skill(s) installed."
+if [ "$INSTALL_SCOPE" = "project" ]; then
+  echo "Installing to $(pwd)/.claude/skills/ (project scope)..."
+else
+  echo "Installing to ~/.claude/skills/ (global scope)..."
 fi
-
-if [ "$DO_INIT" = true ]; then
-  echo ""
-  init_context
+echo ""
+installed=0
+for skill in "${SKILLS_TO_INSTALL[@]}"; do
+  if install_skill "$skill"; then
+    ((installed++)) || true
+  fi
+done
+echo ""
+echo "$installed skill(s) installed."
+if [ "$INSTALL_SCOPE" = "project" ]; then
+  echo "Scope: project — skills are available only when Claude Code is opened in $(pwd)"
 fi
+echo ""
+echo "Open Claude Code and type /skills to see all installed skills."
+echo "Or type /skill-name to invoke a specific skill."

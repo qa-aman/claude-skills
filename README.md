@@ -33,7 +33,26 @@ bash scripts/install.sh --all
 bash scripts/install.sh --list
 ```
 
-Skills install to `~/.claude/skills/` and are immediately available in any Claude Code session.
+## Global vs Project Install
+
+Skills can be installed in two scopes:
+
+| Scope | Command | Where | Available |
+|-------|---------|-------|-----------|
+| **Global** (default) | `--global` or no flag | `~/.claude/skills/` | Every Claude Code session, across all projects |
+| **Project** | `--project` | `./.claude/skills/` | Only when Claude Code is opened in that specific project |
+
+**Global install** is right for most people. Your role skills (write-prd, qa-strategy, feedback-delivery) follow you everywhere — not tied to any single codebase.
+
+```bash
+# Global — skills available in all projects (default)
+bash scripts/install.sh --role pm
+
+# Project — skills available in this project only
+bash scripts/install.sh --role pm --project
+```
+
+**When to use `--project`:** Team-specific workflows where everyone on the project needs the same skills, or project-specific conventions that don't apply to your other work.
 
 ## Available Skills
 
@@ -193,29 +212,6 @@ Skills install to `~/.claude/skills/` and are immediately available in any Claud
 | Skill | What it does |
 |-------|-------------|
 | `presentation-builder` | Build structured presentations for any audience |
-
-## Personalize Skills for Your Context
-
-Skills stay generic and immutable. Personalization lives in a separate file that skills read at invocation time - your edits are never overwritten by `--update`.
-
-**Step 1:** Run install with `--init` to create your context file:
-```bash
-bash scripts/install.sh --role qa --init
-# Creates ~/.claude/skills/skill-context.md from skill-context.example.md
-```
-
-**Step 2:** Fill in your values:
-```markdown
-# ~/.claude/skills/skill-context.md
-
-- Industry: Fintech
-- Stack: React Native + Node.js
-- Test framework: Playwright
-- Defect tracker: Jira
-- Compliance: PCI-DSS
-```
-
-See [`skill-context.example.md`](skill-context.example.md) for the full template with all role-specific fields.
 
 ## Update Skills
 
