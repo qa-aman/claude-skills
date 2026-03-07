@@ -9,7 +9,7 @@
 
 A curated collection of [Claude Code](https://claude.ai/claude-code) skills organized by job role. Each skill is a packaged workflow grounded in a proven book or methodology - Claude invokes it automatically, or you trigger it with a `/skill-name` command.
 
-**94 skills across 17 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Security, Researcher, and more.
+**99 skills across 18 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Security, Researcher, Accountant, and more.
 
 ## Install
 
@@ -207,6 +207,15 @@ bash scripts/install.sh --role pm --project
 | `literature-review` | Synthesize prior research by theme, surface contradictions, frame the gap | Research Design - Creswell |
 | `hypothesis-framing` | Write falsifiable hypotheses with operationalized variables and null/alternative forms | Research Methodology - Kumar |
 | `study-design` | Design a study with method selection, sample size, procedure, instruments, and analysis plan | Research Design - Creswell |
+
+### Accountant (`--role accountant`)
+| Skill | What it does | Grounded in |
+|-------|-------------|-------------|
+| `financial-statement-review` | Analyze income statement, balance sheet, and cash flow to surface performance signals and red flags | Financial Intelligence - Berman & Knight; The Interpretation of Financial Statements - Graham |
+| `month-end-close` | Run a controlled period-end close: cutoff, adjusting entries, reconciliations, trial balance review, and sign-off | Intermediate Accounting - Kieso, Weygandt, Warfield |
+| `audit-workpaper` | Write a reviewable workpaper with objective, population, procedures, tick marks, and conclusion anchored to assertions | Auditing and Assurance Services - Arens, Elder, Beasley |
+| `budget-variance-analysis` | Decompose budget vs. actual variances into price, volume, and mix; write the management commentary | Cost Accounting: A Managerial Emphasis - Horngren, Datar, Rajan |
+| `tax-position-memo` | Write a FIRAC-structured tax memo with authorities, analysis, confidence level, and disclosure guidance | Federal Tax Research - Sawyers & Gill |
 
 ### Shared (installed with every role)
 | Skill | What it does |

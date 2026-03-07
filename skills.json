@@ -920,6 +920,51 @@
         "methodology",
         "academic"
       ]
+    },
+    "accountant/financial-statement-review": {
+      "role": "accountant",
+      "description": "Analyze and interpret financial statements for performance, risk, and quality signals",
+      "tags": [
+        "accounting",
+        "financial-statements",
+        "analysis"
+      ]
+    },
+    "accountant/month-end-close": {
+      "role": "accountant",
+      "description": "Run a structured month-end close process with reconciliations and sign-off",
+      "tags": [
+        "accounting",
+        "close",
+        "reconciliation"
+      ]
+    },
+    "accountant/audit-workpaper": {
+      "role": "accountant",
+      "description": "Write clear, reviewable audit workpapers with objective, procedures, evidence, and conclusion",
+      "tags": [
+        "accounting",
+        "audit",
+        "workpaper"
+      ]
+    },
+    "accountant/budget-variance-analysis": {
+      "role": "accountant",
+      "description": "Analyze budget vs actual variances with root cause and corrective actions",
+      "tags": [
+        "accounting",
+        "budget",
+        "variance"
+      ]
+    },
+    "accountant/tax-position-memo": {
+      "role": "accountant",
+      "description": "Write a technical tax position memo supporting a filing position",
+      "tags": [
+        "accounting",
+        "tax",
+        "memo"
+      ]
     }
   }
 }

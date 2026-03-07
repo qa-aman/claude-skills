@@ -26,15 +26,31 @@ claude-skills/
 5. **Each skill must include:** a workflow (step-by-step), anti-patterns, and a quality checklist.
 6. **Placeholders to use:** `[your niche]`, `[your newsletter]`, `[your-domain]`, `[your topic]`, `[your name]`, `[your audience]`.
 
+## Skill Creation Standard (MANDATORY)
+
+**Always follow the Anthropic skill-creator guidelines when creating or updating any skill:**
+https://github.com/anthropics/skills/tree/main/skills/skill-creator
+
+The full process (do not skip steps):
+1. Capture intent - understand what the skill should do and when it should trigger
+2. Write the SKILL.md following the FIRAC body structure (Overview, Workflow, Anti-Patterns, Quality Checklist)
+3. Create 2-3 realistic test prompts and run with-skill + baseline subagents in the same turn
+4. Draft assertions while runs are in progress
+5. Grade results and show user a qualitative comparison
+6. Iterate on the skill based on feedback
+7. Add reference files in `references/` for any domain-specific data the skill references but cannot include inline (benchmarks, templates, authority hierarchies, procedure maps)
+8. Update SKILL.md to point to reference files with explicit guidance on when to read each one
+
 ## When Adding a Skill
 
-- Use `/create-skill` for guidance on Anthropic's official skill standard (description triggers, body structure, writing style).
+- Follow the Anthropic skill-creator process above (mandatory).
+- Scaffold with `python3 scripts/init_skill.py <name> --role <role>` - registers in `skills.json` automatically.
+- If adding a new role, add it to `VALID_ROLES` in `scripts/init_skill.py` first.
 - Read the source skill from the original project first.
 - Strip all personal/project references. Replace with placeholders.
 - Verify the skill works standalone - no dependencies on other skills or project-specific files.
-- Scaffold with `python3 scripts/init_skill.py <name> --role <role>` - registers in `skills.json` automatically.
 - Run `python3 scripts/validate_skill.py` before committing.
-- Update `README.md` skills table.
+- Update `README.md` skills table (skill count + role count in tagline, add role section).
 
 ## When Syncing from Another System
 
