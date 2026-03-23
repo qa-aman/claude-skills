@@ -965,6 +965,366 @@
         "tax",
         "memo"
       ]
+    },
+    "pm/discovery-interview-prep": {
+      "role": "pm",
+      "description": "Generate user research interview scripts using Mom Test principles",
+      "tags": [
+        "product",
+        "research",
+        "interviews"
+      ]
+    },
+    "pm/epic-breakdown": {
+      "role": "pm",
+      "description": "Decompose large epics into sprint-ready sub-epics using 9 splitting patterns",
+      "tags": [
+        "product",
+        "agile",
+        "planning"
+      ]
+    },
+    "pm/go-to-market-checklist": {
+      "role": "pm",
+      "description": "Generate pre-launch readiness checklists for feature releases",
+      "tags": [
+        "product",
+        "launch",
+        "checklist"
+      ]
+    },
+    "pm/metrics-dashboard-spec": {
+      "role": "pm",
+      "description": "Generate dashboard specifications from product spec success metrics",
+      "tags": [
+        "product",
+        "analytics",
+        "metrics"
+      ]
+    },
+    "pm/opportunity-solution-tree": {
+      "role": "pm",
+      "description": "Build Opportunity Solution Trees using Teresa Torres framework",
+      "tags": [
+        "product",
+        "discovery",
+        "prioritization"
+      ]
+    },
+    "pm/persona-updater": {
+      "role": "pm",
+      "description": "Update user personas from new feedback pilot data or research",
+      "tags": [
+        "product",
+        "personas",
+        "research"
+      ]
+    },
+    "pm/pilot-debrief": {
+      "role": "pm",
+      "description": "Synthesize pilot observations into structured debrief reports",
+      "tags": [
+        "product",
+        "pilot",
+        "feedback"
+      ]
+    },
+    "pm/compliance-auditor": {
+      "role": "pm",
+      "description": "Audit feature specs against India's DPDP Act 2023",
+      "tags": [
+        "product",
+        "compliance",
+        "privacy"
+      ]
+    },
+    "pm/product-thinking": {
+      "role": "pm",
+      "description": "Run structured product thinking exercises before writing a spec",
+      "tags": [
+        "product",
+        "strategy",
+        "frameworks"
+      ]
+    },
+    "pm/release-notes-writer": {
+      "role": "pm",
+      "description": "Generate ship-ready release notes from specs and tickets",
+      "tags": [
+        "product",
+        "release",
+        "documentation"
+      ]
+    },
+    "pm/retro-synthesizer": {
+      "role": "pm",
+      "description": "Synthesize sprint retrospective notes into categorized action items",
+      "tags": [
+        "agile",
+        "retrospective",
+        "process"
+      ]
+    },
+    "pm/risk-register": {
+      "role": "pm",
+      "description": "Maintain a centralized living risk register across projects",
+      "tags": [
+        "product",
+        "risk",
+        "planning"
+      ]
+    },
+    "pm/spec-reviewer": {
+      "role": "pm",
+      "description": "Quality gate for product specifications before stakeholder review",
+      "tags": [
+        "product",
+        "quality",
+        "review"
+      ]
+    },
+    "pm/sprint-review-prep": {
+      "role": "pm",
+      "description": "Generate sprint review talking points and demo scripts",
+      "tags": [
+        "agile",
+        "sprint",
+        "demo"
+      ]
+    },
+    "pm/stakeholder-update": {
+      "role": "pm",
+      "description": "Generate structured weekly status updates for leadership",
+      "tags": [
+        "product",
+        "reporting",
+        "stakeholders"
+      ]
+    },
+    "pm/workshop-synthesizer": {
+      "role": "pm",
+      "description": "Distill workshop notes into ranked themes and roadmap findings",
+      "tags": [
+        "product",
+        "workshops",
+        "research"
+      ]
+    },
+    "pm/wsjf-scorer": {
+      "role": "pm",
+      "description": "Calculate WSJF scores for feature prioritization",
+      "tags": [
+        "product",
+        "prioritization",
+        "wsjf"
+      ]
+    },
+    "content-creator/linkedin-post": {
+      "role": "content-creator",
+      "description": "Write high-performing LinkedIn posts for professional audiences",
+      "tags": [
+        "social",
+        "linkedin",
+        "writing"
+      ]
+    },
+    "content-creator/newsletter-ideation": {
+      "role": "content-creator",
+      "description": "Generate newsletter topic angles using design thinking frameworks",
+      "tags": [
+        "content",
+        "ideation",
+        "newsletter"
+      ]
+    },
+    "content-creator/reddit-post": {
+      "role": "content-creator",
+      "description": "Write Reddit posts that earn genuine engagement",
+      "tags": [
+        "social",
+        "reddit",
+        "writing"
+      ]
+    },
+    "content-creator/substack-notes": {
+      "role": "content-creator",
+      "description": "Generate high-performing short-form Substack notes",
+      "tags": [
+        "content",
+        "substack",
+        "writing"
+      ]
+    },
+    "content-creator/substack-post": {
+      "role": "content-creator",
+      "description": "Write long-form Substack articles and newsletter posts",
+      "tags": [
+        "content",
+        "substack",
+        "writing"
+      ]
+    },
+    "content-creator/substack-toc": {
+      "role": "content-creator",
+      "description": "Create table of contents with anchor links for Substack articles",
+      "tags": [
+        "content",
+        "substack",
+        "formatting"
+      ]
+    },
+    "shared/jira-ticket-creator": {
+      "role": "shared",
+      "description": "Create Jira tickets from meeting notes user stories or quick lists",
+      "tags": [
+        "jira",
+        "tickets",
+        "productivity"
+      ]
+    },
+    "shared/flowchart": {
+      "role": "shared",
+      "description": "Generate Mermaid flowchart diagrams from any input source",
+      "tags": [
+        "diagrams",
+        "mermaid",
+        "visualization"
+      ]
+    },
+    "business-analyst/requirements-elicitation": {
+      "role": "business-analyst",
+      "description": "Facilitate structured requirements gathering using interviews, workshops, and observation",
+      "tags": [
+        "requirements",
+        "elicitation",
+        "BABOK"
+      ]
+    },
+    "business-analyst/brd-writer": {
+      "role": "business-analyst",
+      "description": "Write a Business Requirements Document from stakeholder inputs and meeting notes",
+      "tags": [
+        "requirements",
+        "documentation",
+        "BRD"
+      ]
+    },
+    "business-analyst/frd-writer": {
+      "role": "business-analyst",
+      "description": "Write a Functional Requirements Document from a BRD or feature brief",
+      "tags": [
+        "requirements",
+        "documentation",
+        "FRD"
+      ]
+    },
+    "business-analyst/use-case-writer": {
+      "role": "business-analyst",
+      "description": "Generate structured use cases with main flow, alternate flows, and exception handling",
+      "tags": [
+        "requirements",
+        "use-cases",
+        "Cockburn"
+      ]
+    },
+    "business-analyst/acceptance-criteria-writer": {
+      "role": "business-analyst",
+      "description": "Write measurable acceptance criteria using Fit Criteria and Given-When-Then formats",
+      "tags": [
+        "requirements",
+        "acceptance-criteria",
+        "testing"
+      ]
+    },
+    "business-analyst/process-mapper": {
+      "role": "business-analyst",
+      "description": "Map as-is and to-be business processes using BPMN-style structured notation",
+      "tags": [
+        "process",
+        "BPMN",
+        "modeling"
+      ]
+    },
+    "business-analyst/gap-analysis": {
+      "role": "business-analyst",
+      "description": "Identify gaps between current state and desired state with prioritized recommendations",
+      "tags": [
+        "analysis",
+        "gap",
+        "strategy"
+      ]
+    },
+    "business-analyst/root-cause-analysis": {
+      "role": "business-analyst",
+      "description": "Run structured root cause analysis using 5 Whys, fishbone, or A3 techniques",
+      "tags": [
+        "analysis",
+        "root-cause",
+        "problem-solving"
+      ]
+    },
+    "business-analyst/cost-benefit-analysis": {
+      "role": "business-analyst",
+      "description": "Build a cost-benefit analysis with ROI, payback period, and risk-adjusted projections",
+      "tags": [
+        "analysis",
+        "cost-benefit",
+        "business-case"
+      ]
+    },
+    "business-analyst/stakeholder-map": {
+      "role": "business-analyst",
+      "description": "Map stakeholders by influence, interest, and communication needs using a power-interest grid",
+      "tags": [
+        "stakeholders",
+        "communication",
+        "RACI"
+      ]
+    },
+    "business-analyst/impact-assessment": {
+      "role": "business-analyst",
+      "description": "Assess business impact of a proposed change across people, process, technology, and policy",
+      "tags": [
+        "analysis",
+        "impact",
+        "change-management"
+      ]
+    },
+    "business-analyst/data-dictionary": {
+      "role": "business-analyst",
+      "description": "Generate a data dictionary from database schemas, APIs, or spec documents",
+      "tags": [
+        "data",
+        "documentation",
+        "modeling"
+      ]
+    },
+    "business-analyst/decision-matrix": {
+      "role": "business-analyst",
+      "description": "Build a weighted decision matrix to evaluate and rank solution options",
+      "tags": [
+        "analysis",
+        "decision",
+        "prioritization"
+      ]
+    },
+    "business-analyst/traceability-matrix": {
+      "role": "business-analyst",
+      "description": "Create a requirements traceability matrix linking requirements to design, test, and delivery",
+      "tags": [
+        "requirements",
+        "traceability",
+        "quality"
+      ]
+    },
+    "business-analyst/uat-plan": {
+      "role": "business-analyst",
+      "description": "Generate a User Acceptance Testing plan with test scenarios, entry-exit criteria, and sign-off",
+      "tags": [
+        "testing",
+        "UAT",
+        "validation"
+      ]
     }
   }
 }

@@ -9,7 +9,7 @@
 
 A curated collection of [Claude Code](https://claude.ai/claude-code) skills organized by job role. Each skill is a packaged workflow grounded in a proven book or methodology - Claude invokes it automatically, or you trigger it with a `/skill-name` command.
 
-**99 skills across 18 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Security, Researcher, Accountant, and more.
+**129 skills across 21 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Data Scientist, Security, Researcher, Accountant, Business Analyst, Content Creator, and more.
 
 ## Install
 
@@ -72,6 +72,23 @@ bash scripts/install.sh --role pm --project
 | `experiment-design` | Design product experiments with build-measure-learn loops | Lean Startup - Ries |
 | `product-market-fit` | Assess and improve product-market fit | Lean Product Playbook - Olsen |
 | `11-star-framework` | Apply 11-star experience framework to product decisions | The Experience Economy |
+| `discovery-interview-prep` | Generate user research interview scripts using Mom Test principles | The Mom Test - Fitzpatrick |
+| `epic-breakdown` | Decompose large epics into sprint-ready sub-epics using 9 splitting patterns | Agile Estimating and Planning - Cohn |
+| `go-to-market-checklist` | Generate pre-launch readiness checklists for feature releases | Crossing the Chasm - Moore |
+| `metrics-dashboard-spec` | Generate dashboard specifications from product spec success metrics | Lean Analytics - Croll |
+| `opportunity-solution-tree` | Build OSTs mapping outcome to opportunities, solutions, experiments | Continuous Discovery Habits - Torres |
+| `persona-updater` | Update user personas from new feedback, pilot data, or research | About Face - Cooper |
+| `pilot-debrief` | Synthesize pilot observations into structured debrief reports | Lean Startup - Ries |
+| `compliance-auditor` | Audit feature specs against India's DPDP Act 2023 — consent, children's data, retention, rights | DPDP Act 2023 |
+| `product-thinking` | Run 5 structured exercises before writing a spec (problem, 11-star, positioning, principles, vision) | Inspired - Cagan + Shape Up - Singer |
+| `release-notes-writer` | Generate user-facing and internal release notes from specs and tickets | Technical writing best practices |
+| `retro-synthesizer` | Synthesize sprint retro notes into categorized action items and patterns | Agile Retrospectives - Derby & Larsen |
+| `risk-register` | Maintain a centralized living risk register with likelihood x impact matrix | The Art of Project Management - Berkun |
+| `spec-reviewer` | Quality gate for specs — pass/fail scorecard before stakeholder review | Shape Up + enterprise spec standards |
+| `sprint-review-prep` | Generate sprint review talking points and demo scripts | Agile ceremonies best practices |
+| `stakeholder-update` | Generate structured weekly status updates for leadership | Radical Candor - Kim Scott |
+| `workshop-synthesizer` | Distill workshop notes into ranked themes and roadmap findings | Design Sprint - Knapp |
+| `wsjf-scorer` | Calculate WSJF scores for data-driven feature prioritization | SAFe - Leffingwell |
 
 ### QA (`--role qa`)
 | Skill | What it does | Grounded in |
@@ -217,10 +234,41 @@ bash scripts/install.sh --role pm --project
 | `budget-variance-analysis` | Decompose budget vs. actual variances into price, volume, and mix; write the management commentary | Cost Accounting: A Managerial Emphasis - Horngren, Datar, Rajan |
 | `tax-position-memo` | Write a FIRAC-structured tax memo with authorities, analysis, confidence level, and disclosure guidance | Federal Tax Research - Sawyers & Gill |
 
+### Business Analyst (`--role business-analyst`)
+| Skill | What it does | Grounded in |
+|-------|-------------|-------------|
+| `requirements-elicitation` | Facilitate structured requirements gathering using interviews, workshops, and observation | BABOK Guide - IIBA + Mastering the Requirements Process - Robertson |
+| `brd-writer` | Write a Business Requirements Document from stakeholder inputs | Software Requirements - Wiegers + BABOK Guide - IIBA |
+| `frd-writer` | Write a Functional Requirements Document from a BRD or feature brief | Software Requirements - Wiegers + User Stories Applied - Cohn |
+| `use-case-writer` | Generate structured use cases with main flow, alternate flows, and extensions | Writing Effective Use Cases - Cockburn |
+| `acceptance-criteria-writer` | Write measurable acceptance criteria using Fit Criteria and Given-When-Then | Mastering the Requirements Process - Robertson + User Stories Applied - Cohn |
+| `process-mapper` | Map as-is and to-be business processes using BPMN-style notation | Business Process Change - Harmon + Business Analysis Techniques - Cadle |
+| `gap-analysis` | Identify gaps between current and desired state with Brown Cow Model | BABOK Guide - IIBA + Mastering the Requirements Process - Robertson |
+| `root-cause-analysis` | Run structured root cause analysis using 5 Whys, fishbone, and A3 | Business Process Change - Harmon + Lean Business Analysis - Sherrington |
+| `cost-benefit-analysis` | Build a CBA with ROI, NPV, payback period, and benefits mapping | The Business Analysis Handbook - Winter + Business Process Change - Harmon |
+| `stakeholder-map` | Map stakeholders by power/interest with engagement strategies | Business Analysis Techniques - Cadle + The Business Analysis Handbook - Winter |
+| `impact-assessment` | Assess business impact of a proposed change across people, process, technology, policy | The Business Analysis Handbook - Winter + Requirements Engineering - Hull |
+| `data-dictionary` | Generate a data dictionary with CRUD matrix and data lineage | BABOK Guide - IIBA + Business Analysis Techniques - Cadle |
+| `decision-matrix` | Build a weighted decision matrix using Wiegers Priority Matrix | Software Requirements - Wiegers + Business Analysis Techniques - Cadle |
+| `traceability-matrix` | Create an RTM linking requirements to design, test, and delivery | Requirements Engineering - Hull + BABOK Guide - IIBA |
+| `uat-plan` | Generate a UAT plan with scenarios derived from use cases and fit criteria | Writing Effective Use Cases - Cockburn + Mastering the Requirements Process - Robertson |
+
+### Content Creator (`--role content-creator`)
+| Skill | What it does | Grounded in |
+|-------|-------------|-------------|
+| `linkedin-post` | Write high-performing LinkedIn posts with proven hook types and structures | LinkedIn content strategy |
+| `newsletter-ideation` | Generate 5-7 differentiated topic angles using SCAMPER, JTBD, Contrarian frameworks | Design thinking + JTBD - Christensen |
+| `reddit-post` | Write Reddit posts that earn genuine engagement without triggering spam flags | Community-first content strategy |
+| `substack-notes` | Generate short-form Substack notes using 10 proven structural patterns | Content psychology + platform best practices |
+| `substack-post` | Write long-form Substack articles with narrative arc and sustained depth | On Writing - King + Show Your Work - Kleon |
+| `substack-toc` | Create numbered TOC with working anchor links for Substack articles | Substack platform mechanics |
+
 ### Shared (installed with every role)
 | Skill | What it does |
 |-------|-------------|
 | `presentation-builder` | Build structured presentations for any audience |
+| `jira-ticket-creator` | Create Jira tickets from meeting notes, user stories, or quick lists |
+| `flowchart` | Generate Mermaid flowchart diagrams from any input source |
 
 ## Update Skills
 
