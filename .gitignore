@@ -25,3 +25,7 @@ evals.json
 
 # Test output
 /tmp/
+
+#local folder
+.local/
+.playwright-mcp/
