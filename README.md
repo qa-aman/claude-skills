@@ -9,7 +9,7 @@
 
 A curated collection of [Claude Code](https://claude.ai/claude-code) skills organized by job role. Each skill is a packaged workflow grounded in a proven book or methodology - Claude invokes it automatically, or you trigger it with a `/skill-name` command.
 
-**129 skills across 21 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Data Scientist, Security, Researcher, Accountant, Business Analyst, Content Creator, and more.
+**131 skills across 21 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Data Scientist, Security, Researcher, Accountant, Business Analyst, Content Creator, and more.
 
 ## Install
 
@@ -269,6 +269,8 @@ bash scripts/install.sh --role pm --project
 | `presentation-builder` | Build structured presentations for any audience |
 | `jira-ticket-creator` | Create Jira tickets from meeting notes, user stories, or quick lists |
 | `flowchart` | Generate Mermaid flowchart diagrams from any input source |
+| `confluence-to-md` | Pull Confluence pages into clean GitHub-Flavored Markdown with image download, @mention resolution, and 10 storage format edge case handlers |
+| `md-to-confluence` | Push markdown to Confluence with image upload, TOC, wide tables, auto-numbering, date macros, and 9 post-push quality checks |
 
 ## Update Skills
 
