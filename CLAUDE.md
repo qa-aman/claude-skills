@@ -1,6 +1,6 @@
 # Claude Skills Repository
 
-A public collection of generic, reusable Claude Code skills. Skills here must work for any user in any project - no personal or project-specific content.
+A public collection of generic, reusable Claude Code skills. Skills here must work for any user in any project.
 
 ## Project Structure
 
