@@ -1,15 +1,11 @@
 ---
 name: code-review
-description: >
-  Review code for quality, bugs, and design issues. Use when the user says "review this code",
-  "do a code review", "check this PR", "review this diff", "is this code good",
-  "what's wrong with this code", "code quality check", or pastes code and wants feedback
-  - even if they don't explicitly say "code review".
+description: "Review code for quality, bugs, security vulnerabilities, naming conventions, performance issues, and design patterns. Provides structured feedback without modifying code directly. Use when the user says 'review this code', 'do a code review', 'check this PR', 'review this diff', 'is this code good', 'what's wrong with this code', 'code quality check', or pastes code and wants feedback - even if they don't explicitly say 'code review'."
 ---
 
 ## Overview
 
-Based on **"Clean Code"** by Robert C. Martin. Martin's central argument: code is read far more than it is written. Clean code reads like well-written prose - the reader can understand the intent without decoding it. A code review is not just a bug hunt - it's a check that the code communicates its intent clearly to the next developer who reads it.
+Review code for intent clarity, correctness, and maintainability. A code review is not just a bug hunt - it checks that the code communicates its intent clearly to the next developer who reads it.
 
 ## Workflow
 
@@ -17,7 +13,7 @@ Based on **"Clean Code"** by Robert C. Martin. Martin's central argument: code i
 Before looking for bugs, read the code as a whole. Can you understand what it does without reading comments or documentation? If not, that's the first finding.
 
 ### Step 2: Check naming
-Martin's rule: names should reveal intent. Review every variable, function, and class name.
+Review every variable, function, and class name for intent clarity.
 - Does the name tell you what it does, not how it does it?
 - Would a new team member understand this name without context?
 - Are booleans named as predicates? (`isValid`, `hasPermission`, not `flag`, `check`)
@@ -26,7 +22,7 @@ Bad: `d = datetime.now() - start`
 Good: `elapsed_time = datetime.now() - start`
 
 ### Step 3: Check function size and responsibility
-Martin's single responsibility principle: a function should do one thing and do it well.
+Each function should do one thing and do it well.
 - Functions longer than 20 lines are candidates for extraction
 - If a function needs a comment to explain what each section does, split it
 - If a function has multiple levels of abstraction mixed together, extract
@@ -37,7 +33,6 @@ Martin's single responsibility principle: a function should do one thing and do 
 - Are exceptions used for exceptional cases only - not flow control?
 
 ### Step 5: Check for duplication
-Martin's DRY principle: duplication is the root of all evil in software.
 - Is this logic duplicated elsewhere in the codebase?
 - Could this be extracted to a shared utility?
 - Are magic numbers duplicated? (extract to named constants)
@@ -50,9 +45,28 @@ Martin's DRY principle: duplication is the root of all evil in software.
 ### Step 7: Write the review
 Structure feedback as:
 - **Must fix** - bugs, security issues, broken contracts
-- **Should fix** - Clean Code violations that will cause maintenance pain
+- **Should fix** - violations that will cause maintenance pain
 - **Consider** - style suggestions, optional improvements
 - **Praise** - what was done well (important for team morale and learning)
+
+### Example Review Output
+
+Given this code:
+```python
+def process(d, u):
+    if d:
+        for i in d:
+            if i['status'] == 'active':
+                send_email(u, i)
+                update_db(i)
+                log(i)
+```
+
+Review:
+- **Must fix:** No error handling around `send_email` or `update_db` - a failure in one skips the rest of the list. Wrap in try/except per item or use a batch-safe approach.
+- **Should fix:** `d`, `u`, `i` reveal no intent. Rename to `documents`, `user`, `document`. `process` should describe what it does: `notify_user_of_active_documents`.
+- **Consider:** Extract the filter (`status == 'active'`) into a list comprehension or generator to separate filtering from action.
+- **Praise:** The operation order (email → DB → log) is correct - notifies the user before persisting state.
 
 ## Anti-Patterns
 
@@ -78,7 +92,7 @@ Good: CI should enforce this automatically. If CI is absent, run tests locally b
 - [ ] Names reveal intent at every level (variables, functions, classes)
 - [ ] Functions have single responsibility and fit in one screen
 - [ ] Error handling is explicit - no silent failures
-- [ ] No unnecessary duplication - DRY applied
+- [ ] No unnecessary duplication
 - [ ] Tests cover happy path and failure cases
 - [ ] Must fix / should fix / consider clearly separated
 - [ ] At least one specific piece of positive feedback included

@@ -1,16 +1,11 @@
 ---
 name: model-card
-description: >
-  Document a machine learning model in a structured, transparent format for stakeholders, reviewers,
-  and future maintainers. Use when the user says "document this model", "write a model card",
-  "model documentation", "how should I document my ML model", "bias and fairness report",
-  "model transparency", "what does this model do", "model handoff", "production model documentation",
-  or needs to communicate what a model does, how it was built, where it works, and where it fails.
+description: "Generate a model card with sections for intended use, performance metrics, bias analysis, training data description, known limitations, and deployment context. Use when the user says 'document this model', 'write a model card', 'model documentation', 'how should I document my ML model', 'bias and fairness report', 'model transparency', 'what does this model do', 'model handoff', 'production model documentation', or needs to communicate what a model does, how it was built, where it works, and where it fails."
 ---
 
 ## Overview
 
-Based on **"Interpretable Machine Learning"** by Christoph Molnar, with structure informed by the Google Model Cards framework (Mitchell et al., 2019). The core principle: a model without documentation is a liability. Interpretability is not a post-hoc courtesy - it is a prerequisite for responsible deployment. A model card makes the model's intended use, performance limits, and failure modes explicit before the model reaches production.
+A model card makes the model's intended use, performance limits, and failure modes explicit before the model reaches production. Structure informed by the Google Model Cards framework (Mitchell et al., 2019).
 
 ## Workflow
 
@@ -80,7 +75,7 @@ Report performance on the held-out test set. Always report more than accuracy.
 
 ### Step 4: Document subgroup performance and fairness evaluation
 
-Molnar's emphasis: aggregate performance metrics hide disparate performance across subgroups.
+Aggregate performance metrics hide disparate performance across subgroups.
 
 ```markdown
 ## Subgroup Performance

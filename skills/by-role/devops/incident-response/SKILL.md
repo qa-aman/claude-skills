@@ -1,18 +1,11 @@
 ---
 name: incident-response
-description: >
-  Run a structured incident response. Use when the user says "we have an incident",
-  "production is down", "service is degraded", "on-call response", "p0 incident",
-  "something is broken in prod", "help me manage this incident", "incident commander",
-  or there is an active production issue requiring coordinated response
-  - even if they don't explicitly say "incident response".
+description: "Run a structured incident response: triage alerts, assign roles (IC/Ops/Comms), set severity, coordinate responders, draft status updates, manage mitigation, and prepare resolution posts. Use when the user says 'we have an incident', 'production is down', 'service is degraded', 'on-call response', 'p0 incident', 'something is broken in prod', 'help me manage this incident', 'incident commander', or there is an active production issue requiring coordinated response - even if they don't explicitly say 'incident response'."
 ---
 
 ## Overview
 
-Based on the **Google SRE Book** by Beyer, Jones, Petoff & Murphy. Google's incident management framework establishes clear roles, communication protocols, and decision hierarchies that let teams respond to complex outages without chaos. The core principle: when systems fail, the response should be calmer and more structured than the incident itself.
-
-Three SRE roles during an incident:
+When systems fail, the response should be calmer and more structured than the incident itself. Three roles during an incident:
 - **Incident Commander (IC)** - owns the response, makes decisions, delegates
 - **Operations Lead** - makes changes to the system (the IC does not touch production)
 - **Communications Lead** - handles stakeholder updates, keeps IC focused on the incident
@@ -59,11 +52,11 @@ Operations Lead: form a hypothesis before running commands.
 - What do metrics show? (error rate, latency, saturation)
 - What do logs show?
 
-SRE principle: change is the enemy of stability. Look at what changed first.
+Look at what changed first - change is the most common cause of outages.
 
 ### Step 5: Communicate on a schedule
 
-Communications Lead posts status updates every 15 minutes (SEV1) or 30 minutes (SEV2) even if nothing has changed. "We are still investigating" is a valid update. Silence breeds panic.
+Communications Lead posts status updates every 15 minutes (SEV1) or 30 minutes (SEV2) even if nothing has changed. "We are still investigating" is a valid update.
 
 Internal update format:
 

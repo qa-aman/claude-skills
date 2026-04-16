@@ -1,20 +1,11 @@
 ---
 name: exec-summary
-description: >
-  Write an executive summary using the Pyramid Principle SCQA structure. Use when a
-  consultant says "write an executive summary", "I need a one-pager for the exec",
-  "how do I open this report", "write me the intro for this deck", "draft the cover
-  memo", "I need to frame the findings", "executive doesn't have time to read the full
-  report", "help me write the storyline", or "write the situation-complication-answer".
-  Also trigger when someone has findings or recommendations and needs to communicate
-  them top-down to a time-constrained audience.
+description: "Write an executive summary using the Pyramid Principle SCQA structure: frame situation and complication, synthesize findings into a top-down narrative, structure MECE supporting points, and format a concise one-pager for executive audiences. Use when a consultant says 'write an executive summary', 'I need a one-pager for the exec', 'how do I open this report', 'write me the intro for this deck', 'draft the cover memo', 'I need to frame the findings', 'help me write the storyline', or 'write the situation-complication-answer'. Also trigger when someone has findings or recommendations and needs to communicate them top-down to a time-constrained audience."
 ---
 
 ## Overview
 
-Based on **"The Pyramid Principle"** by Barbara Minto. An executive summary is not a summary of what you did - it is a summary of what the reader needs to know and do. The SCQA structure (Situation, Complication, Question, Answer) establishes shared context, creates the tension that makes the reader care, and delivers the answer at the top before the evidence. Executives read the answer first. Everything else is support.
-
-The key insight from Minto: the answer always goes first. Supporting arguments come after, in MECE groups. Never bury the recommendation at the end.
+An executive summary is not a summary of what you did - it is a summary of what the reader needs to know and do. The SCQA structure (Situation, Complication, Question, Answer) establishes shared context, creates the tension that makes the reader care, and delivers the answer at the top before the evidence. The answer always goes first. Supporting arguments come after, in MECE groups.
 
 ## The SCQA Structure
 
@@ -25,15 +16,11 @@ Question    - The question the complication raises (implicit or explicit)
 Answer      - The answer to that question (your main message)
 ```
 
-The Situation and Complication together create the story that makes the reader feel the problem. The Answer is your main message - state it without qualification. Supporting arguments live in the body of the document, not the exec summary.
-
 ## Workflow
 
 ### Step 1: Identify the Main Message
 
-Before writing a word, answer: "If the reader remembers one thing, what should it be?"
-
-The main message is not your topic. It is your point of view about the topic.
+Before writing a word, answer: "If the reader remembers one thing, what should it be?" The main message is your point of view about the topic, not the topic itself.
 
 - Weak: "This report covers the current state of [your client]'s sales operations."
 - Strong: "[Your client]'s sales operations are generating 30% less revenue than they should because of three fixable process failures."
@@ -42,7 +29,7 @@ Write the main message as a single sentence. If you cannot state it in one sente
 
 ### Step 2: Write the Situation
 
-The Situation is shared, non-controversial context that both you and the reader agree is true. It establishes the stage.
+Shared, non-controversial context that both you and the reader agree is true.
 
 Rules:
 - No new information - only what the reader already knows or would immediately agree with
@@ -58,7 +45,7 @@ across [Z regions]. In [year], the organization launched [initiative] with a tar
 
 ### Step 3: Write the Complication
 
-The Complication is what has changed or what threatens to disrupt the Situation. It is the reason the document exists. It creates the tension that makes the reader care.
+What has changed or what threatens to disrupt the Situation. This is the reason the document exists.
 
 Rules:
 - One change or threat - not a list
