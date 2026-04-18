@@ -36,7 +36,7 @@ Only the account-id is stored. Must call `GET /wiki/rest/api/user?accountId={id}
 ```html
 <ac:link><ac:link-body>v.12</ac:link-body></ac:link>
 ```
-In storage format, there's no URL. In view format (`body.view`), Confluence renders it as `<a href="/wiki/spaces/...">v.12</a>`.
+In storage format, there's no URL. In view format (`body.view`), Confluence renders it as `<a href="/wiki/spaces/[SPACE]/pages/...">v.12</a>`.
 **Fix**: Fetch BOTH `body.storage` and `body.view`, match link text, extract href from view.
 
 ## 4. Complex table markup
@@ -99,6 +99,7 @@ Embedded media links (e.g., YouTube `<a>` tags with `data-*` attributes) may sur
 **Fix**: Post-conversion cleanup to replace with proper markdown `[text](url)` links.
 
 ## 13. Script location and symlink prohibition
-The conversion script lives inside the skill folder at `.claude/skills/confluence-to-md/scripts/confluence-to-md.py`.
+The conversion script lives inside the skill folder at `.claude/skills/confluence-to-md/scripts/confluence-to-md.py` (not a shared `.claude/scripts/` folder).
 - **NEVER use symlinks** for skill scripts — they break when the symlink target moves or is deleted. Always copy the actual Python file.
 - If the project-local script is missing or broken, copy from global: `~/.claude/skills/confluence-to-md/scripts/confluence-to-md.py`
+- Keep scripts in sync between project and global (`~/.claude/skills/`) locations.

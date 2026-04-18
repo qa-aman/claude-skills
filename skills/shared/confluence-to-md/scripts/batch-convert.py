@@ -12,20 +12,24 @@ What this script does (step by step):
    and fetches the title of each page from Confluence
 
 3. Generates a clean folder name from each page title:
-   - Strips common prefixes (configurable in TITLE_PREFIXES)
-   - Converts to lowercase kebab-case
-   - NOTE: Review and rename folders after conversion — auto-generated names
-     are a starting point
+   - Strips common doc-type prefixes (configure TITLE_PREFIXES below for your project,
+     e.g., "SPEC |", "PRD |") so folder names aren't redundant
+   - Converts to lowercase kebab-case (e.g., "Control Panel UI Localisation"
+     becomes "control-panel-ui-localisation")
+   - NOTE: Review and rename folders after conversion — the auto-generated names
+     are a starting point and may not match your feature/product naming.
 
-4. Creates a numbered folder for each page (e.g., 003-feature-name/)
-   and plans the output file path (e.g., 003-feature-name/feature-name.md)
+4. Creates a numbered folder for each page (e.g., 003-language-adaptive-logic/)
+   and plans the output file path (e.g., 003-language-adaptive-logic/language-adaptive-logic.md)
    - Numbering starts from START_NUM (set below) to continue after existing folders
 
-5. Shows the planned folder structure before starting conversion
+5. Shows you the full planned folder structure before starting conversion
+   so you can review what will be created
 
-6. Converts each page using the single-page converter script (confluence-to-md.py)
+6. Converts each page one by one using the single-page converter script
+   (confluence-to-md.py) — which handles all the Confluence formatting edge cases
 
-7. Tracks which pages succeeded and which failed, and prints a summary
+7. Tracks which pages succeeded and which failed, and prints a summary at the end
 
 How to use:
 -----------
@@ -35,10 +39,9 @@ How to use:
 2. Update OUTPUT_BASE if your output folder is different
 
 3. Update START_NUM to the next number after your last existing folder
+   (e.g., if you have 001 and 002 already, set START_NUM = 3)
 
-4. Optionally update TITLE_PREFIXES with prefixes to strip from page titles
-
-5. Run: python3 batch-convert.py
+4. Run: python3 scripts/batch-convert.py
 
 Prerequisites:
     - The single-page converter script (confluence-to-md.py) must be in the same folder
@@ -77,33 +80,8 @@ BASE_URL = os.environ.get("CONFLUENCE_BASE_URL", "")
 if not BASE_URL:
     print("ERROR: CONFLUENCE_BASE_URL not set in .env or environment")
     sys.exit(1)
-HOST = BASE_URL.replace("https://", "")
+HOST = BASE_URL.replace("https://", "").replace("http://", "").rstrip('/')
 AUTH = base64.b64encode(f"{EMAIL}:{TOKEN}".encode()).decode()
-
-# --- CONFIGURATION: Edit these for your project ---
-
-# Prefixes to strip from Confluence page titles when generating folder names.
-# Add your project-specific prefixes here.
-TITLE_PREFIXES = [
-    # "ProjectName | Spec | ",
-    # "ProjectName | ",
-    # "SPEC | ",
-]
-
-# Page IDs to convert — replace with your actual page IDs
-PAGE_IDS = [
-    # "123456789",
-    # "234567890",
-]
-
-# Base output directory for converted files
-OUTPUT_BASE = "docs"
-
-# Starting number for folder numbering (continue after existing folders)
-START_NUM = 1
-
-# --- END CONFIGURATION ---
-
 
 def api_get(path):
     ctx = ssl.create_default_context()
@@ -113,6 +91,11 @@ def api_get(path):
     data = json.loads(resp.read().decode())
     conn.close()
     return data
+
+TITLE_PREFIXES = [
+    # Add doc-type prefixes to strip from page titles, e.g., "SPEC | ", "PRD | "
+    "SPEC ", "PRD ", "DOC | ", "SPEC | ", "PRD | ",
+]
 
 
 def slugify(title):
@@ -127,10 +110,15 @@ def slugify(title):
     s = s.strip('-')
     return s
 
+# Page IDs to convert. Replace with your own Confluence page IDs
+# (the number at the end of a Confluence page URL).
+PAGE_IDS = [
+    # "1234567890",
+    # "9876543210",
+]
 
-if not PAGE_IDS:
-    print("No page IDs configured. Edit the PAGE_IDS list in this script.")
-    sys.exit(0)
+OUTPUT_BASE = "outputs"  # Base folder for converted markdown files
+START_NUM = 1  # Starting number for folder prefix (e.g., 001-, 002-, ...)
 
 print(f"Fetching titles for {len(PAGE_IDS)} pages...\n")
 

@@ -28,10 +28,10 @@ What this script does (step by step):
      visual indentation — unwraps the content instead of making a table
 
 5. Cleans up Confluence-only elements:
-   - Status badges (colored labels like [Yes]/[No]) -> plain text
-   - Info/warning/note panels -> blockquotes
-   - Table of contents macros -> removed (not useful in markdown)
-   - Colored text and background highlights -> simplified
+   - Status badges (colored labels like [Yes]/[No]) → plain text
+   - Info/warning/note panels → blockquotes
+   - Table of contents macros → removed (not useful in markdown)
+   - Colored text and background highlights → simplified
 
 6. Downloads any images attached to the page:
    - Detects <ac:image> tags that reference Confluence attachments
@@ -49,20 +49,20 @@ What this script does (step by step):
     (creates any missing folders automatically)
 
 Usage:
-    python3 confluence-to-md.py <page_id> <output_path>
+    python3 scripts/confluence-to-md.py <page_id> <output_path>
 
     The page_id is the number at the end of a Confluence page URL.
-    Example URL: https://[your-instance].atlassian.net/wiki/spaces/[SPACE]/pages/123456789
-    The page_id here is: 123456789
+    Example URL: https://[your-instance].atlassian.net/wiki/spaces/[SPACE]/pages/1234567890
+    The page_id here is: 1234567890
 
 Examples:
     # Credentials auto-loaded from .env file in project root (recommended)
-    python3 confluence-to-md.py 123456789 docs/feature-name/feature-name.md
+    python3 scripts/confluence-to-md.py 658768103 outputs/001-student-onboarding/student-onboarding.md
 
     # Or with explicit env vars
     export CONFLUENCE_EMAIL="your-email@company.com"
     export CONFLUENCE_TOKEN="your-api-token"
-    python3 confluence-to-md.py 123456789 output.md
+    python3 scripts/confluence-to-md.py 658768103 output.md
 
 Prerequisites:
     - Python 3 (no extra packages needed — uses only built-in libraries)
@@ -70,7 +70,7 @@ Prerequisites:
     - A .env file at the project root with:
         CONFLUENCE_EMAIL=your-email@company.com
         CONFLUENCE_TOKEN=your-atlassian-api-token
-        CONFLUENCE_BASE_URL=https://your-instance.atlassian.net
+        CONFLUENCE_BASE_URL=https://your-site.atlassian.net
 """
 
 import argparse
@@ -84,10 +84,45 @@ import subprocess
 import sys
 import urllib.parse
 from datetime import datetime
+from pathlib import Path
+
+
+def save_snapshot(page_id, md_path):
+    """Save a copy of the pulled .md as the baseline for future preflight checks.
+
+    Why: The confluence-preflight.py script diffs local vs this snapshot vs
+    Confluence to detect whether anyone edited the page on Confluence since the
+    last sync. Pulling IS a sync — so the pulled content becomes the new baseline.
+
+    Auto-creates .local/confluence-snapshots/ if missing.
+    """
+    current = Path(md_path).resolve()
+    if current.is_file():
+        current = current.parent
+    project_root = None
+    for _ in range(10):
+        if (current / '.env').exists() or (current / '.git').exists():
+            project_root = current
+            break
+        if current.parent == current:
+            break
+        current = current.parent
+    if not project_root:
+        project_root = Path.cwd()
+
+    snap_dir = project_root / '.local' / 'confluence-snapshots'
+    snap_dir.mkdir(parents=True, exist_ok=True)
+    snap_path = snap_dir / f'{page_id}.md'
+    snap_path.write_text(Path(md_path).read_text())
+    print(f"  Snapshot saved: {snap_path.relative_to(project_root)}")
 
 
 class ConfluenceToMarkdown:
-    def __init__(self, email, token, base_url):
+    def __init__(self, email, token, base_url=None):
+        if not base_url:
+            base_url = os.environ.get("CONFLUENCE_BASE_URL", "")
+            if not base_url:
+                raise ValueError("CONFLUENCE_BASE_URL env var not set and no base_url provided")
         self.email = email
         self.token = token
         self.base_url = base_url
@@ -183,6 +218,7 @@ class ConfluenceToMarkdown:
 
     def process_images(self, html, page_id, output_dir):
         """Find <ac:image> tags, download attachments, replace with <img> tags."""
+        # Fetch attachment metadata to get correct download URLs
         attachment_urls = self.fetch_attachment_urls(page_id)
         image_count = 0
         # Match both wrapping and self-closing <ac:image> tags
@@ -202,6 +238,7 @@ class ConfluenceToMarkdown:
             filename = fn_match.group(1)
             alt_match = re.search(r'ac:alt="([^"]*)"', tag)
             alt_text = alt_match.group(1) if alt_match else filename
+            # Extract caption if present (e.g. <ac:caption><p>Mobile Screen</p></ac:caption>)
             caption_match = re.search(r'<ac:caption[^>]*>.*?<p[^>]*>(.*?)</p>.*?</ac:caption>', tag, re.DOTALL)
             caption_text = caption_match.group(1).strip() if caption_match else ''
             dl_path = attachment_urls.get(filename)
@@ -222,6 +259,7 @@ class ConfluenceToMarkdown:
         Find ac:link tags in storage format that have no ri:page/href,
         and resolve their actual URLs from the view format.
         """
+        # Find link-body text from bare ac:links (no ri:page)
         bare_links = re.findall(
             r'<ac:link>(?:(?!ri:page).)*?<ac:link-body>(.*?)</ac:link-body>\s*</ac:link>',
             storage_html, re.DOTALL
@@ -229,6 +267,7 @@ class ConfluenceToMarkdown:
         link_map = {}
         for link_text in bare_links:
             clean_text = re.sub(r'<[^>]+>', '', link_text).strip()
+            # Find matching <a> in view HTML
             pattern = re.escape(clean_text)
             match = re.search(rf'<a\s+href="([^"]*)"[^>]*>{pattern}</a>', view_html)
             if match:
@@ -266,6 +305,7 @@ class ConfluenceToMarkdown:
         # 3. Resolve bare ac:links (no ri:page) using view HTML
         link_map = self.resolve_bare_ac_links(storage_html, view_html)
         for text, url in link_map.items():
+            # Replace the bare ac:link with a proper <a> tag
             pattern = rf'<ac:link>(?:(?!ri:page).)*?<ac:link-body>{re.escape(text)}</ac:link-body>\s*</ac:link>'
             replacement = f'<a href="{url}">{text}</a>'
             html = re.sub(pattern, replacement, html, flags=re.DOTALL)
@@ -302,6 +342,7 @@ class ConfluenceToMarkdown:
             start = int(start_match.group(1)) if start_match else 1
             parts = []
             for i, item in enumerate(items, start):
+                # Preserve <img> and <em>/<br> tags, strip everything else
                 clean = re.sub(r'<(?!img\s|/img|em>|/em>|br>)[^>]+>', '', item).strip()
                 if clean:
                     parts.append(f'{i}. {clean}')
@@ -312,12 +353,13 @@ class ConfluenceToMarkdown:
             items = re.findall(r'<li[^>]*>(.*?)</li>', m.group(0), re.DOTALL)
             parts = []
             for item in items:
+                # Preserve <img> and <em>/<br> tags, strip everything else
                 clean = re.sub(r'<(?!img\s|/img|em>|/em>|br>)[^>]+>', '', item).strip()
                 if clean:
                     parts.append(f'- {clean}')
             return '<br>'.join(parts)
         text = re.sub(r'<ul[^>]*>.*?</ul>', format_ul, text, flags=re.DOTALL)
-        # <img> tags -> markdown image syntax
+        # <img> tags -> markdown image syntax (preserve images in table cells)
         def img_to_md(m):
             attrs = m.group(0)
             src_match = re.search(r'src="([^"]*)"', attrs)
@@ -326,14 +368,14 @@ class ConfluenceToMarkdown:
             alt = alt_match.group(1) if alt_match else ''
             return f'![{alt}]({src})'
         text = re.sub(r'<img\s[^>]*/?>', img_to_md, text)
-        # br -> <br> for markdown table cells
+        # br -> <br> for markdown table cells (tables support inline <br>)
         text = re.sub(r'<br\s*/?>', '<br>', text)
         # Strip remaining tags (but NOT <br>)
         text = re.sub(r'<(?!br>)[^>]+>', '', text)
         # HTML entities
         for old, new in [('&amp;', '&'), ('&lt;', '<'), ('&gt;', '>'), ('&nbsp;', ' '),
-                         ('&ndash;', '\u2013'), ('&mdash;', '\u2014'), ('&rsquo;', "'"), ('&lsquo;', "'"),
-                         ('&ldquo;', '\u201c'), ('&rdquo;', '\u201d')]:
+                         ('&ndash;', '–'), ('&mdash;', '—'), ('&rsquo;', "'"), ('&lsquo;', "'"),
+                         ('&ldquo;', '"'), ('&rdquo;', '"')]:
             text = text.replace(old, new)
         text = re.sub(r'\s+', ' ', text).strip()
         return text
@@ -400,8 +442,8 @@ class ConfluenceToMarkdown:
                 cells = re.findall(r'<td[^>]*>(.*?)</td>', rows[0], re.DOTALL)
                 if len(cells) == 1:
                     print(f"  Unwrapped single-cell layout table")
-                    return cells[0]
-            return m.group(0)
+                    return cells[0]  # Extract the content, discard the table wrapper
+            return m.group(0)  # Keep multi-row/col tables as-is
         html = re.sub(r'<table[^>]*>.*?</table>', unwrap_layout_table, html, flags=re.DOTALL)
 
         print("Converting tables...")
@@ -497,12 +539,16 @@ class ConfluenceToMarkdown:
         print(f"  Images downloaded: {image_count}")
         print(f"  Users resolved: {len(self.user_cache)}")
 
+        # Save snapshot baseline for future preflight checks (md-to-confluence pushes)
+        save_snapshot(page_id, output_path)
+
 
 def load_env_file():
     """Auto-load .env file from project root (walks up from script location)."""
+    # Try current working directory first, then script directory
     search_dirs = [os.getcwd()]
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    search_dirs.append(os.path.dirname(script_dir))
+    search_dirs.append(os.path.dirname(script_dir))  # parent of scripts/
 
     for base in search_dirs:
         env_path = os.path.join(base, '.env')
@@ -513,6 +559,7 @@ def load_env_file():
                     if line and not line.startswith('#') and '=' in line:
                         key, _, value = line.partition('=')
                         key, value = key.strip(), value.strip()
+                        # Don't override existing env vars
                         if key not in os.environ:
                             os.environ[key] = value
             print(f"Loaded credentials from: {env_path}")
@@ -521,6 +568,7 @@ def load_env_file():
 
 
 def main():
+    # Auto-load .env before parsing args
     load_env_file()
 
     parser = argparse.ArgumentParser(description="Convert Confluence page to Markdown")
@@ -531,13 +579,9 @@ def main():
     parser.add_argument("--base-url", default=os.environ.get("CONFLUENCE_BASE_URL", ""), help="Confluence base URL (or set CONFLUENCE_BASE_URL)")
     args = parser.parse_args()
 
-    if not args.email or not args.token:
-        print("Error: Email and token required.")
-        print("Options: 1) Add to .env file  2) Set CONFLUENCE_EMAIL/CONFLUENCE_TOKEN env vars  3) Use --email/--token flags")
-        sys.exit(1)
-
-    if not args.base_url:
-        print("Error: Base URL required. Set CONFLUENCE_BASE_URL in .env or use --base-url flag.")
+    if not args.email or not args.token or not args.base_url:
+        print("Error: Email, token, and base URL required.")
+        print("Options: 1) Add to .env file  2) Set CONFLUENCE_EMAIL/CONFLUENCE_TOKEN/CONFLUENCE_BASE_URL env vars  3) Use --email/--token/--base-url flags")
         sys.exit(1)
 
     converter = ConfluenceToMarkdown(args.email, args.token, args.base_url)

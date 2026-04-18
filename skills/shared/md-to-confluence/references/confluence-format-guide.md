@@ -35,14 +35,26 @@ A: Answer here.
 ```
 will render as **one line** on Confluence: `Q: "Question?" A: Answer here.`
 
-Similarly, intro text immediately followed by a numbered list (no blank line) merges into one paragraph.
+Similarly, intro text immediately followed by a numbered list (no blank line) merges into one paragraph:
+```
+Note down:
+1. Item one
+2. Item two
+```
+renders as: `Note down: 1. Item one 2. Item two`
 
-**Fix**: Always insert a **blank line** between elements that should be separate paragraphs.
+**Fix**: Always insert a **blank line** between elements that should be separate paragraphs:
+```
+**Q: "Question?"**
+
+A: Answer here.
+```
+This applies to: Q&A pairs, intro text before lists, any two blocks that should be visually separate.
 
 ## 3. Image format
 Raw `<img>` tags don't work in Confluence. Use the attachment macro:
 ```html
-<ac:image ac:width="400"><ri:attachment ri:filename="image.png" /></ac:image>
+<ac:image ac:width="1350"><ri:attachment ri:filename="image.png" /></ac:image>
 ```
 Missing attachments cause silently broken images - always verify attachments exist before pushing HTML.
 
@@ -67,12 +79,13 @@ Tables need explicit attributes for full width, header row, and numbered rows:
 ```html
 <table data-table-width="1800" data-layout="wide" data-number-column="true">
 ```
-- `data-number-column="true"` enables the auto-numbering column
+- `data-number-column="true"` enables the auto-numbering column (Confluence "Numbered rows" option)
 - Header row uses `<th>` tags (pandoc does this automatically from markdown table headers)
-- Wrap `<th>` content in `<strong>` for bold headers:
+- Wrap `<th>` content in `<strong>` for bold headers - Confluence doesn't bold `<th>` by default in storage format:
 ```html
 <th><strong>Column Name</strong></th>
 ```
+Without these, tables render at default narrow width with non-bold headers and no row numbers.
 
 ## 7. Wide mode property
 Set via content properties API:
@@ -82,7 +95,7 @@ PUT /wiki/rest/api/content/{pageId}/property/content-appearance-draft
 ```
 - Value must be the **plain string** `"full-width"`, NOT an object `{"appearance": "full-width"}`
 - Both properties (draft and published) must be set
-- Paragraph text still constrains to ~740px readable width — only tables expand with wide mode
+- Paragraph text still constrains to ~740px readable width (Confluence design decision) - only tables expand with wide mode
 
 ## 8. Figure/figcaption stripping
 Pandoc wraps images in `<figure>` with `<figcaption>` containing alt text. On Confluence, the figcaption renders as a visible text box below the image.
@@ -103,7 +116,7 @@ POST /wiki/api/v2/pages
 Requires `spaceId` (numeric, not space key), `parentId`, `body.representation: "storage"`.
 Get spaceId from: `GET /wiki/api/v2/spaces?keys=[SPACE_KEY]`
 
-Duplicate title error: Confluence rejects creating a page if another page with the same title exists in the space.
+Duplicate title error: Confluence rejects creating a page if another page with the same title exists in the space. Check first or handle the 400 error.
 
 ## 11. Deep links to sections
 Heading IDs are UUIDs in the `id` attribute of `<h*>` tags in storage format. Link format:
@@ -116,7 +129,7 @@ For pages that need features pandoc can't produce, build storage HTML directly:
 
 **@mentions:**
 ```html
-<ac:link><ri:user ri:account-id="[account-id]" /></ac:link>
+<ac:link><ri:user ri:account-id="6267ace0a32183006f23a09e" /></ac:link>
 ```
 
 **Status badges:**
@@ -153,16 +166,19 @@ Colors: Grey, Blue, Green, Yellow, Red.
 
 ## 13. H1 stripping (duplicate heading prevention)
 Confluence uses the **page title** as the H1 heading. If your markdown starts with `# Title`, pandoc converts it to `<h1>Title</h1>`, which creates a duplicate heading on the rendered page.
-**Fix**: Auto-strip the first `<h1>` tag from the HTML output before pushing.
+**Fix**: The script auto-strips the first `<h1>` tag from the HTML output before pushing. If you're building HTML manually, never include an `<h1>`.
 **Eval**: After pushing, fetch `body.storage` and verify no `<h1>` tag exists.
 
 ## 14. Source callout stripping
-Local markdown files often start with a `> Source: [Confluence](...)` callout as a back-reference. This is meaningless on Confluence itself.
-**Fix**: Auto-strip info panels and blockquotes containing "Source:", plus any leading `<hr>` tags.
+Local markdown files often start with a `> Source: [Confluence](...)` callout as a back-reference. This is meaningless on Confluence itself (it would link to the page you're already on).
+**Fix**: The script auto-strips:
+- `<ac:structured-macro ac:name="info">` panels containing "Source:"
+- `<blockquote>` elements containing "Source:"
+- Leading `<hr>` tags left behind after stripping
 **Eval**: After pushing, fetch `body.storage` and verify no "Source:" text exists in the first 500 chars.
 
 ## 15. Numbering columns (auto-row-numbers)
-Confluence tables support an auto-numbering column via CSS classes:
+Confluence tables support an auto-numbering column via CSS classes. The script adds these automatically:
 ```html
 <!-- Header row: empty th with numberingColumn class -->
 <tr><th class="numberingColumn"></th><th>Column 1</th>...</tr>
@@ -171,17 +187,20 @@ Confluence tables support an auto-numbering column via CSS classes:
 <tr><td class="numberingColumn">1</td><td>Data</td>...</tr>
 <tr><td class="numberingColumn">2</td><td>Data</td>...</tr>
 ```
-Both `numberingColumn` class and `data-number-column="true"` on the `<table>` tag are needed.
+This is separate from `data-number-column="true"` on the `<table>` tag (which the script also sets). Both are needed for proper rendering.
+**Eval**: After pushing, fetch `body.storage` and verify `numberingColumn` class exists in every `<table>`.
 
 ## 16. @mentions limitation and workaround
-Pandoc **CANNOT** produce Confluence @mention macros. The `@Name` text in markdown is pushed as plain text.
+Pandoc and the md-to-confluence script **CANNOT** produce Confluence @mention macros. The `@Name` text in markdown is pushed as plain text.
 **Workaround** (2-step process):
 1. Push the page with the script (plain `@Name` text appears)
-2. After push, use the Confluence REST API to find-replace plain `@Name` with the proper macro:
+2. After push, use the Confluence REST API directly to find-replace plain `@Name` with the proper macro:
 ```html
-<ac:link><ri:user ri:account-id="[ACCOUNT_ID]" /></ac:link>
+<ac:link><ri:user ri:account-id="ACCOUNT_ID" /></ac:link>
 ```
-Resolve account IDs from your team directory file or via `GET /wiki/rest/api/user?accountId={id}`.
+Resolve account IDs from `.local/team/users.md` or via `GET /wiki/rest/api/user?accountId={id}`.
+
+Common use case: **Sign-off tables** where team members need to be tagged/notified.
 
 ## 17. Overwriting manual Confluence edits
 When pushing from local markdown, the script replaces the entire page body. If anyone has edited the Confluence page directly since the last push, their changes will be **silently overwritten**.
@@ -190,3 +209,4 @@ When pushing from local markdown, the script replaces the entire page body. If a
 2. If version > what you last pushed, someone edited it
 3. Fetch the latest `body.storage` and diff against your local version
 4. Apply their changes to the local markdown FIRST, then push
+5. For version history: `GET /wiki/rest/api/content/{id}?expand=body.storage&status=historical&version=N`

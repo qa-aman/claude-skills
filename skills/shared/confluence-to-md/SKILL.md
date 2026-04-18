@@ -1,13 +1,13 @@
 ---
 name: confluence-to-md
+created_by: Aman Parmar
+last_modified: 19-04-2026
 description: |
   Convert Confluence pages to clean GitHub-Flavored Markdown files. Use this skill whenever the user
   wants to pull a Confluence page into the local repo, convert Confluence content to markdown, download
   a spec from Confluence, or batch-convert multiple pages. Also triggers on Confluence URLs, page IDs,
   or phrases like "pull this page", "download this spec", "confluence to md". Use this even if the user
   just pastes a Confluence URL and says something vague like "get this" or "convert this".
-created_by: Aman Parmar
-last_modified: 14-04-2026
 ---
 
 # Confluence to Markdown
@@ -23,7 +23,7 @@ don't have to. Zero LLM tokens spent on the actual conversion.
 python3 .claude/skills/confluence-to-md/scripts/confluence-to-md.py <page_id> <output_path>
 
 # Batch (write a Python loop - don't run CLI commands one by one)
-python3 .claude/skills/confluence-to-md/scripts/batch-convert.py
+python3 scripts/batch-convert.py
 ```
 
 The script auto-loads credentials from `.env` at the project root.
@@ -34,27 +34,36 @@ The script auto-loads credentials from `.env` at the project root.
 
 Extract from the Confluence URL - it's the number in the path:
 ```
-https://[your-instance].atlassian.net/wiki/spaces/[SPACE]/pages/123456789/Page+Title
-                                                              ^^^^^^^^^ this
+https://[your-instance].atlassian.net/wiki/spaces/[SPACE]/pages/1234567890/Page+Title
+                                                                ^^^^^^^^^^ this
 ```
 
 If the user gives a title instead of URL, search via API:
 ```bash
 curl -s -u "$CONFLUENCE_EMAIL:$CONFLUENCE_TOKEN" \
-  "https://$CONFLUENCE_BASE_URL/wiki/rest/api/content?spaceKey=[SPACE_KEY]&title=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("Page Title"))')"
+  "$CONFLUENCE_BASE_URL/wiki/rest/api/content?spaceKey=[SPACE]&title=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("Page Title"))')"
 ```
 
 ### Step 2: Pick the output path
 
-Follow your project's naming conventions. General guidelines:
-- Use descriptive, kebab-case folder and file names
-- Strip redundant prefixes from Confluence titles (e.g., "SPEC |", "PRD |")
-- Use the feature/product concept name, not the full page description
+Follow your project's naming conventions. A common pattern:
+
+| Content type | Path pattern |
+|---|---|
+| Feature specs | `outputs/features/NNN-feature-name/feature-name.md` |
+| Knowledge docs | `inputs/knowledge/slugified-title.md` |
+| Cross-functional | `outputs/cross-functional/doc-name.md` |
+
+**Folder naming** - strip from Confluence titles:
+1. Author bracket tags: `[Author Name] SPEC | Feature` -> `feature`
+2. Doc type prefixes: `SPEC |`, `PRD |`, `DOC |` -> remove
+3. Phase numbers when a product name exists: `Phase 2 | Product Overview` -> use product name
+4. Use the feature/product concept name, not the page description
 
 ### Step 3: Run the script
 
 ```bash
-python3 .claude/skills/confluence-to-md/scripts/confluence-to-md.py 123456789 docs/feature-name/feature-name.md
+python3 .claude/skills/confluence-to-md/scripts/confluence-to-md.py 1234567890 outputs/features/001-my-feature/my-feature.md
 ```
 
 ### Step 4: Post-conversion check
@@ -69,8 +78,8 @@ Write a Python driver script for multiple pages:
 ```python
 import subprocess
 pages = {
-    "123456789": "docs/feature-a/feature-a.md",
-    "234567890": "docs/feature-b/feature-b.md",
+    "1234567890": "outputs/000-topic-a/topic-a.md",
+    "9876543210": "outputs/001-topic-b/topic-b.md",
 }
 for page_id, output_path in pages.items():
     subprocess.run(["python3", ".claude/skills/confluence-to-md/scripts/confluence-to-md.py", page_id, output_path], check=True)
@@ -96,8 +105,46 @@ The script automatically resolves these Confluence storage format quirks:
 - Single-cell layout tables (unwrapped)
 - `<ac:image>` attachments (downloaded to `images/`, handles CDN 302 redirects)
 
+**Snapshot auto-save** — after every successful pull, the script saves a copy
+to `.local/confluence-snapshots/<page_id>.md` (auto-creates the folder). This
+baseline is the "last known sync" — every new pull overwrites it.
+
+## Preflight check before pushing back (sibling script)
+
+Whenever you later push changes back to the same Confluence page, run the
+preflight FIRST to detect whether anyone edited that page on Confluence since
+your last pull. Without this check, you can silently overwrite other people's
+edits — a real-world incident that motivated this safeguard.
+
+The preflight script lives inside this skill's `scripts/` folder (and also
+inside `md-to-confluence/scripts/` — both copies work identically):
+
+```bash
+python3 .claude/skills/confluence-to-md/scripts/confluence-preflight.py <page_id> <local.md>
+# OR equivalently:
+python3 .claude/skills/md-to-confluence/scripts/confluence-preflight.py <page_id> <local.md>
+```
+
+Exit codes:
+- **0** — Safe to push
+- **1** — CONFLICT: Confluence has edits your local .md is missing. STOP and merge
+- **2** — Error (credentials, network, etc.)
+
+Use `--show-diff` to see full diffs, `--force` only if you deliberately want
+to overwrite.
+
 If something looks wrong in the output, read `references/storage-format-gotchas.md` for the full
-list of 13 known issues and their fixes.
+list of 12 known issues and their fixes.
+
+## Script location (IMPORTANT)
+
+Scripts live INSIDE the skill folder, NOT in a shared `.claude/scripts/` folder:
+- **Project**: `.claude/skills/confluence-to-md/scripts/confluence-to-md.py`
+- **Global**: `~/.claude/skills/confluence-to-md/scripts/confluence-to-md.py`
+
+**NEVER use symlinks** — always copy actual Python files. Symlinks break when the target moves.
+
+Keep both locations in sync when modifying the script.
 
 ## Post-conversion evals
 
@@ -106,23 +153,6 @@ After conversion, automatically verify:
 2. **No broken image refs** — if `images/` folder exists, verify every `![](images/...)` ref has a matching file
 3. **Source header present** — first non-blank line after `# Title` should be `> Source: [Confluence](...)`
 4. **No excessive blank lines** — no more than 2 consecutive blank lines anywhere in the file
-
-## Anti-patterns
-
-- Running CLI commands one-by-one for batch conversion (write a Python loop instead)
-- Sending full page content through an LLM for conversion (use REST API + pandoc — zero LLM tokens)
-- Using symlinks for skill scripts (break when target moves) — always copy actual Python files
-- Not caching user lookups (each `ri:user` triggers an API call without caching)
-- Converting index/overview pages through the full pipeline (parse HTML programmatically instead)
-
-## Quality checklist
-
-- [ ] Output contains no raw `<ac:` tags
-- [ ] All image files downloaded to `images/` subfolder
-- [ ] Source header links back to original Confluence page
-- [ ] No more than 2 consecutive blank lines
-- [ ] Tables render correctly in GitHub-Flavored Markdown
-- [ ] User mentions resolved to display names (not account IDs)
 
 ## Dependencies
 
