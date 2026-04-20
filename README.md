@@ -9,7 +9,7 @@
 
 A curated collection of [Claude Code](https://claude.ai/claude-code) skills organized by job role. Each skill is a packaged workflow grounded in a proven book or methodology - Claude invokes it automatically, or you trigger it with a `/skill-name` command.
 
-**131 skills across 21 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Data Scientist, Security, Researcher, Accountant, Business Analyst, Content Creator, and more.
+**137 skills across 21 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Data Scientist, Security, Researcher, Accountant, Business Analyst, Content Creator, and more.
 
 ## Install
 
@@ -89,6 +89,9 @@ bash scripts/install.sh --role pm --project
 | `stakeholder-update` | Generate structured weekly status updates for leadership | Radical Candor - Kim Scott |
 | `workshop-synthesizer` | Distill workshop notes into ranked themes and roadmap findings | Design Sprint - Knapp |
 | `wsjf-scorer` | Calculate WSJF scores for data-driven feature prioritization | SAFe - Leffingwell |
+| `meeting-to-spec-update` | Update a product spec from a meeting transcript with decisions, open questions, and flowcharts | Zero-assumption doc discipline |
+| `pm-weekly-update` | Generate weekly or monthly PM status updates from local data (meetings, tickets, decisions) | Lean Analytics + status-reporting best practices |
+| `spec-to-ux-tasks` | Extract UX tasks from a product spec and save as prioritised ux-tasks.md | Shape Up + UX handoff best practices |
 
 ### QA (`--role qa`)
 | Skill | What it does | Grounded in |
@@ -110,6 +113,7 @@ bash scripts/install.sh --role pm --project
 | `tech-debt` | Document, scope, and prioritize technical debt | Working Effectively with Legacy Code - Feathers |
 | `api-design` | Design clean, consistent REST or GraphQL APIs | Philosophy of Software Design - Ousterhout |
 | `pr-description` | Write clear, reviewable pull request descriptions | Pragmatic Programmer |
+| `karpathy-guidelines` | Behavioral guidelines to reduce common LLM coding mistakes — simplicity, surgical changes, verification | Andrej Karpathy's LLM coding observations |
 
 ### Designer (`--role designer`)
 | Skill | What it does | Grounded in |
@@ -118,6 +122,7 @@ bash scripts/install.sh --role pm --project
 | `ux-audit` | Audit a user flow for friction and drop-off points | Don't Make Me Think - Krug |
 | `component-spec` | Write a component spec for engineering handoff | Atomic Design - Frost |
 | `design-system-doc` | Document a design system component with usage rules and tokens | Atomic Design - Frost |
+| `figma-copy-rewriter` | Rewrite UI copy on Figma files for clarity, consistency, and plain language | Strategic Writing for UX - Podmajersky + 8 UX-writing frameworks |
 
 ### DevOps (`--role devops`)
 | Skill | What it does | Grounded in |
@@ -271,6 +276,7 @@ bash scripts/install.sh --role pm --project
 | `flowchart` | Generate Mermaid flowchart diagrams from any input source |
 | `confluence-to-md` | Pull Confluence pages into clean GitHub-Flavored Markdown with image download, @mention resolution, and 10 storage format edge case handlers |
 | `md-to-confluence` | Push markdown to Confluence with image upload, TOC, wide tables, auto-numbering, date macros, and 9 post-push quality checks |
+| `draft-email` | Draft professional HTML emails (MoM, status, decisions) and save as provider drafts (Zoho reference impl) |
 
 ## Update Skills
 

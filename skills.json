@@ -1,777 +1,184 @@
 {
   "version": "1.0",
   "skills": {
-    "pm/11-star-framework": {
-      "role": "pm",
-      "description": "Apply 11-star experience framework to product decisions",
+    "accountant/audit-workpaper": {
+      "role": "accountant",
+      "description": "Write clear, reviewable audit workpapers with objective, procedures, evidence, and conclusion",
       "tags": [
-        "product",
-        "framework",
-        "ux"
-      ]
-    },
-    "shared/presentation-builder": {
-      "role": "shared",
-      "description": "Build structured presentations for any audience",
-      "tags": [
-        "productivity",
-        "presentations"
-      ]
-    },
-    "qa/qa-test-design": {
-      "role": "qa",
-      "description": "Write test cases, acceptance criteria, API test specs, and PR testability reviews",
-      "tags": [
-        "qa",
-        "testing",
-        "test-design"
-      ]
-    },
-    "qa/qa-execution": {
-      "role": "qa",
-      "description": "Run and document smoke tests, regression cycles, and exploratory testing sessions",
-      "tags": [
-        "qa",
-        "testing",
-        "execution"
-      ]
-    },
-    "qa/qa-release": {
-      "role": "qa",
-      "description": "Go/no-go decisions, release sign-off reports, and defect triage",
-      "tags": [
-        "qa",
-        "release",
-        "sign-off"
-      ]
-    },
-    "qa/qa-strategy": {
-      "role": "qa",
-      "description": "Test strategy documents, coverage matrices, and risk-based prioritization",
-      "tags": [
-        "qa",
-        "strategy",
-        "planning"
-      ]
-    },
-    "qa/qa-metrics": {
-      "role": "qa",
-      "description": "Quality dashboards, defect density, escape rate, and trend reporting",
-      "tags": [
-        "qa",
-        "metrics",
-        "reporting"
-      ]
-    },
-    "pm/write-prd": {
-      "role": "pm",
-      "description": "Write a Product Requirements Document from a brief or problem statement",
-      "tags": [
-        "product",
-        "requirements",
-        "documentation"
-      ]
-    },
-    "pm/write-user-stories": {
-      "role": "pm",
-      "description": "Convert requirements into user stories with acceptance criteria",
-      "tags": [
-        "product",
-        "agile",
-        "user-stories"
-      ]
-    },
-    "pm/prioritization": {
-      "role": "pm",
-      "description": "Prioritize a backlog using RICE or MoSCoW scoring",
-      "tags": [
-        "product",
-        "prioritization",
-        "backlog"
-      ]
-    },
-    "pm/okr-writer": {
-      "role": "pm",
-      "description": "Write measurable OKRs from strategic goals or intent",
-      "tags": [
-        "product",
-        "okrs",
-        "strategy"
-      ]
-    },
-    "pm/competitive-analysis": {
-      "role": "pm",
-      "description": "Structure a competitive analysis for a feature, product, or market",
-      "tags": [
-        "product",
-        "research",
-        "strategy"
-      ]
-    },
-    "pm/feature-spec": {
-      "role": "pm",
-      "description": "Write a concise feature spec one-pager for engineering handoff",
-      "tags": [
-        "product",
-        "engineering",
-        "spec"
-      ]
-    },
-    "pm/product-discovery": {
-      "role": "pm",
-      "description": "Run structured product discovery to identify what to build before building it",
-      "tags": [
-        "product",
-        "discovery",
-        "research"
-      ]
-    },
-    "pm/team-brief": {
-      "role": "pm",
-      "description": "Write an empowered team brief that gives engineers a problem to solve, not a solution to build",
-      "tags": [
-        "product",
-        "leadership",
-        "empowerment"
-      ]
-    },
-    "pm/outcome-vs-output": {
-      "role": "pm",
-      "description": "Audit a roadmap or backlog to distinguish outcomes from outputs and escape the build trap",
-      "tags": [
-        "product",
-        "strategy",
-        "outcomes"
-      ]
-    },
-    "pm/retention-design": {
-      "role": "pm",
-      "description": "Design habit-forming product features using the Hook Model",
-      "tags": [
-        "product",
-        "retention",
-        "engagement",
-        "ux"
-      ]
-    },
-    "pm/experiment-design": {
-      "role": "pm",
-      "description": "Design product experiments using build-measure-learn loops and validated learning",
-      "tags": [
-        "product",
-        "experimentation",
-        "lean",
-        "growth"
-      ]
-    },
-    "pm/product-market-fit": {
-      "role": "pm",
-      "description": "Assess and improve product-market fit using the PMF pyramid",
-      "tags": [
-        "product",
-        "strategy",
-        "pmf",
-        "growth"
-      ]
-    },
-    "engineer/code-review": {
-      "role": "engineer",
-      "description": "Review code for quality, bugs, and design issues using Clean Code principles. Use when asked to review code, do a code review, check a PR, review a diff, or assess code quality.",
-      "tags": [
-        "engineering",
-        "code-quality",
-        "review"
-      ]
-    },
-    "engineer/debug": {
-      "role": "engineer",
-      "description": "Debug systematically using reproduce-isolate-fix methodology. Use when encountering a bug, unexpected behavior, test failure, or error that needs diagnosis.",
-      "tags": [
-        "engineering",
-        "debugging",
-        "troubleshooting"
-      ]
-    },
-    "engineer/write-tests": {
-      "role": "engineer",
-      "description": "Write unit and integration tests using TDD red-green-refactor cycle. Use when asked to write tests, add test coverage, or test a function or module.",
-      "tags": [
-        "engineering",
-        "testing",
-        "tdd"
-      ]
-    },
-    "engineer/tech-debt": {
-      "role": "engineer",
-      "description": "Document, scope, and prioritize technical debt using Feathers' seam-finding approach. Use when assessing legacy code, planning refactors, or making a case for paying down tech debt.",
-      "tags": [
-        "engineering",
-        "tech-debt",
-        "refactoring"
-      ]
-    },
-    "engineer/api-design": {
-      "role": "engineer",
-      "description": "Design clean, consistent REST or GraphQL APIs using deep module principles. Use when designing API endpoints, reviewing API contracts, or creating API documentation.",
-      "tags": [
-        "engineering",
-        "api",
-        "design",
-        "architecture"
-      ]
-    },
-    "engineer/pr-description": {
-      "role": "engineer",
-      "description": "Write clear, reviewable pull request descriptions that communicate what changed and why. Use when opening a PR, writing a commit message, or documenting a code change.",
-      "tags": [
-        "engineering",
-        "git",
-        "communication",
-        "pull-request"
-      ]
-    },
-    "designer/design-critique": {
-      "role": "designer",
-      "description": "Critique a design for usability, hierarchy, and accessibility using Don Norman's principles. Use when reviewing screens, flows, mockups, or UI designs.",
-      "tags": [
-        "design",
-        "critique",
-        "usability",
-        "ux"
-      ]
-    },
-    "designer/ux-audit": {
-      "role": "designer",
-      "description": "Audit a user flow for friction and drop-off points using Krug's usability principles. Use when analyzing a user journey, onboarding flow, or feature flow for usability problems.",
-      "tags": [
-        "design",
-        "ux",
+        "accounting",
         "audit",
-        "usability"
+        "workpaper"
       ]
     },
-    "designer/component-spec": {
-      "role": "designer",
-      "description": "Write a component spec for engineering handoff using Atomic Design principles. Use when handing off a UI component to engineering, documenting a design system component, or speccing a new component.",
+    "accountant/budget-variance-analysis": {
+      "role": "accountant",
+      "description": "Analyze budget vs actual variances with root cause and corrective actions",
       "tags": [
-        "design",
-        "components",
-        "handoff",
-        "atomic-design"
+        "accounting",
+        "budget",
+        "variance"
       ]
     },
-    "designer/design-system-doc": {
-      "role": "designer",
-      "description": "Document a design system component with usage rules, tokens, and examples using Atomic Design principles. Use when building or maintaining a design system.",
+    "accountant/financial-statement-review": {
+      "role": "accountant",
+      "description": "Analyze and interpret financial statements for performance, risk, and quality signals",
       "tags": [
-        "design",
-        "design-system",
-        "documentation",
-        "atomic-design"
-      ]
-    },
-    "devops/incident-response": {
-      "role": "devops",
-      "description": "Structure and run an incident response using SRE principles. Use when a production incident occurs, a service is degraded, or on-call engineer needs to run a structured response.",
-      "tags": [
-        "devops",
-        "incident",
-        "sre",
-        "on-call"
-      ]
-    },
-    "devops/runbook": {
-      "role": "devops",
-      "description": "Write an operational runbook for a service or on-call procedure using SRE standards. Use when documenting how to operate, troubleshoot, or respond to alerts for a service.",
-      "tags": [
-        "devops",
-        "runbook",
-        "sre",
-        "operations",
-        "on-call"
-      ]
-    },
-    "devops/deployment-checklist": {
-      "role": "devops",
-      "description": "Run a pre and post-deployment checklist to reduce change failure rate. Use when deploying to production, planning a release, or reviewing deployment readiness.",
-      "tags": [
-        "devops",
-        "deployment",
-        "checklist",
-        "release",
-        "ci-cd"
-      ]
-    },
-    "devops/postmortem": {
-      "role": "devops",
-      "description": "Write a blameless postmortem after a production incident using human factors principles. Use when conducting a post-incident review, learning from an outage, or documenting what happened and why.",
-      "tags": [
-        "devops",
-        "postmortem",
-        "incident",
-        "sre",
-        "learning"
-      ]
-    },
-    "qa/risk-based-testing": {
-      "role": "qa",
-      "description": "Allocate testing effort based on risk and likelihood of failure using Google's SET/SWE/TE model",
-      "tags": [
-        "testing",
-        "risk",
-        "strategy",
-        "qa"
-      ]
-    },
-    "qa/exploratory-testing": {
-      "role": "qa",
-      "description": "Run structured exploratory testing sessions using charters, timeboxing, and heuristics",
-      "tags": [
-        "testing",
-        "exploratory",
-        "charters",
-        "heuristics",
-        "qa"
-      ]
-    },
-    "leadership/team-health-check": {
-      "role": "leadership",
-      "description": "Assess team health using the Five Dysfunctions model across trust, conflict, commitment, accountability, and results",
-      "tags": [
-        "leadership",
-        "team",
-        "health",
-        "five-dysfunctions"
-      ]
-    },
-    "leadership/feedback-delivery": {
-      "role": "leadership",
-      "description": "Deliver feedback using Radical Candor's care personally + challenge directly framework",
-      "tags": [
-        "leadership",
-        "feedback",
-        "radical-candor",
-        "communication"
-      ]
-    },
-    "leadership/one-on-one": {
-      "role": "leadership",
-      "description": "Run structured 1:1s with direct reports using Manager's Path and High Output Management frameworks",
-      "tags": [
-        "leadership",
-        "1on1",
-        "management",
-        "communication"
-      ]
-    },
-    "leadership/leadership-transition": {
-      "role": "leadership",
-      "description": "Navigate a leadership role transition using the First 90 Days 30/60/90 framework",
-      "tags": [
-        "leadership",
-        "transition",
-        "onboarding",
-        "strategy"
-      ]
-    },
-    "leadership/team-multiplier": {
-      "role": "leadership",
-      "description": "Assess and shift your leadership style from Diminisher to Multiplier using Liz Wiseman's framework",
-      "tags": [
-        "leadership",
-        "multipliers",
-        "coaching",
-        "empowerment"
-      ]
-    },
-    "leadership/psychological-safety": {
-      "role": "leadership",
-      "description": "Build psychological safety in your team using Leaders Eat Last Circle of Safety model",
-      "tags": [
-        "leadership",
-        "safety",
-        "culture",
-        "trust"
-      ]
-    },
-    "program-delivery-manager/dependency-mapping": {
-      "role": "program-delivery-manager",
-      "description": "Surface and visualize hidden dependencies blocking delivery using Making Work Visible (DeGrandis)",
-      "tags": [
-        "delivery",
-        "dependencies",
-        "flow",
-        "kanban"
-      ]
-    },
-    "program-delivery-manager/release-planning": {
-      "role": "program-delivery-manager",
-      "description": "Build a velocity-based release roadmap with risk buffers using Agile Estimating and Planning (Cohn)",
-      "tags": [
-        "delivery",
-        "planning",
-        "velocity",
-        "release"
-      ]
-    },
-    "program-delivery-manager/delivery-risk-review": {
-      "role": "program-delivery-manager",
-      "description": "Identify, score, and mitigate delivery risks using The Phoenix Project and The Art of Project Management",
-      "tags": [
-        "delivery",
-        "risk",
-        "program-management"
-      ]
-    },
-    "program-delivery-manager/program-status-report": {
-      "role": "program-delivery-manager",
-      "description": "Write a structured weekly or bi-weekly program status report with RAG status, blockers, and decisions needed",
-      "tags": [
-        "delivery",
-        "reporting",
-        "stakeholders",
-        "rag-status"
-      ]
-    },
-    "program-delivery-manager/milestone-scoping": {
-      "role": "program-delivery-manager",
-      "description": "Scope a milestone to a fixed time window with variable scope using Shape Up and The Art of Project Management",
-      "tags": [
-        "delivery",
-        "scoping",
-        "milestones",
-        "shape-up"
-      ]
-    },
-    "program-delivery-manager/flow-metrics-review": {
-      "role": "program-delivery-manager",
-      "description": "Analyze cycle time, WIP, throughput, and DORA metrics to identify delivery bottlenecks",
-      "tags": [
-        "delivery",
-        "metrics",
-        "dora",
-        "flow",
-        "kanban"
-      ]
-    },
-    "founder/customer-discovery": {
-      "role": "founder",
-      "description": "Run structured customer discovery interviews using The Mom Test to surface real problems without leading the witness",
-      "tags": [
-        "founder",
-        "discovery",
-        "research",
-        "mom-test"
-      ]
-    },
-    "founder/pitch-narrative": {
-      "role": "founder",
-      "description": "Craft a compelling startup pitch narrative using Zero to One's secret-first framework",
-      "tags": [
-        "founder",
-        "pitch",
-        "storytelling",
-        "fundraising"
-      ]
-    },
-    "founder/investor-update": {
-      "role": "founder",
-      "description": "Write a structured monthly or quarterly investor update with wins, struggles, and specific asks",
-      "tags": [
-        "founder",
-        "investors",
-        "communication",
-        "reporting"
-      ]
-    },
-    "founder/business-model-canvas": {
-      "role": "founder",
-      "description": "Design and stress-test a business model canvas using Lean Startup build-measure-learn loops",
-      "tags": [
-        "founder",
-        "business-model",
-        "lean-startup",
-        "strategy"
-      ]
-    },
-    "founder/fundraising-email": {
-      "role": "founder",
-      "description": "Write a cold investor outreach email using Traction's traction-first framing",
-      "tags": [
-        "founder",
-        "fundraising",
-        "outreach",
-        "email"
-      ]
-    },
-    "data-scientist/eda-report": {
-      "role": "data-scientist",
-      "description": "Run structured exploratory data analysis and produce an audit report with quality findings and recommended treatments",
-      "tags": [
-        "data-science",
-        "eda",
-        "data-quality",
+        "accounting",
+        "financial-statements",
         "analysis"
       ]
     },
-    "data-scientist/data-story": {
-      "role": "data-scientist",
-      "description": "Communicate data insights to non-technical stakeholders using Storytelling with Data's conclusion-first narrative structure",
+    "accountant/month-end-close": {
+      "role": "accountant",
+      "description": "Run a structured month-end close process with reconciliations and sign-off",
       "tags": [
-        "data-science",
-        "communication",
-        "visualization",
-        "stakeholders"
+        "accounting",
+        "close",
+        "reconciliation"
       ]
     },
-    "data-scientist/experiment-design": {
-      "role": "data-scientist",
-      "description": "Design statistically rigorous A/B tests and hypothesis tests with pre-committed sample sizes and stopping rules",
+    "accountant/tax-position-memo": {
+      "role": "accountant",
+      "description": "Write a technical tax position memo supporting a filing position",
       "tags": [
-        "data-science",
-        "experimentation",
-        "statistics",
-        "ab-testing"
+        "accounting",
+        "tax",
+        "memo"
       ]
     },
-    "data-scientist/feature-engineering": {
-      "role": "data-scientist",
-      "description": "Design and implement features from raw data including encoding, transformations, interactions, and leakage prevention",
+    "business-analyst/acceptance-criteria-writer": {
+      "role": "business-analyst",
+      "description": "Write measurable acceptance criteria using Fit Criteria and Given-When-Then formats",
       "tags": [
-        "data-science",
-        "feature-engineering",
-        "ml",
+        "requirements",
+        "acceptance-criteria",
+        "testing"
+      ]
+    },
+    "business-analyst/brd-writer": {
+      "role": "business-analyst",
+      "description": "Write a Business Requirements Document from stakeholder inputs and meeting notes",
+      "tags": [
+        "requirements",
+        "documentation",
+        "BRD"
+      ]
+    },
+    "business-analyst/cost-benefit-analysis": {
+      "role": "business-analyst",
+      "description": "Build a cost-benefit analysis with ROI, payback period, and risk-adjusted projections",
+      "tags": [
+        "analysis",
+        "cost-benefit",
+        "business-case"
+      ]
+    },
+    "business-analyst/data-dictionary": {
+      "role": "business-analyst",
+      "description": "Generate a data dictionary from database schemas, APIs, or spec documents",
+      "tags": [
+        "data",
+        "documentation",
         "modeling"
       ]
     },
-    "data-scientist/model-card": {
-      "role": "data-scientist",
-      "description": "Document a machine learning model with performance metrics, subgroup analysis, failure modes, and monitoring plan",
+    "business-analyst/decision-matrix": {
+      "role": "business-analyst",
+      "description": "Build a weighted decision matrix to evaluate and rank solution options",
       "tags": [
-        "data-science",
-        "ml",
-        "documentation",
-        "model-card",
-        "fairness"
+        "analysis",
+        "decision",
+        "prioritization"
       ]
     },
-    "marketing/positioning-doc": {
-      "role": "marketing",
-      "description": "Write a product positioning document using Ries and Trout's competitive alternatives framework and owned attributes",
+    "business-analyst/frd-writer": {
+      "role": "business-analyst",
+      "description": "Write a Functional Requirements Document from a BRD or feature brief",
       "tags": [
-        "marketing",
-        "positioning",
-        "messaging",
+        "requirements",
+        "documentation",
+        "FRD"
+      ]
+    },
+    "business-analyst/gap-analysis": {
+      "role": "business-analyst",
+      "description": "Identify gaps between current state and desired state with prioritized recommendations",
+      "tags": [
+        "analysis",
+        "gap",
         "strategy"
       ]
     },
-    "marketing/messaging-framework": {
-      "role": "marketing",
-      "description": "Build a brand messaging framework and homepage copy using StoryBrand's customer-as-hero structure",
+    "business-analyst/impact-assessment": {
+      "role": "business-analyst",
+      "description": "Assess business impact of a proposed change across people, process, technology, and policy",
       "tags": [
-        "marketing",
-        "messaging",
-        "storybrand",
-        "copywriting"
+        "analysis",
+        "impact",
+        "change-management"
       ]
     },
-    "marketing/campaign-brief": {
-      "role": "marketing",
-      "description": "Write a marketing campaign brief with One Metric That Matters, audience definition, and channel plan using Lean Analytics",
+    "business-analyst/process-mapper": {
+      "role": "business-analyst",
+      "description": "Map as-is and to-be business processes using BPMN-style structured notation",
       "tags": [
-        "marketing",
-        "campaign",
-        "brief",
-        "planning"
+        "process",
+        "BPMN",
+        "modeling"
       ]
     },
-    "marketing/growth-experiment": {
-      "role": "marketing",
-      "description": "Design and document a channel growth experiment using Traction's Bullseye Framework with pre-committed success thresholds",
+    "business-analyst/requirements-elicitation": {
+      "role": "business-analyst",
+      "description": "Facilitate structured requirements gathering using interviews, workshops, and observation",
       "tags": [
-        "marketing",
-        "growth",
-        "experimentation",
-        "traction"
+        "requirements",
+        "elicitation",
+        "BABOK"
       ]
     },
-    "marketing/customer-persona": {
-      "role": "marketing",
-      "description": "Build a buyer persona anchored to buying context, trigger, and job-to-be-done using Obviously Awesome's framework",
+    "business-analyst/root-cause-analysis": {
+      "role": "business-analyst",
+      "description": "Run structured root cause analysis using 5 Whys, fishbone, or A3 techniques",
       "tags": [
-        "marketing",
-        "persona",
-        "research",
-        "jtbd"
+        "analysis",
+        "root-cause",
+        "problem-solving"
       ]
     },
-    "sales/discovery-call": {
-      "role": "sales",
-      "description": "Structure a sales discovery call using SPIN Selling's situation, problem, implication, and need-payoff question sequence",
+    "business-analyst/stakeholder-map": {
+      "role": "business-analyst",
+      "description": "Map stakeholders by influence, interest, and communication needs using a power-interest grid",
       "tags": [
-        "sales",
-        "discovery",
-        "spin-selling",
-        "qualification"
+        "stakeholders",
+        "communication",
+        "RACI"
       ]
     },
-    "sales/deal-qualification": {
-      "role": "sales",
-      "description": "Qualify a deal using the MEDDIC framework to assess metrics, economic buyer, decision criteria, and champion",
+    "business-analyst/traceability-matrix": {
+      "role": "business-analyst",
+      "description": "Create a requirements traceability matrix linking requirements to design, test, and delivery",
       "tags": [
-        "sales",
-        "qualification",
-        "meddic",
-        "pipeline"
+        "requirements",
+        "traceability",
+        "quality"
       ]
     },
-    "sales/sales-proposal": {
-      "role": "sales",
-      "description": "Write a compelling sales proposal using The Challenger Sale's teach-tailor-take-control structure",
+    "business-analyst/uat-plan": {
+      "role": "business-analyst",
+      "description": "Generate a User Acceptance Testing plan with test scenarios, entry-exit criteria, and sign-off",
       "tags": [
-        "sales",
-        "proposal",
-        "challenger-sale",
-        "closing"
+        "testing",
+        "UAT",
+        "validation"
       ]
     },
-    "sales/objection-handling": {
-      "role": "sales",
-      "description": "Handle sales objections using Never Split the Difference's tactical empathy and labeling techniques",
+    "business-analyst/use-case-writer": {
+      "role": "business-analyst",
+      "description": "Generate structured use cases with main flow, alternate flows, and exception handling",
       "tags": [
-        "sales",
-        "objections",
-        "negotiation",
-        "communication"
-      ]
-    },
-    "sales/account-plan": {
-      "role": "sales",
-      "description": "Build a strategic account plan identifying key players, buying influences, and expansion paths using Miller Heiman's framework",
-      "tags": [
-        "sales",
-        "account-planning",
-        "strategic-selling",
-        "enterprise"
-      ]
-    },
-    "customer-success/qbr-deck": {
-      "role": "customer-success",
-      "description": "Build a structured Quarterly Business Review deck: value delivered, health score, goals vs actuals, next 90-day plan",
-      "tags": [
-        "customer-success",
-        "qbr",
-        "renewals",
-        "retention"
-      ]
-    },
-    "customer-success/churn-risk-analysis": {
-      "role": "customer-success",
-      "description": "Analyze customer health signals, identify churn risk flags, and generate an intervention playbook",
-      "tags": [
-        "customer-success",
-        "churn",
-        "health-score",
-        "retention"
-      ]
-    },
-    "customer-success/escalation-playbook": {
-      "role": "customer-success",
-      "description": "De-escalate a customer crisis using acknowledge-triage-DRI-cadence-resolution framework",
-      "tags": [
-        "customer-success",
-        "escalation",
-        "crisis",
-        "communication"
-      ]
-    },
-    "customer-success/health-scorecard": {
-      "role": "customer-success",
-      "description": "Build a customer health scorecard across usage, engagement, adoption, NPS, support load, and financial risk",
-      "tags": [
-        "customer-success",
-        "health-score",
-        "metrics",
-        "churn"
-      ]
-    },
-    "customer-success/onboarding-plan": {
-      "role": "customer-success",
-      "description": "Design a 100-day customer onboarding plan with phase gates from Never Lose a Customer Again",
-      "tags": [
-        "customer-success",
-        "onboarding",
-        "activation",
-        "adoption"
-      ]
-    },
-    "customer-success/expansion-discovery": {
-      "role": "customer-success",
-      "description": "Identify expansion signals and structure upsell or cross-sell conversations using land-and-expand principles",
-      "tags": [
-        "customer-success",
-        "expansion",
-        "upsell",
-        "nrr"
-      ]
-    },
-    "recruiter/job-description": {
-      "role": "recruiter",
-      "description": "Write a performance-based job description using Hire With Your Head outcomes model",
-      "tags": [
-        "recruiting",
-        "hiring",
-        "job-description"
-      ]
-    },
-    "recruiter/interview-scorecard": {
-      "role": "recruiter",
-      "description": "Build a structured interview scorecard using the Who method: outcomes, competencies, A/B/C rubric",
-      "tags": [
-        "recruiting",
-        "hiring",
-        "interview",
-        "scorecard"
-      ]
-    },
-    "recruiter/candidate-debrief": {
-      "role": "recruiter",
-      "description": "Run a structured post-interview debrief meeting with calibration protocol and hire/no-hire framework",
-      "tags": [
-        "recruiting",
-        "hiring",
-        "debrief",
-        "calibration"
-      ]
-    },
-    "recruiter/offer-letter": {
-      "role": "recruiter",
-      "description": "Construct a compelling offer with comp philosophy, equity explanation, total comp summary, and negotiation guidance",
-      "tags": [
-        "recruiting",
-        "hiring",
-        "offer",
-        "compensation"
-      ]
-    },
-    "recruiter/sourcing-strategy": {
-      "role": "recruiter",
-      "description": "Build a multi-channel sourcing pipeline with outbound templates, boolean search, and response rate tactics",
-      "tags": [
-        "recruiting",
-        "sourcing",
-        "pipeline",
-        "outreach"
-      ]
-    },
-    "recruiter/intake-meeting": {
-      "role": "recruiter",
-      "description": "Run a recruiter-hiring manager intake meeting to define the scorecard, align on process, and set timeline expectations",
-      "tags": [
-        "recruiting",
-        "hiring",
-        "intake",
-        "alignment"
+        "requirements",
+        "use-cases",
+        "Cockburn"
       ]
     },
     "consultant/client-proposal": {
@@ -801,6 +208,16 @@
         "pyramid-principle"
       ]
     },
+    "consultant/findings-presentation": {
+      "role": "consultant",
+      "description": "Structure a consulting findings presentation using Pyramid Principle storyline: situation-complication-resolution with evidence before recommendation",
+      "tags": [
+        "consulting",
+        "presentations",
+        "pyramid-principle",
+        "storytelling"
+      ]
+    },
     "consultant/issue-tree": {
       "role": "consultant",
       "description": "Decompose a problem MECE using issue trees, generate hypotheses, and prioritize branches for investigation",
@@ -819,304 +236,6 @@
         "reporting",
         "status",
         "stakeholders"
-      ]
-    },
-    "consultant/findings-presentation": {
-      "role": "consultant",
-      "description": "Structure a consulting findings presentation using Pyramid Principle storyline: situation-complication-resolution with evidence before recommendation",
-      "tags": [
-        "consulting",
-        "presentations",
-        "pyramid-principle",
-        "storytelling"
-      ]
-    },
-    "data-engineer/pipeline-design-doc": {
-      "role": "data-engineer",
-      "description": "Write a data pipeline design document covering architecture, data flow, contracts, failure modes, and operational details",
-      "tags": [
-        "data-engineering",
-        "pipeline",
-        "architecture",
-        "documentation"
-      ]
-    },
-    "data-engineer/schema-spec": {
-      "role": "data-engineer",
-      "description": "Write a data schema specification with field definitions, constraints, business rules, and schema evolution policy",
-      "tags": [
-        "data-engineering",
-        "schema",
-        "data-modeling",
-        "documentation"
-      ]
-    },
-    "data-engineer/etl-runbook": {
-      "role": "data-engineer",
-      "description": "Write an ETL operational runbook covering monitoring, failure diagnosis, data quality checks, and backfill procedures",
-      "tags": [
-        "data-engineering",
-        "etl",
-        "operations",
-        "runbook"
-      ]
-    },
-    "security/threat-model": {
-      "role": "security",
-      "description": "Write a threat model document using STRIDE framework to identify, assess, and prioritize threats per system component",
-      "tags": [
-        "security",
-        "threat-modeling",
-        "stride",
-        "architecture"
-      ]
-    },
-    "security/pentest-scope": {
-      "role": "security",
-      "description": "Write a penetration test scope document with targets, rules of engagement, prohibited techniques, and deliverables",
-      "tags": [
-        "security",
-        "penetration-testing",
-        "red-team",
-        "engagement"
-      ]
-    },
-    "security/vuln-report": {
-      "role": "security",
-      "description": "Write a vulnerability report with executive summary, technical description, reproduction steps, evidence, impact, and remediation",
-      "tags": [
-        "security",
-        "vulnerability",
-        "bug-bounty",
-        "reporting"
-      ]
-    },
-    "researcher/literature-review": {
-      "role": "researcher",
-      "description": "Write a literature review that synthesizes research by theme, identifies contradictions, and frames a research gap",
-      "tags": [
-        "research",
-        "literature-review",
-        "academic",
-        "synthesis"
-      ]
-    },
-    "researcher/hypothesis-framing": {
-      "role": "researcher",
-      "description": "Write or refine a research hypothesis with operationalized variables, null and alternative hypotheses, and theoretical basis",
-      "tags": [
-        "research",
-        "hypothesis",
-        "academic",
-        "methodology"
-      ]
-    },
-    "researcher/study-design": {
-      "role": "researcher",
-      "description": "Design a research study with paradigm selection, sample size, procedure, instruments, analysis plan, and ethics",
-      "tags": [
-        "research",
-        "study-design",
-        "methodology",
-        "academic"
-      ]
-    },
-    "accountant/financial-statement-review": {
-      "role": "accountant",
-      "description": "Analyze and interpret financial statements for performance, risk, and quality signals",
-      "tags": [
-        "accounting",
-        "financial-statements",
-        "analysis"
-      ]
-    },
-    "accountant/month-end-close": {
-      "role": "accountant",
-      "description": "Run a structured month-end close process with reconciliations and sign-off",
-      "tags": [
-        "accounting",
-        "close",
-        "reconciliation"
-      ]
-    },
-    "accountant/audit-workpaper": {
-      "role": "accountant",
-      "description": "Write clear, reviewable audit workpapers with objective, procedures, evidence, and conclusion",
-      "tags": [
-        "accounting",
-        "audit",
-        "workpaper"
-      ]
-    },
-    "accountant/budget-variance-analysis": {
-      "role": "accountant",
-      "description": "Analyze budget vs actual variances with root cause and corrective actions",
-      "tags": [
-        "accounting",
-        "budget",
-        "variance"
-      ]
-    },
-    "accountant/tax-position-memo": {
-      "role": "accountant",
-      "description": "Write a technical tax position memo supporting a filing position",
-      "tags": [
-        "accounting",
-        "tax",
-        "memo"
-      ]
-    },
-    "pm/discovery-interview-prep": {
-      "role": "pm",
-      "description": "Generate user research interview scripts using Mom Test principles",
-      "tags": [
-        "product",
-        "research",
-        "interviews"
-      ]
-    },
-    "pm/epic-breakdown": {
-      "role": "pm",
-      "description": "Decompose large epics into sprint-ready sub-epics using 9 splitting patterns",
-      "tags": [
-        "product",
-        "agile",
-        "planning"
-      ]
-    },
-    "pm/go-to-market-checklist": {
-      "role": "pm",
-      "description": "Generate pre-launch readiness checklists for feature releases",
-      "tags": [
-        "product",
-        "launch",
-        "checklist"
-      ]
-    },
-    "pm/metrics-dashboard-spec": {
-      "role": "pm",
-      "description": "Generate dashboard specifications from product spec success metrics",
-      "tags": [
-        "product",
-        "analytics",
-        "metrics"
-      ]
-    },
-    "pm/opportunity-solution-tree": {
-      "role": "pm",
-      "description": "Build Opportunity Solution Trees using Teresa Torres framework",
-      "tags": [
-        "product",
-        "discovery",
-        "prioritization"
-      ]
-    },
-    "pm/persona-updater": {
-      "role": "pm",
-      "description": "Update user personas from new feedback pilot data or research",
-      "tags": [
-        "product",
-        "personas",
-        "research"
-      ]
-    },
-    "pm/pilot-debrief": {
-      "role": "pm",
-      "description": "Synthesize pilot observations into structured debrief reports",
-      "tags": [
-        "product",
-        "pilot",
-        "feedback"
-      ]
-    },
-    "pm/compliance-auditor": {
-      "role": "pm",
-      "description": "Audit feature specs against India's DPDP Act 2023",
-      "tags": [
-        "product",
-        "compliance",
-        "privacy"
-      ]
-    },
-    "pm/product-thinking": {
-      "role": "pm",
-      "description": "Run structured product thinking exercises before writing a spec",
-      "tags": [
-        "product",
-        "strategy",
-        "frameworks"
-      ]
-    },
-    "pm/release-notes-writer": {
-      "role": "pm",
-      "description": "Generate ship-ready release notes from specs and tickets",
-      "tags": [
-        "product",
-        "release",
-        "documentation"
-      ]
-    },
-    "pm/retro-synthesizer": {
-      "role": "pm",
-      "description": "Synthesize sprint retrospective notes into categorized action items",
-      "tags": [
-        "agile",
-        "retrospective",
-        "process"
-      ]
-    },
-    "pm/risk-register": {
-      "role": "pm",
-      "description": "Maintain a centralized living risk register across projects",
-      "tags": [
-        "product",
-        "risk",
-        "planning"
-      ]
-    },
-    "pm/spec-reviewer": {
-      "role": "pm",
-      "description": "Quality gate for product specifications before stakeholder review",
-      "tags": [
-        "product",
-        "quality",
-        "review"
-      ]
-    },
-    "pm/sprint-review-prep": {
-      "role": "pm",
-      "description": "Generate sprint review talking points and demo scripts",
-      "tags": [
-        "agile",
-        "sprint",
-        "demo"
-      ]
-    },
-    "pm/stakeholder-update": {
-      "role": "pm",
-      "description": "Generate structured weekly status updates for leadership",
-      "tags": [
-        "product",
-        "reporting",
-        "stakeholders"
-      ]
-    },
-    "pm/workshop-synthesizer": {
-      "role": "pm",
-      "description": "Distill workshop notes into ranked themes and roadmap findings",
-      "tags": [
-        "product",
-        "workshops",
-        "research"
-      ]
-    },
-    "pm/wsjf-scorer": {
-      "role": "pm",
-      "description": "Calculate WSJF scores for feature prioritization",
-      "tags": [
-        "product",
-        "prioritization",
-        "wsjf"
       ]
     },
     "content-creator/linkedin-post": {
@@ -1173,13 +292,1070 @@
         "formatting"
       ]
     },
-    "shared/jira-ticket-creator": {
-      "role": "shared",
-      "description": "Create Jira tickets from meeting notes user stories or quick lists",
+    "customer-success/churn-risk-analysis": {
+      "role": "customer-success",
+      "description": "Analyze customer health signals, identify churn risk flags, and generate an intervention playbook",
       "tags": [
-        "jira",
-        "tickets",
-        "productivity"
+        "customer-success",
+        "churn",
+        "health-score",
+        "retention"
+      ]
+    },
+    "customer-success/escalation-playbook": {
+      "role": "customer-success",
+      "description": "De-escalate a customer crisis using acknowledge-triage-DRI-cadence-resolution framework",
+      "tags": [
+        "customer-success",
+        "escalation",
+        "crisis",
+        "communication"
+      ]
+    },
+    "customer-success/expansion-discovery": {
+      "role": "customer-success",
+      "description": "Identify expansion signals and structure upsell or cross-sell conversations using land-and-expand principles",
+      "tags": [
+        "customer-success",
+        "expansion",
+        "upsell",
+        "nrr"
+      ]
+    },
+    "customer-success/health-scorecard": {
+      "role": "customer-success",
+      "description": "Build a customer health scorecard across usage, engagement, adoption, NPS, support load, and financial risk",
+      "tags": [
+        "customer-success",
+        "health-score",
+        "metrics",
+        "churn"
+      ]
+    },
+    "customer-success/onboarding-plan": {
+      "role": "customer-success",
+      "description": "Design a 100-day customer onboarding plan with phase gates from Never Lose a Customer Again",
+      "tags": [
+        "customer-success",
+        "onboarding",
+        "activation",
+        "adoption"
+      ]
+    },
+    "customer-success/qbr-deck": {
+      "role": "customer-success",
+      "description": "Build a structured Quarterly Business Review deck: value delivered, health score, goals vs actuals, next 90-day plan",
+      "tags": [
+        "customer-success",
+        "qbr",
+        "renewals",
+        "retention"
+      ]
+    },
+    "data-engineer/etl-runbook": {
+      "role": "data-engineer",
+      "description": "Write an ETL operational runbook covering monitoring, failure diagnosis, data quality checks, and backfill procedures",
+      "tags": [
+        "data-engineering",
+        "etl",
+        "operations",
+        "runbook"
+      ]
+    },
+    "data-engineer/pipeline-design-doc": {
+      "role": "data-engineer",
+      "description": "Write a data pipeline design document covering architecture, data flow, contracts, failure modes, and operational details",
+      "tags": [
+        "data-engineering",
+        "pipeline",
+        "architecture",
+        "documentation"
+      ]
+    },
+    "data-engineer/schema-spec": {
+      "role": "data-engineer",
+      "description": "Write a data schema specification with field definitions, constraints, business rules, and schema evolution policy",
+      "tags": [
+        "data-engineering",
+        "schema",
+        "data-modeling",
+        "documentation"
+      ]
+    },
+    "data-scientist/data-story": {
+      "role": "data-scientist",
+      "description": "Communicate data insights to non-technical stakeholders using Storytelling with Data's conclusion-first narrative structure",
+      "tags": [
+        "data-science",
+        "communication",
+        "visualization",
+        "stakeholders"
+      ]
+    },
+    "data-scientist/eda-report": {
+      "role": "data-scientist",
+      "description": "Run structured exploratory data analysis and produce an audit report with quality findings and recommended treatments",
+      "tags": [
+        "data-science",
+        "eda",
+        "data-quality",
+        "analysis"
+      ]
+    },
+    "data-scientist/experiment-design": {
+      "role": "data-scientist",
+      "description": "Design statistically rigorous A/B tests and hypothesis tests with pre-committed sample sizes and stopping rules",
+      "tags": [
+        "data-science",
+        "experimentation",
+        "statistics",
+        "ab-testing"
+      ]
+    },
+    "data-scientist/feature-engineering": {
+      "role": "data-scientist",
+      "description": "Design and implement features from raw data including encoding, transformations, interactions, and leakage prevention",
+      "tags": [
+        "data-science",
+        "feature-engineering",
+        "ml",
+        "modeling"
+      ]
+    },
+    "data-scientist/model-card": {
+      "role": "data-scientist",
+      "description": "Document a machine learning model with performance metrics, subgroup analysis, failure modes, and monitoring plan",
+      "tags": [
+        "data-science",
+        "ml",
+        "documentation",
+        "model-card",
+        "fairness"
+      ]
+    },
+    "designer/component-spec": {
+      "role": "designer",
+      "description": "Write a component spec for engineering handoff using Atomic Design principles. Use when handing off a UI component to engineering, documenting a design system component, or speccing a new component.",
+      "tags": [
+        "design",
+        "components",
+        "handoff",
+        "atomic-design"
+      ]
+    },
+    "designer/design-critique": {
+      "role": "designer",
+      "description": "Critique a design for usability, hierarchy, and accessibility using Don Norman's principles. Use when reviewing screens, flows, mockups, or UI designs.",
+      "tags": [
+        "design",
+        "critique",
+        "usability",
+        "ux"
+      ]
+    },
+    "designer/design-system-doc": {
+      "role": "designer",
+      "description": "Document a design system component with usage rules, tokens, and examples using Atomic Design principles. Use when building or maintaining a design system.",
+      "tags": [
+        "design",
+        "design-system",
+        "documentation",
+        "atomic-design"
+      ]
+    },
+    "designer/figma-copy-rewriter": {
+      "role": "designer",
+      "description": "Rewrite UI copy on Figma files for clarity, consistency, and plain language",
+      "tags": [
+        "design",
+        "figma",
+        "copy",
+        "ux-writing"
+      ]
+    },
+    "designer/ux-audit": {
+      "role": "designer",
+      "description": "Audit a user flow for friction and drop-off points using Krug's usability principles. Use when analyzing a user journey, onboarding flow, or feature flow for usability problems.",
+      "tags": [
+        "design",
+        "ux",
+        "audit",
+        "usability"
+      ]
+    },
+    "devops/deployment-checklist": {
+      "role": "devops",
+      "description": "Run a pre and post-deployment checklist to reduce change failure rate. Use when deploying to production, planning a release, or reviewing deployment readiness.",
+      "tags": [
+        "devops",
+        "deployment",
+        "checklist",
+        "release",
+        "ci-cd"
+      ]
+    },
+    "devops/incident-response": {
+      "role": "devops",
+      "description": "Structure and run an incident response using SRE principles. Use when a production incident occurs, a service is degraded, or on-call engineer needs to run a structured response.",
+      "tags": [
+        "devops",
+        "incident",
+        "sre",
+        "on-call"
+      ]
+    },
+    "devops/postmortem": {
+      "role": "devops",
+      "description": "Write a blameless postmortem after a production incident using human factors principles. Use when conducting a post-incident review, learning from an outage, or documenting what happened and why.",
+      "tags": [
+        "devops",
+        "postmortem",
+        "incident",
+        "sre",
+        "learning"
+      ]
+    },
+    "devops/runbook": {
+      "role": "devops",
+      "description": "Write an operational runbook for a service or on-call procedure using SRE standards. Use when documenting how to operate, troubleshoot, or respond to alerts for a service.",
+      "tags": [
+        "devops",
+        "runbook",
+        "sre",
+        "operations",
+        "on-call"
+      ]
+    },
+    "engineer/api-design": {
+      "role": "engineer",
+      "description": "Design clean, consistent REST or GraphQL APIs using deep module principles. Use when designing API endpoints, reviewing API contracts, or creating API documentation.",
+      "tags": [
+        "engineering",
+        "api",
+        "design",
+        "architecture"
+      ]
+    },
+    "engineer/code-review": {
+      "role": "engineer",
+      "description": "Review code for quality, bugs, and design issues using Clean Code principles. Use when asked to review code, do a code review, check a PR, review a diff, or assess code quality.",
+      "tags": [
+        "engineering",
+        "code-quality",
+        "review"
+      ]
+    },
+    "engineer/debug": {
+      "role": "engineer",
+      "description": "Debug systematically using reproduce-isolate-fix methodology. Use when encountering a bug, unexpected behavior, test failure, or error that needs diagnosis.",
+      "tags": [
+        "engineering",
+        "debugging",
+        "troubleshooting"
+      ]
+    },
+    "engineer/karpathy-guidelines": {
+      "role": "engineer",
+      "description": "Behavioral guidelines to reduce common LLM coding mistakes \u2014 simplicity, surgical changes, verification before claiming done",
+      "tags": [
+        "engineering",
+        "llm",
+        "coding",
+        "guidelines"
+      ]
+    },
+    "engineer/pr-description": {
+      "role": "engineer",
+      "description": "Write clear, reviewable pull request descriptions that communicate what changed and why. Use when opening a PR, writing a commit message, or documenting a code change.",
+      "tags": [
+        "engineering",
+        "git",
+        "communication",
+        "pull-request"
+      ]
+    },
+    "engineer/tech-debt": {
+      "role": "engineer",
+      "description": "Document, scope, and prioritize technical debt using Feathers' seam-finding approach. Use when assessing legacy code, planning refactors, or making a case for paying down tech debt.",
+      "tags": [
+        "engineering",
+        "tech-debt",
+        "refactoring"
+      ]
+    },
+    "engineer/write-tests": {
+      "role": "engineer",
+      "description": "Write unit and integration tests using TDD red-green-refactor cycle. Use when asked to write tests, add test coverage, or test a function or module.",
+      "tags": [
+        "engineering",
+        "testing",
+        "tdd"
+      ]
+    },
+    "founder/business-model-canvas": {
+      "role": "founder",
+      "description": "Design and stress-test a business model canvas using Lean Startup build-measure-learn loops",
+      "tags": [
+        "founder",
+        "business-model",
+        "lean-startup",
+        "strategy"
+      ]
+    },
+    "founder/customer-discovery": {
+      "role": "founder",
+      "description": "Run structured customer discovery interviews using The Mom Test to surface real problems without leading the witness",
+      "tags": [
+        "founder",
+        "discovery",
+        "research",
+        "mom-test"
+      ]
+    },
+    "founder/fundraising-email": {
+      "role": "founder",
+      "description": "Write a cold investor outreach email using Traction's traction-first framing",
+      "tags": [
+        "founder",
+        "fundraising",
+        "outreach",
+        "email"
+      ]
+    },
+    "founder/investor-update": {
+      "role": "founder",
+      "description": "Write a structured monthly or quarterly investor update with wins, struggles, and specific asks",
+      "tags": [
+        "founder",
+        "investors",
+        "communication",
+        "reporting"
+      ]
+    },
+    "founder/pitch-narrative": {
+      "role": "founder",
+      "description": "Craft a compelling startup pitch narrative using Zero to One's secret-first framework",
+      "tags": [
+        "founder",
+        "pitch",
+        "storytelling",
+        "fundraising"
+      ]
+    },
+    "leadership/feedback-delivery": {
+      "role": "leadership",
+      "description": "Deliver feedback using Radical Candor's care personally + challenge directly framework",
+      "tags": [
+        "leadership",
+        "feedback",
+        "radical-candor",
+        "communication"
+      ]
+    },
+    "leadership/leadership-transition": {
+      "role": "leadership",
+      "description": "Navigate a leadership role transition using the First 90 Days 30/60/90 framework",
+      "tags": [
+        "leadership",
+        "transition",
+        "onboarding",
+        "strategy"
+      ]
+    },
+    "leadership/one-on-one": {
+      "role": "leadership",
+      "description": "Run structured 1:1s with direct reports using Manager's Path and High Output Management frameworks",
+      "tags": [
+        "leadership",
+        "1on1",
+        "management",
+        "communication"
+      ]
+    },
+    "leadership/psychological-safety": {
+      "role": "leadership",
+      "description": "Build psychological safety in your team using Leaders Eat Last Circle of Safety model",
+      "tags": [
+        "leadership",
+        "safety",
+        "culture",
+        "trust"
+      ]
+    },
+    "leadership/team-health-check": {
+      "role": "leadership",
+      "description": "Assess team health using the Five Dysfunctions model across trust, conflict, commitment, accountability, and results",
+      "tags": [
+        "leadership",
+        "team",
+        "health",
+        "five-dysfunctions"
+      ]
+    },
+    "leadership/team-multiplier": {
+      "role": "leadership",
+      "description": "Assess and shift your leadership style from Diminisher to Multiplier using Liz Wiseman's framework",
+      "tags": [
+        "leadership",
+        "multipliers",
+        "coaching",
+        "empowerment"
+      ]
+    },
+    "marketing/campaign-brief": {
+      "role": "marketing",
+      "description": "Write a marketing campaign brief with One Metric That Matters, audience definition, and channel plan using Lean Analytics",
+      "tags": [
+        "marketing",
+        "campaign",
+        "brief",
+        "planning"
+      ]
+    },
+    "marketing/customer-persona": {
+      "role": "marketing",
+      "description": "Build a buyer persona anchored to buying context, trigger, and job-to-be-done using Obviously Awesome's framework",
+      "tags": [
+        "marketing",
+        "persona",
+        "research",
+        "jtbd"
+      ]
+    },
+    "marketing/growth-experiment": {
+      "role": "marketing",
+      "description": "Design and document a channel growth experiment using Traction's Bullseye Framework with pre-committed success thresholds",
+      "tags": [
+        "marketing",
+        "growth",
+        "experimentation",
+        "traction"
+      ]
+    },
+    "marketing/messaging-framework": {
+      "role": "marketing",
+      "description": "Build a brand messaging framework and homepage copy using StoryBrand's customer-as-hero structure",
+      "tags": [
+        "marketing",
+        "messaging",
+        "storybrand",
+        "copywriting"
+      ]
+    },
+    "marketing/positioning-doc": {
+      "role": "marketing",
+      "description": "Write a product positioning document using Ries and Trout's competitive alternatives framework and owned attributes",
+      "tags": [
+        "marketing",
+        "positioning",
+        "messaging",
+        "strategy"
+      ]
+    },
+    "pm/11-star-framework": {
+      "role": "pm",
+      "description": "Apply 11-star experience framework to product decisions",
+      "tags": [
+        "product",
+        "framework",
+        "ux"
+      ]
+    },
+    "pm/competitive-analysis": {
+      "role": "pm",
+      "description": "Structure a competitive analysis for a feature, product, or market",
+      "tags": [
+        "product",
+        "research",
+        "strategy"
+      ]
+    },
+    "pm/compliance-auditor": {
+      "role": "pm",
+      "description": "Audit feature specs against India's DPDP Act 2023",
+      "tags": [
+        "product",
+        "compliance",
+        "privacy"
+      ]
+    },
+    "pm/discovery-interview-prep": {
+      "role": "pm",
+      "description": "Generate user research interview scripts using Mom Test principles",
+      "tags": [
+        "product",
+        "research",
+        "interviews"
+      ]
+    },
+    "pm/epic-breakdown": {
+      "role": "pm",
+      "description": "Decompose large epics into sprint-ready sub-epics using 9 splitting patterns",
+      "tags": [
+        "product",
+        "agile",
+        "planning"
+      ]
+    },
+    "pm/experiment-design": {
+      "role": "pm",
+      "description": "Design product experiments using build-measure-learn loops and validated learning",
+      "tags": [
+        "product",
+        "experimentation",
+        "lean",
+        "growth"
+      ]
+    },
+    "pm/feature-spec": {
+      "role": "pm",
+      "description": "Write a concise feature spec one-pager for engineering handoff",
+      "tags": [
+        "product",
+        "engineering",
+        "spec"
+      ]
+    },
+    "pm/go-to-market-checklist": {
+      "role": "pm",
+      "description": "Generate pre-launch readiness checklists for feature releases",
+      "tags": [
+        "product",
+        "launch",
+        "checklist"
+      ]
+    },
+    "pm/meeting-to-spec-update": {
+      "role": "pm",
+      "description": "Update a product spec from a meeting transcript with decisions, open questions, and flowcharts",
+      "tags": [
+        "product",
+        "spec",
+        "meetings",
+        "documentation"
+      ]
+    },
+    "pm/metrics-dashboard-spec": {
+      "role": "pm",
+      "description": "Generate dashboard specifications from product spec success metrics",
+      "tags": [
+        "product",
+        "analytics",
+        "metrics"
+      ]
+    },
+    "pm/okr-writer": {
+      "role": "pm",
+      "description": "Write measurable OKRs from strategic goals or intent",
+      "tags": [
+        "product",
+        "okrs",
+        "strategy"
+      ]
+    },
+    "pm/opportunity-solution-tree": {
+      "role": "pm",
+      "description": "Build Opportunity Solution Trees using Teresa Torres framework",
+      "tags": [
+        "product",
+        "discovery",
+        "prioritization"
+      ]
+    },
+    "pm/outcome-vs-output": {
+      "role": "pm",
+      "description": "Audit a roadmap or backlog to distinguish outcomes from outputs and escape the build trap",
+      "tags": [
+        "product",
+        "strategy",
+        "outcomes"
+      ]
+    },
+    "pm/persona-updater": {
+      "role": "pm",
+      "description": "Update user personas from new feedback pilot data or research",
+      "tags": [
+        "product",
+        "personas",
+        "research"
+      ]
+    },
+    "pm/pilot-debrief": {
+      "role": "pm",
+      "description": "Synthesize pilot observations into structured debrief reports",
+      "tags": [
+        "product",
+        "pilot",
+        "feedback"
+      ]
+    },
+    "pm/pm-weekly-update": {
+      "role": "pm",
+      "description": "Generate weekly or monthly PM status updates from local data (meetings, tickets, decisions)",
+      "tags": [
+        "product",
+        "status",
+        "communication"
+      ]
+    },
+    "pm/prioritization": {
+      "role": "pm",
+      "description": "Prioritize a backlog using RICE or MoSCoW scoring",
+      "tags": [
+        "product",
+        "prioritization",
+        "backlog"
+      ]
+    },
+    "pm/product-discovery": {
+      "role": "pm",
+      "description": "Run structured product discovery to identify what to build before building it",
+      "tags": [
+        "product",
+        "discovery",
+        "research"
+      ]
+    },
+    "pm/product-market-fit": {
+      "role": "pm",
+      "description": "Assess and improve product-market fit using the PMF pyramid",
+      "tags": [
+        "product",
+        "strategy",
+        "pmf",
+        "growth"
+      ]
+    },
+    "pm/product-thinking": {
+      "role": "pm",
+      "description": "Run structured product thinking exercises before writing a spec",
+      "tags": [
+        "product",
+        "strategy",
+        "frameworks"
+      ]
+    },
+    "pm/release-notes-writer": {
+      "role": "pm",
+      "description": "Generate ship-ready release notes from specs and tickets",
+      "tags": [
+        "product",
+        "release",
+        "documentation"
+      ]
+    },
+    "pm/retention-design": {
+      "role": "pm",
+      "description": "Design habit-forming product features using the Hook Model",
+      "tags": [
+        "product",
+        "retention",
+        "engagement",
+        "ux"
+      ]
+    },
+    "pm/retro-synthesizer": {
+      "role": "pm",
+      "description": "Synthesize sprint retrospective notes into categorized action items",
+      "tags": [
+        "agile",
+        "retrospective",
+        "process"
+      ]
+    },
+    "pm/risk-register": {
+      "role": "pm",
+      "description": "Maintain a centralized living risk register across projects",
+      "tags": [
+        "product",
+        "risk",
+        "planning"
+      ]
+    },
+    "pm/spec-reviewer": {
+      "role": "pm",
+      "description": "Quality gate for product specifications before stakeholder review",
+      "tags": [
+        "product",
+        "quality",
+        "review"
+      ]
+    },
+    "pm/spec-to-ux-tasks": {
+      "role": "pm",
+      "description": "Extract UX tasks from a product spec and save as prioritised ux-tasks.md",
+      "tags": [
+        "product",
+        "ux",
+        "spec",
+        "handoff"
+      ]
+    },
+    "pm/sprint-review-prep": {
+      "role": "pm",
+      "description": "Generate sprint review talking points and demo scripts",
+      "tags": [
+        "agile",
+        "sprint",
+        "demo"
+      ]
+    },
+    "pm/stakeholder-update": {
+      "role": "pm",
+      "description": "Generate structured weekly status updates for leadership",
+      "tags": [
+        "product",
+        "reporting",
+        "stakeholders"
+      ]
+    },
+    "pm/team-brief": {
+      "role": "pm",
+      "description": "Write an empowered team brief that gives engineers a problem to solve, not a solution to build",
+      "tags": [
+        "product",
+        "leadership",
+        "empowerment"
+      ]
+    },
+    "pm/workshop-synthesizer": {
+      "role": "pm",
+      "description": "Distill workshop notes into ranked themes and roadmap findings",
+      "tags": [
+        "product",
+        "workshops",
+        "research"
+      ]
+    },
+    "pm/write-prd": {
+      "role": "pm",
+      "description": "Write a Product Requirements Document from a brief or problem statement",
+      "tags": [
+        "product",
+        "requirements",
+        "documentation"
+      ]
+    },
+    "pm/write-user-stories": {
+      "role": "pm",
+      "description": "Convert requirements into user stories with acceptance criteria",
+      "tags": [
+        "product",
+        "agile",
+        "user-stories"
+      ]
+    },
+    "pm/wsjf-scorer": {
+      "role": "pm",
+      "description": "Calculate WSJF scores for feature prioritization",
+      "tags": [
+        "product",
+        "prioritization",
+        "wsjf"
+      ]
+    },
+    "program-delivery-manager/delivery-risk-review": {
+      "role": "program-delivery-manager",
+      "description": "Identify, score, and mitigate delivery risks using The Phoenix Project and The Art of Project Management",
+      "tags": [
+        "delivery",
+        "risk",
+        "program-management"
+      ]
+    },
+    "program-delivery-manager/dependency-mapping": {
+      "role": "program-delivery-manager",
+      "description": "Surface and visualize hidden dependencies blocking delivery using Making Work Visible (DeGrandis)",
+      "tags": [
+        "delivery",
+        "dependencies",
+        "flow",
+        "kanban"
+      ]
+    },
+    "program-delivery-manager/flow-metrics-review": {
+      "role": "program-delivery-manager",
+      "description": "Analyze cycle time, WIP, throughput, and DORA metrics to identify delivery bottlenecks",
+      "tags": [
+        "delivery",
+        "metrics",
+        "dora",
+        "flow",
+        "kanban"
+      ]
+    },
+    "program-delivery-manager/milestone-scoping": {
+      "role": "program-delivery-manager",
+      "description": "Scope a milestone to a fixed time window with variable scope using Shape Up and The Art of Project Management",
+      "tags": [
+        "delivery",
+        "scoping",
+        "milestones",
+        "shape-up"
+      ]
+    },
+    "program-delivery-manager/program-status-report": {
+      "role": "program-delivery-manager",
+      "description": "Write a structured weekly or bi-weekly program status report with RAG status, blockers, and decisions needed",
+      "tags": [
+        "delivery",
+        "reporting",
+        "stakeholders",
+        "rag-status"
+      ]
+    },
+    "program-delivery-manager/release-planning": {
+      "role": "program-delivery-manager",
+      "description": "Build a velocity-based release roadmap with risk buffers using Agile Estimating and Planning (Cohn)",
+      "tags": [
+        "delivery",
+        "planning",
+        "velocity",
+        "release"
+      ]
+    },
+    "qa/exploratory-testing": {
+      "role": "qa",
+      "description": "Run structured exploratory testing sessions using charters, timeboxing, and heuristics",
+      "tags": [
+        "testing",
+        "exploratory",
+        "charters",
+        "heuristics",
+        "qa"
+      ]
+    },
+    "qa/qa-execution": {
+      "role": "qa",
+      "description": "Run and document smoke tests, regression cycles, and exploratory testing sessions",
+      "tags": [
+        "qa",
+        "testing",
+        "execution"
+      ]
+    },
+    "qa/qa-metrics": {
+      "role": "qa",
+      "description": "Quality dashboards, defect density, escape rate, and trend reporting",
+      "tags": [
+        "qa",
+        "metrics",
+        "reporting"
+      ]
+    },
+    "qa/qa-release": {
+      "role": "qa",
+      "description": "Go/no-go decisions, release sign-off reports, and defect triage",
+      "tags": [
+        "qa",
+        "release",
+        "sign-off"
+      ]
+    },
+    "qa/qa-strategy": {
+      "role": "qa",
+      "description": "Test strategy documents, coverage matrices, and risk-based prioritization",
+      "tags": [
+        "qa",
+        "strategy",
+        "planning"
+      ]
+    },
+    "qa/qa-test-design": {
+      "role": "qa",
+      "description": "Write test cases, acceptance criteria, API test specs, and PR testability reviews",
+      "tags": [
+        "qa",
+        "testing",
+        "test-design"
+      ]
+    },
+    "qa/risk-based-testing": {
+      "role": "qa",
+      "description": "Allocate testing effort based on risk and likelihood of failure using Google's SET/SWE/TE model",
+      "tags": [
+        "testing",
+        "risk",
+        "strategy",
+        "qa"
+      ]
+    },
+    "recruiter/candidate-debrief": {
+      "role": "recruiter",
+      "description": "Run a structured post-interview debrief meeting with calibration protocol and hire/no-hire framework",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "debrief",
+        "calibration"
+      ]
+    },
+    "recruiter/intake-meeting": {
+      "role": "recruiter",
+      "description": "Run a recruiter-hiring manager intake meeting to define the scorecard, align on process, and set timeline expectations",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "intake",
+        "alignment"
+      ]
+    },
+    "recruiter/interview-scorecard": {
+      "role": "recruiter",
+      "description": "Build a structured interview scorecard using the Who method: outcomes, competencies, A/B/C rubric",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "interview",
+        "scorecard"
+      ]
+    },
+    "recruiter/job-description": {
+      "role": "recruiter",
+      "description": "Write a performance-based job description using Hire With Your Head outcomes model",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "job-description"
+      ]
+    },
+    "recruiter/offer-letter": {
+      "role": "recruiter",
+      "description": "Construct a compelling offer with comp philosophy, equity explanation, total comp summary, and negotiation guidance",
+      "tags": [
+        "recruiting",
+        "hiring",
+        "offer",
+        "compensation"
+      ]
+    },
+    "recruiter/sourcing-strategy": {
+      "role": "recruiter",
+      "description": "Build a multi-channel sourcing pipeline with outbound templates, boolean search, and response rate tactics",
+      "tags": [
+        "recruiting",
+        "sourcing",
+        "pipeline",
+        "outreach"
+      ]
+    },
+    "researcher/hypothesis-framing": {
+      "role": "researcher",
+      "description": "Write or refine a research hypothesis with operationalized variables, null and alternative hypotheses, and theoretical basis",
+      "tags": [
+        "research",
+        "hypothesis",
+        "academic",
+        "methodology"
+      ]
+    },
+    "researcher/literature-review": {
+      "role": "researcher",
+      "description": "Write a literature review that synthesizes research by theme, identifies contradictions, and frames a research gap",
+      "tags": [
+        "research",
+        "literature-review",
+        "academic",
+        "synthesis"
+      ]
+    },
+    "researcher/study-design": {
+      "role": "researcher",
+      "description": "Design a research study with paradigm selection, sample size, procedure, instruments, analysis plan, and ethics",
+      "tags": [
+        "research",
+        "study-design",
+        "methodology",
+        "academic"
+      ]
+    },
+    "sales/account-plan": {
+      "role": "sales",
+      "description": "Build a strategic account plan identifying key players, buying influences, and expansion paths using Miller Heiman's framework",
+      "tags": [
+        "sales",
+        "account-planning",
+        "strategic-selling",
+        "enterprise"
+      ]
+    },
+    "sales/deal-qualification": {
+      "role": "sales",
+      "description": "Qualify a deal using the MEDDIC framework to assess metrics, economic buyer, decision criteria, and champion",
+      "tags": [
+        "sales",
+        "qualification",
+        "meddic",
+        "pipeline"
+      ]
+    },
+    "sales/discovery-call": {
+      "role": "sales",
+      "description": "Structure a sales discovery call using SPIN Selling's situation, problem, implication, and need-payoff question sequence",
+      "tags": [
+        "sales",
+        "discovery",
+        "spin-selling",
+        "qualification"
+      ]
+    },
+    "sales/objection-handling": {
+      "role": "sales",
+      "description": "Handle sales objections using Never Split the Difference's tactical empathy and labeling techniques",
+      "tags": [
+        "sales",
+        "objections",
+        "negotiation",
+        "communication"
+      ]
+    },
+    "sales/sales-proposal": {
+      "role": "sales",
+      "description": "Write a compelling sales proposal using The Challenger Sale's teach-tailor-take-control structure",
+      "tags": [
+        "sales",
+        "proposal",
+        "challenger-sale",
+        "closing"
+      ]
+    },
+    "security/pentest-scope": {
+      "role": "security",
+      "description": "Write a penetration test scope document with targets, rules of engagement, prohibited techniques, and deliverables",
+      "tags": [
+        "security",
+        "penetration-testing",
+        "red-team",
+        "engagement"
+      ]
+    },
+    "security/threat-model": {
+      "role": "security",
+      "description": "Write a threat model document using STRIDE framework to identify, assess, and prioritize threats per system component",
+      "tags": [
+        "security",
+        "threat-modeling",
+        "stride",
+        "architecture"
+      ]
+    },
+    "security/vuln-report": {
+      "role": "security",
+      "description": "Write a vulnerability report with executive summary, technical description, reproduction steps, evidence, impact, and remediation",
+      "tags": [
+        "security",
+        "vulnerability",
+        "bug-bounty",
+        "reporting"
+      ]
+    },
+    "shared/draft-email": {
+      "role": "shared",
+      "description": "Draft professional HTML emails (MoM, status, decisions) and save as provider drafts",
+      "tags": [
+        "communication",
+        "email",
+        "writing"
       ]
     },
     "shared/flowchart": {
@@ -1191,139 +1367,21 @@
         "visualization"
       ]
     },
-    "business-analyst/requirements-elicitation": {
-      "role": "business-analyst",
-      "description": "Facilitate structured requirements gathering using interviews, workshops, and observation",
+    "shared/jira-ticket-creator": {
+      "role": "shared",
+      "description": "Create Jira tickets from meeting notes user stories or quick lists",
       "tags": [
-        "requirements",
-        "elicitation",
-        "BABOK"
+        "jira",
+        "tickets",
+        "productivity"
       ]
     },
-    "business-analyst/brd-writer": {
-      "role": "business-analyst",
-      "description": "Write a Business Requirements Document from stakeholder inputs and meeting notes",
+    "shared/presentation-builder": {
+      "role": "shared",
+      "description": "Build structured presentations for any audience",
       "tags": [
-        "requirements",
-        "documentation",
-        "BRD"
-      ]
-    },
-    "business-analyst/frd-writer": {
-      "role": "business-analyst",
-      "description": "Write a Functional Requirements Document from a BRD or feature brief",
-      "tags": [
-        "requirements",
-        "documentation",
-        "FRD"
-      ]
-    },
-    "business-analyst/use-case-writer": {
-      "role": "business-analyst",
-      "description": "Generate structured use cases with main flow, alternate flows, and exception handling",
-      "tags": [
-        "requirements",
-        "use-cases",
-        "Cockburn"
-      ]
-    },
-    "business-analyst/acceptance-criteria-writer": {
-      "role": "business-analyst",
-      "description": "Write measurable acceptance criteria using Fit Criteria and Given-When-Then formats",
-      "tags": [
-        "requirements",
-        "acceptance-criteria",
-        "testing"
-      ]
-    },
-    "business-analyst/process-mapper": {
-      "role": "business-analyst",
-      "description": "Map as-is and to-be business processes using BPMN-style structured notation",
-      "tags": [
-        "process",
-        "BPMN",
-        "modeling"
-      ]
-    },
-    "business-analyst/gap-analysis": {
-      "role": "business-analyst",
-      "description": "Identify gaps between current state and desired state with prioritized recommendations",
-      "tags": [
-        "analysis",
-        "gap",
-        "strategy"
-      ]
-    },
-    "business-analyst/root-cause-analysis": {
-      "role": "business-analyst",
-      "description": "Run structured root cause analysis using 5 Whys, fishbone, or A3 techniques",
-      "tags": [
-        "analysis",
-        "root-cause",
-        "problem-solving"
-      ]
-    },
-    "business-analyst/cost-benefit-analysis": {
-      "role": "business-analyst",
-      "description": "Build a cost-benefit analysis with ROI, payback period, and risk-adjusted projections",
-      "tags": [
-        "analysis",
-        "cost-benefit",
-        "business-case"
-      ]
-    },
-    "business-analyst/stakeholder-map": {
-      "role": "business-analyst",
-      "description": "Map stakeholders by influence, interest, and communication needs using a power-interest grid",
-      "tags": [
-        "stakeholders",
-        "communication",
-        "RACI"
-      ]
-    },
-    "business-analyst/impact-assessment": {
-      "role": "business-analyst",
-      "description": "Assess business impact of a proposed change across people, process, technology, and policy",
-      "tags": [
-        "analysis",
-        "impact",
-        "change-management"
-      ]
-    },
-    "business-analyst/data-dictionary": {
-      "role": "business-analyst",
-      "description": "Generate a data dictionary from database schemas, APIs, or spec documents",
-      "tags": [
-        "data",
-        "documentation",
-        "modeling"
-      ]
-    },
-    "business-analyst/decision-matrix": {
-      "role": "business-analyst",
-      "description": "Build a weighted decision matrix to evaluate and rank solution options",
-      "tags": [
-        "analysis",
-        "decision",
-        "prioritization"
-      ]
-    },
-    "business-analyst/traceability-matrix": {
-      "role": "business-analyst",
-      "description": "Create a requirements traceability matrix linking requirements to design, test, and delivery",
-      "tags": [
-        "requirements",
-        "traceability",
-        "quality"
-      ]
-    },
-    "business-analyst/uat-plan": {
-      "role": "business-analyst",
-      "description": "Generate a User Acceptance Testing plan with test scenarios, entry-exit criteria, and sign-off",
-      "tags": [
-        "testing",
-        "UAT",
-        "validation"
+        "productivity",
+        "presentations"
       ]
     }
   }
