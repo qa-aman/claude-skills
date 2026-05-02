@@ -1,6 +1,6 @@
 ---
 name: karpathy-guidelines
-description: Behavioral guardrails against the six most common LLM coding failure modes. Apply on every coding task: writing, editing, reviewing, or refactoring.
+description: "Behavioral guardrails against the six most common LLM coding failure modes. Apply on every coding task: writing, editing, reviewing, or refactoring."
 created_by: Aman Parmar
 last_modified: 02-05-2026
 ---
