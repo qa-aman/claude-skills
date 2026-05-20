@@ -1,15 +1,11 @@
 ---
 name: write-prd
-description: >
-  Write a Product Requirements Document (PRD). Use when the user says "write a PRD",
-  "document this feature", "product requirements for X", "write requirements",
-  "I need a PRD", "pitch this feature", or wants to formalize a feature or product
-  idea into a structured doc - even if they don't explicitly say "PRD".
+description: "Write a Product Requirements Document (PRD) including problem statement, appetite, solution sketch, rabbit holes, no-gos, and open questions. Use when the user says 'write a PRD', 'document this feature', 'product requirements for X', 'write requirements', 'I need a PRD', 'pitch this feature', or wants to formalize a feature or product idea into a structured doc - even if they don't explicitly say 'PRD'."
 ---
 
 ## Overview
 
-Based on **Shape Up** by Ryan Singer (Basecamp). A PRD defines the problem, the appetite, and the solution boundaries - not a detailed spec. The key insight from Shape Up: fix the time, flex the scope. Define how much the team is willing to spend before deciding what to build.
+A PRD defines the problem, the appetite, and the solution boundaries - not a detailed spec. Fix the time, flex the scope: define how much the team is willing to spend before deciding what to build.
 
 ## Workflow
 
@@ -45,7 +41,7 @@ Structure:
 ```
 
 ### Step 4: Write the Solution at the right altitude
-Shape Up's "fat marker sketch" principle: describe the solution broadly enough that engineers have room to make decisions. Over-specifying kills ownership and slows delivery.
+Describe the solution broadly enough that engineers have room to make decisions.
 
 Write requirements at the level of: "Users can do X" - not "There is a button in the top-right corner."
 
