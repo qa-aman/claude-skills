@@ -1,13 +1,16 @@
 ---
 name: landing-page-writer
-description: Write landing page copy for product pages, campaign pages, lead-gen pages, pricing pages, and feature pages. Use when the user asks for landing page copy, product page, lead magnet page, "write the page for X", pricing page copy, feature page, hero section, or web copy that converts. Uses the StoryBrand SB7 framework (Donald Miller) to structure every page. Reads brand voice, positioning, and ICP from knowledge/.
-reads:
-  - knowledge/brand/voice.md
-  - knowledge/icp/personas.md
-  - knowledge/markets/positioning.md
-  - knowledge/services/
-writes:
-  - output/landing-page/
+description: Write landing page copy for product pages, campaign pages, lead-gen pages, pricing pages, and feature pages. Use when the user asks for landing page copy, product page, lead magnet page, "write the page for X", pricing page copy, feature page, hero section, or web copy that converts. Uses the StoryBrand SB7 framework (Donald Miller) to structure every page. Reads brand voice, positioning, and ICP from knowledge/. For improving an existing page's copy, see copy-review. For diagnosing why a page does not convert, see page-cro. For the ads driving traffic to it, see ad-campaign-writer.
+metadata:
+  grounded_in:
+    - "Building a StoryBrand (SB7) - Donald Miller"
+  reads:
+    - knowledge/brand/voice.md
+    - knowledge/icp/personas.md
+    - knowledge/markets/positioning.md
+    - knowledge/services/
+  writes:
+    - output/landing-page/
 ---
 
 # landing-page-writer
@@ -15,6 +18,43 @@ writes:
 Writes conversion-focused landing page copy using the **StoryBrand SB7 framework** (Donald Miller, *Building a StoryBrand*). Every page positions the customer as the hero, the brand as the guide - not the other way around.
 
 **The core SB7 insight:** Most companies make themselves the hero of their own story. Customers don't care. Customers care about their own story. A brand that positions itself as the guide (Gandalf, not Frodo) converts dramatically better than one that leads with how great it is.
+
+## The SB7 arc, in order
+
+*Building a StoryBrand* is a sequence, not a checklist. The seven elements only work in this
+order, because each one is the answer to the question the previous one raises in the reader.
+
+| # | Element | The reader's unasked question it answers | If you skip it |
+|---|---|---|---|
+| 1 | A character | "Is this about me?" | The reader never enters the story |
+| 2 | has a problem | "Do you understand what I am dealing with?" | Nothing creates the need to keep reading |
+| 3 | and meets a guide | "Can I trust you, and have you done this before?" | You read as another vendor with a claim |
+| 4 | who gives them a plan | "What exactly happens if I say yes?" | Anxiety about the unknown blocks the click |
+| 5 | and calls them to action | "What do I do right now?" | The reader agrees with you and leaves |
+| 6 | that helps them avoid failure | "What is at stake if I do nothing?" | Inertia wins, because doing nothing costs nothing |
+| 7 | and ends in success | "What does my life look like after?" | There is nothing to want |
+
+Two of Miller's tests are used as gates in this skill.
+
+**The grunt test.** A stranger looking only at the area above the fold, for five seconds, must be
+able to say three things: what you offer, how it makes their life better, and what they do next.
+If any of the three is missing or takes reading to work out, the hero section fails and gets
+rewritten before anything below it is drafted.
+
+**The one-liner.** Before the page, write one sentence in Miller's shape: character, problem,
+plan, success. Example shape, not example copy: "Most [role] are stuck with [problem]. We give
+them [plan] so they can [success]." Every H1 and final CTA on the page must be consistent with
+that sentence. If they are not, the page argues with itself.
+
+**Element ordering by page type.** The arc stays in order, but pages compress differently.
+
+| Page type | Leads with | Compresses or drops | Why |
+|---|---|---|---|
+| Product page | Character and problem | Nothing, run the full arc | The visitor is comparing, they need all seven |
+| Campaign / launch page | Success, then problem | Guide is a single proof bar | Traffic arrives warm from the campaign |
+| Lead magnet page | Plan (what is inside) | Failure, drop it entirely | Failure framing on a free asset reads as pressure |
+| Pricing page | Plan and CTA | Problem, one line only | The visitor is past the problem, they are costing it |
+| Feature page | Problem and plan | Character, one line only | They arrived already knowing who they are |
 
 ## When to use
 
@@ -47,7 +87,7 @@ Writes conversion-focused landing page copy using the **StoryBrand SB7 framework
 ## Process
 
 ### Step 1: Load context
-Read `knowledge/brand/voice.md`, the relevant persona, `knowledge/markets/positioning.md`, and the relevant service file. If brand voice is missing, stop and say: "Run `/onboard --brand` first."
+Read `knowledge/brand/voice.md`, the relevant persona, `knowledge/markets/positioning.md`, and the relevant service file. If brand voice is missing, stop and say: "Run `/brand-context` first."
 
 ### Step 2: Complete the SB7 BrandScript
 Before writing a single word of copy, answer all 7 elements. These answers drive every section.
@@ -178,16 +218,34 @@ Risk reducer: "No credit card" / "Cancel anytime" / "Free 14-day trial"
 - One conversion action, repeated consistently
 
 ### Step 5: Self-check
-- [ ] Brand is the GUIDE, not the hero - customer is the hero throughout
-- [ ] SB7 BrandScript completed before copy was written
-- [ ] H1 is outcome-led (customer's outcome, not brand's achievement)
-- [ ] 3-step PLAN reduces anxiety, not describes features
-- [ ] SUCCESS state is specific and vivid (all 3 types: functional, emotional, identity)
-- [ ] FAILURE acknowledged near final CTA
-- [ ] Social proof appears within first scroll
-- [ ] One CTA, consistently repeated
-- [ ] Voice matches `knowledge/brand/voice.md`
-- [ ] No buzzwords
+
+Each item is answerable by pointing at the draft. Anything that needs an opinion is not a check.
+
+Structure:
+- [ ] The completed BrandScript appears above the copy in the working file, all 7 elements filled
+- [ ] The one-liner is written down, and the H1 and final CTA are both consistent with it
+- [ ] Grunt test: name the exact line that says what it is, the line that says how life improves,
+      and the button that says what to do. Three lines, above the fold, all present
+- [ ] H1 subject is the customer or the customer's outcome. Count how many times the company name
+      appears above the fold. More than once fails
+- [ ] The 3 plan steps are verb phrases describing what the customer does, and none of them is a
+      product feature name
+- [ ] The success section contains one functional, one emotional and one identity outcome. Point
+      at each
+- [ ] Failure appears exactly once, near the final CTA, in one sentence or less
+- [ ] Social proof appears before the first fold break
+- [ ] Count the distinct CTA verbs on the page. There must be exactly one direct CTA verb, used
+      in every direct CTA button
+
+Sourcing:
+- [ ] Every statistic, customer name, logo and quote traces to a user-supplied asset or `knowledge/`
+- [ ] Every unsourced proof slot reads `[PROOF NEEDED: ...]` or `[NEEDS INPUT: ...]`
+- [ ] Prices in the draft were confirmed by the user in this conversation
+
+Voice:
+- [ ] Zero em dashes and zero en dashes
+- [ ] Zero occurrences of: leverage, unlock, robust, seamless, best-in-class, industry-leading
+- [ ] Every phrase in the brand's "avoids" list appears zero times
 
 ### Step 6: Save
 `output/landing-page/<DD-MM-YYYY>-<slug>.md` with frontmatter:
@@ -211,9 +269,18 @@ created: DD-MM-YYYY
 ## Rules
 
 - Complete the BrandScript before writing any copy. Copy written without it will be brand-as-hero.
+- Keep the arc in the order *Building a StoryBrand* sets out. Reordering it, for example putting
+  the guide's credentials before the customer's problem, is the single most common way a page
+  ends up sounding like a company brochure while still containing all seven elements.
 - One conversion action. Always. If the user names two, force them to pick one.
 - Hero copy must work without the rest of the page.
 - Never write pricing without confirming actual prices with the user.
+- **Never write a testimonial, customer name, case-study metric, logo claim, or authority stat
+  that the user did not supply or that is not in `knowledge/`.** Every proof slot on this page
+  is a place an agent will otherwise invent a named customer, and a fabricated testimonial
+  attributed to a real company is a legal and reputational incident, not a draft defect.
+- If a proof slot has no real asset, emit `[PROOF NEEDED: 1 customer logo / 1 metric / 1 quote]`
+  and list what the team has to collect. An honest gap ships. A fake quote does not.
 - Visual briefs are required for every section that needs an image.
 - If the page involves regulatory claims (medical, financial, legal), flag for legal review.
 
@@ -228,3 +295,70 @@ created: DD-MM-YYYY
 | CTA | All CTAs | Weak verbs ("Submit", "Learn more") |
 | Success | Proof + success section | Vague outcomes ("improve your results") |
 | Failure | Final CTA area | Skipping it entirely (leaving motivation on the table) |
+
+## Proof audit before saving
+
+- Every statistic, customer name, logo and quote traces to a user-supplied asset or `knowledge/`
+- No proof slot was filled to complete the template
+- Every unsourced slot reads `[PROOF NEEDED: ...]`
+
+## Stop conditions
+
+Do not draft the page when any of these holds. Name the blocker and what you need.
+
+1. **Two conversion actions requested.** Stop and force a choice. A page with a demo button and a
+   free-trial button converts worse than either alone, because the visitor now has a decision to
+   make before the decision you wanted.
+2. **No proof assets at all**, meaning no logo, no metric, no quote, nothing. Draft the page, but
+   fill every proof slot with `[PROOF NEEDED: ...]` and tell the user the page should not go live
+   until at least one is real. Never invent one to complete the layout.
+3. **Pricing requested with no confirmed prices.** Write `[NEEDS INPUT: price per plan]`. Do not
+   infer a price from a competitor, from the market, or from an earlier draft.
+4. **Regulated claim** (medical, financial, legal, employment, safety). Draft it, mark it
+   `[LEGAL REVIEW]`, and say the page must not publish unreviewed.
+5. **The user cannot name what the customer wants in one sentence.** That is BrandScript element
+   1 and it cannot be inferred. Ask, and do not start until you have it.
+
+## Warning signs in your own draft
+
+Ranked worst first. The top three are ship-blockers.
+
+1. A testimonial, customer name, logo or metric that the user did not supply. Blocker.
+2. A price that nobody confirmed. Blocker.
+3. A regulated claim with no `[LEGAL REVIEW]` marker. Blocker.
+4. The H1 works as a description of the company rather than of the customer's outcome. The brand
+   has become the hero, rewrite the hero section.
+5. The plan section lists features with step numbers in front of them. Steps reduce anxiety,
+   features do not.
+6. More than one direct CTA verb across the page.
+7. Failure framing appearing more than once, or reading as a threat rather than a cost. On a lead
+   magnet page, any failure framing at all.
+8. Success outcomes with no unit or object ("better results", "more growth").
+
+## Related skills
+
+- `/page-cro` when the page already exists and the question is why it does not convert
+- `/copy-review` for grading and tightening an existing page rather than writing a new one
+- `/messaging-framework` when the one-liner needs to hold across every asset, not just this page
+- `/positioning-doc` when the BrandScript keeps stalling because the position itself is unclear
+- `/ad-campaign-writer` for the ads driving traffic here, so the ad promise matches the H1
+- `/email-nurture` for the sequence that fires after the form submit
+- `/case-study-writer` when the proof section needs a real customer story built first
+- `/ab-copy-writer` when the hero has two credible versions and the choice should be tested
+- `/brand-context` first, whenever `knowledge/brand/voice.md` does not exist yet
+
+## What this skill cannot know
+
+These are real limitations of this skill. It cannot resolve them from `knowledge/`, so ask the
+user or emit `[NEEDS INPUT: <what>]`.
+
+1. **Whether a named customer has consented to appear on a public page.** A logo file in the
+   knowledge base is not consent for this page, in this market, at this time.
+2. **Whether a quoted metric is still current.** Case study numbers age silently. Ask when the
+   result was measured, and put the period in the copy if the user has it.
+3. **Whether a claim needs legal or regulatory review in your market.** Rules differ by
+   jurisdiction and by industry. Flag it, do not decide it.
+4. **Whether the page will actually render as designed.** Fold position, image behaviour and
+   mobile stacking are layout decisions this skill does not control, so "above the fold" here
+   means "in the hero block", and someone has to confirm it on the built page.
+

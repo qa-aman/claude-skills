@@ -1,11 +1,21 @@
 ---
 name: growth-experiment
-description: >
+description: >-
   Design and document a marketing growth experiment. Use when the user says "run a growth
   experiment", "test this channel", "growth test", "I want to experiment with [channel]",
   "traction experiment", "acquisition experiment", "let's test if [channel] works for us",
   "bullseye framework", "which channels should we try", "run a traction test", or wants
   to systematically test a marketing or acquisition channel before committing budget.
+  For page-level conversion hypotheses, see page-cro. For copy variants to test, see ab-copy-writer. For recording the result, see retro.
+metadata:
+  grounded_in:
+    - "Traction - Weinberg & Mares"
+  reads:
+    - knowledge/kpis.md
+    - knowledge/icp/personas.md
+    - knowledge/learnings.md
+  writes:
+    - output/growth-experiment/
 ---
 
 ## Overview
@@ -45,7 +55,11 @@ One metric. Set the threshold before you run the experiment - not after.
 
 ```
 Primary metric: [e.g., cost per lead, click-through rate, reply rate, trial signups]
-Baseline (if known): [current value or industry benchmark]
+Baseline: [current value, from knowledge/kpis.md or the user, with the date measured]
+   If no measured baseline exists, STOP and ask for one. **Never substitute an industry benchmark
+   from memory** - the success threshold, the failure threshold and therefore the kill/scale
+   decision all inherit it. If the user supplies a benchmark, record its source URL and tag the
+   threshold [UNVERIFIED BASELINE].
 Success threshold: [the minimum result that would justify investing more in this channel]
 Failure threshold: [the result below which you kill this channel for now]
 ```
@@ -87,7 +101,7 @@ Rationale: [1-2 sentences]
 Next action: [specific next step with owner and date]
 ```
 
-Store experiment logs in a shared doc. Companies that win on distribution run more experiments than competitors, not better gut-feel decisions.
+Save the experiment log to `output/growth-experiment/<DD-MM-YYYY>-<channel-slug>.md` (see Context and output below). One location, so past experiments are findable. Companies that win on distribution run more experiments than competitors, not better gut-feel decisions.
 
 ## Anti-Patterns
 
@@ -109,6 +123,12 @@ Good: Every experiment documented with hypothesis, parameters, results, and deci
 
 ## Quality Checklist
 
+- [ ] Baseline is a measured number with a date, from `knowledge/kpis.md` or the user. No industry benchmark from memory
+- [ ] `knowledge/learnings.md` was read, and any channel already tried is named
+- [ ] Success and failure thresholds were set BEFORE launch, not after seeing data
+- [ ] The experiment is saved to `output/growth-experiment/<DD-MM-YYYY>-<channel-slug>.md`
+- [ ] Any `[UNVERIFIED]` input is tagged in the output and its effect on the decision is stated
+
 - [ ] Specific traction channel named - not a broad category
 - [ ] Hypothesis written in "if X then Y within Z" format
 - [ ] Budget and duration committed in writing before starting
@@ -119,3 +139,62 @@ Good: Every experiment documented with hypothesis, parameters, results, and deci
 - [ ] Tracking setup documented (UTM, pixel, or equivalent)
 - [ ] Expected learning written for both success and failure scenarios
 - [ ] Decision date set in advance
+
+## Context and output
+
+**Before you start.** Read `knowledge/kpis.md` for the OMTM and its current baseline, `knowledge/icp/personas.md` for where this audience already is, and `knowledge/learnings.md` for channels already tried. A threshold set without a baseline is a guess, so if `knowledge/kpis.md` is missing, get the baseline from the user before setting any success criterion.
+
+**When you finish.** Save to `output/growth-experiment/<DD-MM-YYYY>-<channel-slug>.md` with YAML frontmatter carrying the date, the skill name, and the key decisions made.
+
+After the experiment concludes, run `/retro` so the result is appended to `knowledge/learnings.md` and the next experiment does not repeat it.
+
+## Related skills
+
+- `/brand-context` creates the KPI baseline this depends on
+- `/page-cro` produces page-level hypotheses worth testing
+- `/ab-copy-writer` generates the variants
+- `/retro` records the outcome so it compounds
+
+## Handling [UNVERIFIED] and [NEEDS INPUT] tags
+
+`brand-context` tags any number the user was unsure of as `[UNVERIFIED]`, and several skills tag
+gaps as `[NEEDS INPUT]`. Those tags are a contract, and it only works if this skill honours it.
+
+1. **Carry the tag forward.** If a baseline, benchmark or proof point arrives tagged, every figure
+   derived from it is tagged too. A target built on an unverified baseline is an unverified target.
+2. **Never silently promote.** Do not drop the tag because the number looked confident in the
+   source file.
+3. **Say it in the output.** List every tagged input in its own line near the top, so a reader
+   knows which numbers are measured and which are estimates before they act on them.
+4. **A decision that would change if the tagged number were wrong must say so explicitly.**
+
+## The Bullseye framework (Weinberg and Mares)
+
+*Traction* argues that most companies get most of their growth from one channel, and that the
+channel is usually found by systematic elimination rather than intuition. Three rings, run in order.
+
+| Ring | What it holds | What you do |
+|---|---|---|
+| **Outer** | All 19 channels, brainstormed without filtering | Write one plausible idea per channel. Cheap ideas count |
+| **Middle** | The 3-5 that seem most promising | Run cheap, time-boxed tests to see which produce a signal |
+| **Inner** | The one that works | Focus, and optimise it until it stops scaling |
+
+The common failure is starting in the inner ring: picking a channel because a competitor uses it,
+then optimising it for a quarter before asking whether it was ever the right channel.
+
+**Test size matters more than test cleverness.** A channel test too small to produce signal has not
+failed the channel, it has failed the test, and the conclusion drawn from it will be wrong.
+
+## Warning signs, worst first
+
+1. A threshold set after data started arriving. That is not an experiment, it is a story.
+2. A baseline taken from an industry benchmark rather than this account's own history.
+3. A channel already tried and recorded in `knowledge/learnings.md`, being retested unchanged.
+4. A test still running past its decision date because the result is close.
+
+## What this skill cannot know
+
+- Whether the baseline supplied is measured or remembered
+- Whether an external factor (seasonality, a competitor launch, a pricing change) is moving the metric alongside the test
+- Whether the channel was already tried before the current team arrived
+- Whether the sample will accumulate fast enough to decide by the stated date

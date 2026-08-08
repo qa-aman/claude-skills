@@ -1,0 +1,71 @@
+{
+  "name": "claude-skills",
+  "owner": {
+    "name": "Aman Parmar",
+    "url": "https://github.com/qa-aman"
+  },
+  "description": "Role-based Claude Code skills for product, engineering, design, data, marketing and operations teams.",
+  "plugins": [
+    {
+      "name": "claude-skills",
+      "displayName": "Claude Skills",
+      "source": "./",
+      "description": "163 ready-to-use Claude Code skills organised by job role, so a PM, QA engineer, designer, marketer or analyst can install the workflows for their own job in one command.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aman Parmar",
+        "url": "https://github.com/qa-aman"
+      },
+      "homepage": "https://github.com/qa-aman/claude-skills",
+      "repository": "https://github.com/qa-aman/claude-skills",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": [
+        "skills",
+        "product-management",
+        "qa",
+        "engineering",
+        "design",
+        "marketing",
+        "data",
+        "security",
+        "role-based",
+        "workflows"
+      ],
+      "tags": [
+        "pm",
+        "qa",
+        "engineer",
+        "designer",
+        "devops",
+        "marketing",
+        "data-engineer",
+        "data-scientist",
+        "security",
+        "business-analyst"
+      ],
+      "skills": [
+        "./skills/shared",
+        "./skills/by-role/accountant",
+        "./skills/by-role/business-analyst",
+        "./skills/by-role/consultant",
+        "./skills/by-role/customer-success",
+        "./skills/by-role/data-engineer",
+        "./skills/by-role/data-scientist",
+        "./skills/by-role/designer",
+        "./skills/by-role/devops",
+        "./skills/by-role/engineer",
+        "./skills/by-role/founder",
+        "./skills/by-role/leadership",
+        "./skills/by-role/marketing",
+        "./skills/by-role/pm",
+        "./skills/by-role/program-delivery-manager",
+        "./skills/by-role/qa",
+        "./skills/by-role/recruiter",
+        "./skills/by-role/researcher",
+        "./skills/by-role/sales",
+        "./skills/by-role/security"
+      ]
+    }
+  ]
+}

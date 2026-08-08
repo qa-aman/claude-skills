@@ -1,14 +1,17 @@
 ---
 name: ppt-maker
-description: Build branded PowerPoint decks (.pptx) for pitches, internal updates, sales decks, customer QBRs, board updates, conference talks using the Pyramid Principle and SCQA framework (Barbara Minto, The Minto Pyramid Principle). Every deck starts with the answer - conclusion on slide 2, evidence after. Slide titles are conclusions, not topics. Use when the user asks for a deck, presentation, slides, pitch deck, sales deck, board deck, QBR, "make slides for X", or "build a presentation". Uses templates/ for brand assets. Generates structured slide content with speaker notes.
-reads:
-  - knowledge/brand/voice.md
-  - knowledge/brand/visual.md
-  - knowledge/markets/positioning.md
-  - knowledge/services/
-  - templates/
-writes:
-  - output/ppt/
+description: Build branded PowerPoint decks (.pptx) for pitches, internal updates, sales decks, customer QBRs, board updates, conference talks using the Pyramid Principle and SCQA framework (Barbara Minto, The Minto Pyramid Principle). Every deck starts with the answer - conclusion on slide 2, evidence after. Slide titles are conclusions, not topics. Use when the user asks for a deck, presentation, slides, pitch deck, sales deck, board deck, QBR, "make slides for X", or "build a presentation". Uses templates/ for brand assets. Generates structured slide content with speaker notes. For the narrative content of the deck, see thought-leadership-writer or campaign-brief. For a case study slide, see case-study-writer.
+metadata:
+  grounded_in:
+    - "Pyramid Principle - Minto"
+  reads:
+    - knowledge/brand/voice.md
+    - knowledge/brand/visual.md
+    - knowledge/markets/positioning.md
+    - knowledge/services/
+    - templates/
+  writes:
+    - output/ppt/
 ---
 
 # ppt-maker
@@ -167,5 +170,46 @@ prs.save("output/ppt/DD-MM-YYYY-deck-name.pptx")
 - Never use the default PowerPoint theme. If no template is in `templates/`, stop and ask the user to drop one in.
 - Speaker notes are not optional. A deck without notes is half-done.
 - Slide titles are conclusions, not topics. If a title does not contain a verb or a clear claim, it is a topic label - rewrite it.
-- For pitch decks, confirm the financial numbers (ARR, runway, ask) with the user before building. Do not pull from old `knowledge/kpis.md` without confirming they are current.
+- **Every number on every slide must come from the user or a named source file. No exceptions,
+  no deck type.** This previously covered pitch decks only, which left the two most dangerous
+  cases open: a customer QBR and a board deck. An invented adoption percentage on slide 6 of a
+  QBR is discovered live, in the room, by the customer whose data it claims to describe.
+- If a number is missing, put `[NEEDS INPUT: <what>]` on the slide itself, not a plausible
+  placeholder. A placeholder that looks like data will ship.
+- Before building, list every figure that will appear and where each came from. Show that list to
+  the user and get confirmation. This takes a minute and it is the difference between a deck that
+  survives the room and one that does not.
+- Never derive a number by inference ("roughly 30% based on typical adoption"). Either it was
+  measured or it is `[NEEDS INPUT]`. Do not pull from old `knowledge/kpis.md` without confirming they are current.
 - "What does the audience need to DO?" must be answerable from the deck title alone. If it is not, the deck title is wrong.
+
+## Verify the file, do not just claim it
+
+`python-pptx` fails quietly. Layout indices differ per template, branded templates often lack a
+body placeholder in the layout the script picks, and overflowing text is dropped without an error.
+"Deck built" is a claim about the script running, not about the deck being usable.
+
+After writing the file, re-open it and assert:
+
+1. Slide count matches the approved outline
+2. Every slide has a non-empty title, and every intended body placeholder actually received text
+3. No text string was silently truncated: compare the character count written against the source
+4. The template's own theme is present, not the default Office theme
+5. Report the file path and size
+
+If you cannot execute code, say so plainly and label the output "script generated, NOT verified,
+open it before sending". Never report a deck as built on the basis of a script you did not run.
+
+## What this skill cannot verify
+
+- Whether text overflows its placeholder visually. That needs a human to open the file
+- Whether the brand template's fonts are installed on the recipient's machine
+- Whether any figure on a slide is current, since it can only use what it was given
+
+## Related skills
+
+- `/campaign-brief` and `/kpi-review` produce the content and numbers a deck presents
+- `/case-study-writer` for a customer-story slide with real structure
+- `/thought-leadership-writer` for the narrative spine of a conference talk
+- `/copy-review` to tighten slide copy before it is built
+

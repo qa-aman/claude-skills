@@ -1,13 +1,16 @@
 ---
 name: pr-pitch-writer
-description: Write personalized pitch emails to journalists, podcasters, newsletter writers, and analysts using AIDA adapted for media pitching and Ryan Holiday's journalist psychology from "Trust Me I'm Lying." Different from press releases (use /press-release-writer for those). Use when the user asks to pitch a journalist, pitch a reporter, "get coverage in X", media outreach, podcast pitch, analyst briefing request, or wants to land a story. Reads brand voice and positioning from knowledge/.
-reads:
-  - knowledge/brand/voice.md
-  - knowledge/markets/positioning.md
-  - knowledge/services/
-  - knowledge/content-library/case-studies/
-writes:
-  - output/pr-pitch/
+description: Write personalized pitch emails to journalists, podcasters, newsletter writers, and analysts using AIDA adapted for media pitching and Ryan Holiday's journalist psychology from "Trust Me I'm Lying." Different from press releases (use /press-release-writer for those). Use when the user asks to pitch a journalist, pitch a reporter, "get coverage in X", media outreach, podcast pitch, analyst briefing request, or wants to land a story. Reads brand voice and positioning from knowledge/. For the press release itself, see press-release-writer. For the underlying customer story, see case-study-writer.
+metadata:
+  grounded_in:
+    - "Trust Me, I'm Lying - Holiday"
+  reads:
+    - knowledge/brand/voice.md
+    - knowledge/markets/positioning.md
+    - knowledge/services/
+    - knowledge/content-library/case-studies/
+  writes:
+    - output/pr-pitch/
 ---
 
 # pr-pitch-writer
@@ -74,12 +77,35 @@ Writes pitch emails that journalists actually read. Different from press release
 
 1. **Load context.** Read `knowledge/brand/voice.md`, `knowledge/markets/positioning.md`, and any case studies that support the pitch.
 
-2. **Research the recipient.** If the user provided a recent piece they wrote, read it (WebFetch). Otherwise, ask for one. The single biggest reason pitches fail: no evidence the sender knows what the journalist covers.
+2. **Research the recipient. Hard gate: never characterise a piece you have not read.**
 
-3. **Identify the news peg.** Answer:
+   If the user supplied a link, fetch and read it with WebFetch. If you cannot fetch it, or no
+   link was supplied, **stop and write `[NEEDS INPUT: link to their recent piece]`.** Do not
+   proceed to draft line 1 from what you believe this reporter usually covers.
+
+   This is the highest-consequence rule in the skill. The failure mode is writing "Your piece on
+   X argued Y" to a journalist who wrote nothing of the kind. It is worse than sending nothing:
+   it proves the sender automated the email and did not read them, it is the exact thing
+   reporters screenshot publicly, and it burns the relationship and the brand in one send.
+   A pitch that goes out a day late having actually read the piece beats one that goes out today
+   having guessed.
+
+   Never infer a journalist's position, argument, or beat from their publication, their title, or
+   general knowledge. Read the specific piece, or leave the placeholder.
+
+3. **Identify the news peg. Holiday describes newsroom incentives, he does not license us to invent.**
+
+   "Traffic over truth" and "narrative over facts" are Holiday's account of how media economics
+   pull coverage. They are a lens for predicting what gets picked up. They are not instructions
+   to bend the facts of our own story. Everything we assert must be true and sourced. If the
+   angle only works with a claim we cannot support, the angle is dead, not the sourcing standard.
+
+   Answer:
    - What is happening in the world RIGHT NOW that this story connects to?
    - What trend, event, or conversation is this story an instance of?
-   - If there is no news peg, the pitch needs one. Find or create the angle.
+   - If there is no genuine news peg, say so plainly and recommend waiting for one. "Create the
+     angle" means find the true framing that connects this to a live conversation. It never means
+     manufacture a trend, a claim, or an urgency that does not exist.
 
 4. **Apply the "lazy journalist" test.** Map out the story:
    - What is the narrative (not the facts)?
@@ -118,7 +144,9 @@ Writes pitch emails that journalists actually read. Different from press release
 
 7. **Subject line rules**:
    - Specific noun, not generic verb
-   - Numbers if available ("47% of marketers..." beats "New marketing data")
+   - Numbers, **only ones the user supplied**. If a number would strengthen the subject but you
+     do not have it, write `[NEEDS INPUT: the figure]`. Never generate a plausible-looking
+     statistic. A fabricated stat in a pitch is handed straight to a professional fact-checker.
    - No "Quick question", "Following up", "Touching base"
    - No clickbait - the email must deliver what the subject promised
    - Ask: would this subject line work as a headline for their publication?
@@ -204,4 +232,26 @@ Update this every time a pitch goes out.
 - Never attach files in a cold pitch. Offer them.
 - If the journalist doesn't reply, follow up at day 4 and day 9. After that, drop it.
 - The lazy journalist test is non-negotiable. If the journalist has to construct the story from scratch, the pitch will be ignored.
+- **Never characterise, quote, or summarise a piece you have not actually read.** If it was not
+  fetched, it does not go in the email.
+- **Never invent a statistic, a customer name, a quote, or a company milestone.** Use
+  `[NEEDS INPUT: ...]` and send the pitch to the user to fill before it goes out.
+- Never claim an embargo, an exclusive, or "first look" unless it is literally true for this
+  recipient.
+
+## What this skill cannot verify
+
+State these in the output every time:
+
+- Whether the recipient still covers this beat. Beats change and mastheads go stale
+- Whether the piece you referenced is their most recent or their most relevant
+- Whether a competitor has already pitched this angle to them this week
+- Any figure marked `[NEEDS INPUT]`, which the user must supply and stand behind
+
+## Related skills
+
+- `/press-release-writer` for the formal release this pitch may accompany
+- `/case-study-writer` for the underlying customer story that gives a pitch its proof
+- `/copy-review` to tighten the pitch before it goes out
+- `/brand-context` creates the positioning and voice files this reads
 - Keep the pitch tracker current. Tracking response rate is how this gets better over time.

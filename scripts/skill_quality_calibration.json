@@ -1,0 +1,46 @@
+{
+  "_why": "A scoring tool is a hypothesis until it agrees with cases a human labelled by hand. Every entry here is a skill someone READ and judged. If the scorer disagrees with a label, the SCORER is presumed wrong, not the label. Run: python3 scripts/skill_quality.py --self-test",
+  "_history": [
+    "08-08-2026: v1 of this scorer gave pr-pitch-writer 35/100 because its author allowlist had never met 'Holiday' and its self-check regex only matched ## headings. Acting on that score would have damaged good skills. These fixtures exist so that failure mode fails the tool instead of the skills.",
+    "09-08-2026: retro was remediated (evidence tiers, write gate, evals) and rose 55 -> 95. Its 'weak' label was true of the OLD artifact and is now stale, so it is re-labelled. A fixture that is never updated becomes a lie about the present.",
+    "09-08-2026: the rubric was found to score UNMIGRATED skills (no metadata.grounded_in) at ~3/100, e.g. confluence-to-md at 294 lines. A scope guard now excludes them rather than emitting a meaningless number."
+  ],
+  "cases": [
+    {
+      "skill": "skills/by-role/marketing/pr-pitch-writer",
+      "label": "strong",
+      "min": 85,
+      "human_note": "Names Ryan Holiday and Trust Me I'm Lying, builds AIDA out line by line, pitch-type table, full self-check, dated save path, persistent tracker. Any score under 70 means the instrument is broken. Remediated 09-08-2026 with a hard gate against characterising an unread article; rose 67 -> 93.",
+      "must_pass": [
+        "source",
+        "self_check",
+        "artifact",
+        "decisions"
+      ]
+    },
+    {
+      "skill": "skills/by-role/marketing/copy-review",
+      "label": "strong",
+      "min": 80,
+      "human_note": "Attribution lives in table cells, which is invisible to prose regex. This case exists to catch inference-based source detection regressing.",
+      "must_pass": [
+        "source",
+        "no_fabrication",
+        "self_check",
+        "routing"
+      ]
+    },
+    {
+      "skill": "skills/by-role/marketing/retro",
+      "label": "strong",
+      "human_note": "Remediated 09-08-2026: every Five Whys step carries an evidence tier, 'we do not know' is a valid terminal answer, and nothing reaches knowledge/learnings.md without support plus explicit user confirmation. Previously labelled weak at 55.",
+      "must_pass": [
+        "source",
+        "no_fabrication",
+        "self_check",
+        "evals"
+      ],
+      "min": 85
+    }
+  ]
+}

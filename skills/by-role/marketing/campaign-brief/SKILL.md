@@ -1,15 +1,19 @@
 ---
 name: campaign-brief
-description: Plan a marketing campaign end-to-end using Allan Dib's Before/During/After framework (The 1-Page Marketing Plan). Produces a phase-specific campaign brief with goal, audience, message, channels, assets, timeline, budget, and success metrics. Use when the user asks to plan a campaign, brief a campaign, "we need a campaign for X", launch plan, GTM plan, marketing plan for <product>, demand gen plan, or any multi-channel marketing initiative. Reads ICP, services, and KPIs from knowledge/.
-reads:
-  - knowledge/icp/personas.md
-  - knowledge/services/
-  - knowledge/markets/positioning.md
-  - knowledge/markets/competitors.md
-  - knowledge/kpis.md
-  - knowledge/learnings.md
-writes:
-  - output/campaign-brief/
+description: Plan a marketing campaign end-to-end using Allan Dib's Before/During/After framework (The 1-Page Marketing Plan). Produces a phase-specific campaign brief with goal, audience, message, channels, assets, timeline, budget, and success metrics. Use when the user asks to plan a campaign, brief a campaign, "we need a campaign for X", launch plan, GTM plan, marketing plan for <product>, demand gen plan, or any multi-channel marketing initiative. Reads ICP, services, and KPIs from knowledge/. For a full quarterly strategy rather than one campaign, see marketing-plan scope in positioning-doc and kpi-review. For the content schedule inside the campaign, see social-calendar. For the post-campaign review, see retro.
+metadata:
+  grounded_in:
+    - "1-Page Marketing Plan (Before/During/After) - Allan Dib"
+  reads:
+    - knowledge/icp/personas.md
+    - knowledge/services/
+    - knowledge/markets/positioning.md
+    - knowledge/markets/competitors.md
+    - knowledge/kpis.md
+    - knowledge/learnings.md
+    - knowledge/company.md
+  writes:
+    - output/campaign-brief/
 ---
 
 # campaign-brief
@@ -63,7 +67,7 @@ Walk the user through these one at a time. Do not skip.
 
 ## Process
 
-1. **Load context.** Read all `reads:` files. If `knowledge/icp/personas.md` is missing, stop and run `/onboard --icp`.
+1. **Load context.** Read all `reads:` files. If `knowledge/icp/personas.md` is missing, stop and run `/brand-context`.
 
 2. **Identify the phase.** Before generating any brief content, confirm the Before/During/After phase with the user. State it explicitly: "This is a BEFORE campaign. The goal is to generate hand-raisers from people who don't yet know us."
 
@@ -93,7 +97,10 @@ Walk the user through these one at a time. Do not skip.
 
    ## Message
    - **Core message** (one sentence the audience should remember):
-   - **Proof points** (3 max):
+   - **Proof points** (3 max). Each must be lifted from `knowledge/company.md` verified proof points
+  with the source named inline. If fewer than three verified proof points exist, ship fewer: write
+  `[NO VERIFIED PROOF POINT]` and move it to Open questions. **Never generate a proof point** -
+  these flow straight into `/linkedin-post` and `/landing-page-writer` and become public claims:
      1. ...
      2. ...
      3. ...
@@ -209,3 +216,56 @@ Walk the user through these one at a time. Do not skip.
 - If budget is zero, do not propose paid channels. Reallocate to organic.
 - Timeline must be working backward from launch. If the user gives a launch date, derive milestones from it. If not, ask.
 - If the user wants to run a BEFORE and DURING campaign simultaneously, produce two separate briefs. Mixed-phase campaigns are unfocused campaigns.
+
+## Handling [UNVERIFIED] and [NEEDS INPUT] tags
+
+`brand-context` tags any number the user was unsure of as `[UNVERIFIED]`, and several skills tag
+gaps as `[NEEDS INPUT]`. Those tags are a contract, and it only works if this skill honours it.
+
+1. **Carry the tag forward.** If a baseline, benchmark or proof point arrives tagged, every figure
+   derived from it is tagged too. A target built on an unverified baseline is an unverified target.
+2. **Never silently promote.** Do not drop the tag because the number looked confident in the
+   source file.
+3. **Say it in the output.** List every tagged input in its own line near the top, so a reader
+   knows which numbers are measured and which are estimates before they act on them.
+4. **A decision that would change if the tagged number were wrong must say so explicitly.**
+
+## The Before / During / After model (Allan Dib)
+
+Allan Dib's *The 1-Page Marketing Plan* splits a campaign into three phases with different jobs,
+different audiences and different metrics. Most failed campaigns are a During-phase tactic aimed at
+a Before-phase audience.
+
+| Phase | Audience | Job | Primary metric | Typical channels |
+|---|---|---|---|---|
+| **Before** | They do not know you | Earn attention and permission | Reach, new subscribers | Content, paid awareness, PR, partnerships |
+| **During** | They know you, have not bought | Convert interest into a decision | Conversion rate, pipeline | Email, retargeting, demos, sales enablement |
+| **After** | They bought | Retain, expand, get referrals | Retention, expansion, referral rate | Onboarding, community, case studies |
+
+**One campaign, one phase.** A brief covering all three is a strategy document, not a campaign, and
+it produces channel plans nobody can execute. Pick the phase, then choose channels that serve it.
+
+## Decision thresholds
+
+| Signal | Threshold | What to do |
+|---|---|---|
+| Phases in scope | More than 1 | Split into separate briefs, sequenced |
+| Primary KPIs | More than 1 | Pick one. The rest are supporting metrics |
+| Verified proof points | Fewer than 3 | Ship fewer and move the gap to Open questions. Never generate one |
+| Baseline for the target | Missing or `[UNVERIFIED]` | Tag the target, and state which decisions change if the baseline is wrong |
+| Channels planned | More than 4 for one phase | Cut. Thin coverage across many channels beats nothing, but not by much |
+
+## Related skills
+
+- `/brand-context` owns `knowledge/company.md`, the source of verified proof points
+- `/social-calendar` turns the content line of this brief into a dated schedule
+- `/kpi-review` reads the results against the target set here
+- `/retro` runs after the campaign and writes reusable learnings back
+- `/growth-experiment` when a channel in the plan is unproven for this audience
+
+## What this skill cannot know
+
+- Whether the team has capacity to produce the assets this brief plans. Ask before finalising
+- Whether the budget figure is approved or aspirational
+- Whether a channel worked for this audience before, unless it is in `knowledge/learnings.md`
+- Whether the target derived from an `[UNVERIFIED]` baseline is reachable

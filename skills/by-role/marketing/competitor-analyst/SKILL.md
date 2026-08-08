@@ -1,14 +1,17 @@
 ---
 name: competitor-analyst
-description: Analyze competitors using Blue Ocean Strategy's ERRC Grid and Strategy Canvas (W. Chan Kim and Renee Mauborgne) to identify uncontested market space, not just who is better on the same axes. Produces an ERRC Grid, Strategy Canvas, positioning matrix, messaging comparison, and differentiation map. Use when the user asks for competitive analysis, competitor research, "how do we compare to X", positioning vs competitors, market landscape, "analyze our competition", "where is the blue ocean", or wants to update competitor docs. Writes to knowledge/markets/competitors.md.
-reads:
-  - knowledge/markets/competitors.md
-  - knowledge/markets/positioning.md
-  - knowledge/services/
-  - knowledge/icp/personas.md
-writes:
-  - knowledge/markets/competitors.md
-  - output/competitor-analysis/
+description: Analyze competitors using Blue Ocean Strategy's ERRC Grid and Strategy Canvas (W. Chan Kim and Renee Mauborgne) to identify uncontested market space, not just who is better on the same axes. Produces an ERRC Grid, Strategy Canvas, positioning matrix, messaging comparison, and differentiation map. Use when the user asks for competitive analysis, competitor research, "how do we compare to X", positioning vs competitors, market landscape, "analyze our competition", "where is the blue ocean", or wants to update competitor docs. Writes to knowledge/markets/competitors.md. For a lightweight competitor summary in the knowledge base, see brand-context. For positioning against them, see positioning-doc.
+metadata:
+  grounded_in:
+    - "Blue Ocean Strategy - Kim & Mauborgne"
+  reads:
+    - knowledge/markets/competitors.md
+    - knowledge/markets/positioning.md
+    - knowledge/services/
+    - knowledge/icp/personas.md
+  writes:
+    - knowledge/markets/competitors.md
+    - output/competitor-analysis/
 ---
 
 # competitor-analyst
@@ -24,22 +27,53 @@ Builds an evidence-based competitor map using Blue Ocean Strategy's ERRC Grid an
 - "Where do we win and lose vs <competitor>?"
 - "Where is the blue ocean in our market?"
 
-## Framework: Blue Ocean Strategy - ERRC Grid (Kim and Mauborgne)
+## Framework: Blue Ocean Strategy (W. Chan Kim and Renee Mauborgne)
 
-Most companies compete in "red oceans" - the same market space, the same factors, trying to be marginally better. Blue Ocean Strategy creates uncontested market space by competing on different factors entirely.
+From *Blue Ocean Strategy* (2005). Most companies compete in "red oceans": the same market space,
+the same competing factors, everyone trying to be marginally better on axes the industry inherited
+rather than chose. Kim and Mauborgne's move is value innovation, pursuing differentiation and low
+cost at the same time by changing which factors are on the board at all.
 
-**The ERRC Grid** - apply to every competitive analysis before building comparison tables:
+**The ERRC Grid** - apply to every competitive analysis before building comparison tables. The four
+actions are deliberately paired: Eliminate and Reduce take cost out, Raise and Create put buyer
+value in. A grid that fills only Raise and Create is a feature wishlist, not a strategy, because it
+adds cost without removing any.
 
-| Action | Question | Purpose |
+| Action | Question | Purpose | Fails when |
+|---|---|---|---|
+| **Eliminate** | Which factors the industry takes for granted should be eliminated? | Remove cost and complexity buyers do not actually value | Left empty. An empty Eliminate row means nothing was questioned |
+| **Reduce** | Which factors should be reduced well below the industry's standard level? | Stop over-delivering where buyers do not care | It names a factor buyers turn out to buy on |
+| **Raise** | Which factors should be raised well above the industry's standard level? | Deliver more where the industry systematically under-delivers | It is really a roadmap item, not a positioning move |
+| **Create** | Which factors should be created that the industry has never offered? | New value no competitor provides | The "new" factor already exists at a competitor. Check before claiming it |
+
+**Strategy Canvas** - a line chart with competing factors on the x-axis and offering level (1 low to
+10 high) on the y-axis, one curve per player. Kim and Mauborgne's test of a strong curve is three
+properties, and this skill reports on all three:
+
+| Property | What it means | How to read it off the canvas |
 |---|---|---|
-| **Eliminate** | Which factors the industry takes for granted should be eliminated? | Remove cost and complexity that buyers don't actually value |
-| **Reduce** | Which factors should be reduced well below industry standard? | Stop over-delivering where buyers don't care |
-| **Raise** | Which factors should be raised well above industry standard? | Deliver more where the industry systematically under-delivers |
-| **Create** | Which factors should be created that the industry has never offered? | New value that no competitor provides |
+| **Focus** | The curve is high on a few factors, not middling on all of them | A flat curve across 8 factors has no focus |
+| **Divergence** | The curve's shape differs from the industry's, not just its height | Overlay the curves. Different height, same shape, is a red ocean |
+| **Compelling tagline** | The strategy states itself in one true sentence | If you cannot write it from the curve, the curve is not a strategy |
 
-**Strategy Canvas** - a line chart with competing factors on the x-axis and performance level (1-10) on the y-axis, one line per player. The goal is a different curve shape, not a higher version of the same curve.
+**Self-check question**: does our value curve look meaningfully different from competitors, or just
+higher on the same axes? If it is just higher, we are in a red ocean, and that is the finding.
 
-**Self-check question**: Does our value curve look meaningfully different from competitors, or just higher on the same axes? If it's just higher, we are in a red ocean.
+## Before you analyse: is the input strong enough?
+
+| Signal | Threshold | If below |
+|---|---|---|
+| Competitors to analyse | 3 minimum, 7 maximum | Below 3, the canvas has no industry curve to diverge from. Above 7, no reader will use it. Ask the user to cut to the ones that appear in real deals |
+| Sourceable evidence per competitor: homepage, pricing, one third source | 2 of 3 | Analyse what you can and list the competitor under Open questions. Never fill the gap from memory of the brand |
+| Competing factors on the canvas | 6 to 10 | Fewer than 6 hides the shape. More than 10 and the curve is unreadable |
+| Buyer-side input, meaning `knowledge/icp/personas.md` exists | Present | Proceed, but say clearly that the factors were chosen from the supply side. Factors picked without the buyer are the factors that are easy to compare, not the ones that decide deals |
+
+Warning signs, in priority order:
+
+1. Every scored cell is filled and none is blank. On a real analysis some cells cannot be sourced, so a complete table usually means estimates were entered as data.
+2. "Where we lose" is empty or soft. That is flattery, and a battle card built on it fails on the first call.
+3. The Eliminate and Reduce rows are empty. The analysis found things to add and nothing to drop, which is the most common way an ERRC grid becomes a roadmap.
+4. Our curve is highest on every factor. Nobody is best at everything, so this is a scoring bias, not a finding.
 
 ## Inputs needed
 
@@ -92,7 +126,12 @@ Most companies compete in "red oceans" - the same market space, the same factors
    ## Strategy Canvas
 
    Competing factors (x-axis): list 6-10 factors the industry competes on
-   Score each player 1 (low) to 10 (high)
+   Score each player 1 (low) to 10 (high).
+**Score only cells you can source.** Leave unknown cells blank and list them under Open questions.
+Never estimate a competitor's score to complete the table: the canvas is the most authoritative-
+looking artifact this skill produces and it is read as data. Append the source URL and fetch date
+for each scored row. A client asking "where did the 4 for their ease-of-use come from?" must have
+an answer.
 
    | Factor | <Us> | <Competitor 1> | <Competitor 2> | <Competitor 3> |
    |---|---|---|---|---|
@@ -194,14 +233,24 @@ Most companies compete in "red oceans" - the same market space, the same factors
 
 7. **Save the full analysis** to `output/competitor-analysis/<DD-MM-YYYY>-comparison.md`.
 
-8. **Self-check**:
-   - ERRC Grid is complete before the comparison matrix
-   - Strategy Canvas shows whether our value curve is different or just higher
-   - "Blue ocean opportunity" section names at least one CREATE factor
-   - Every claim has a source (URL or interview)
-   - Compared on what the buyer cares about, not on what's easy to compare
-   - "Where we lose" is not empty (if it is, you're flattering yourself)
-   - Battle card is short enough that a sales rep can use it on a call
+8. **Self-check.** Every item is checkable by reading the finished analysis. Where an item says
+   count, count it in the artifact rather than asserting the item passed.
+
+   - [ ] The ERRC Grid appears above the comparison matrix in the document, and all four quadrants have at least one entry. Count the entries in Eliminate and Reduce specifically: two empty cost-side quadrants means the grid was not run
+   - [ ] The canvas reports all three Kim and Mauborgne properties by name: focus, divergence, and the one-sentence tagline. If the tagline could not be written, that is recorded as the finding
+   - [ ] Every scored cell carries a source URL and a fetch date next to it, and every unsourced cell is blank and repeated under Open questions. Count blanks and sources, and state both counts
+   - [ ] "Blue ocean opportunity" names at least one CREATE factor, and that factor was checked against each competitor's own site before being called new
+   - [ ] "Where we lose" lists 3 to 5 entries, each with a workaround. An empty or one-line section fails
+   - [ ] Every per-competitor "recent moves" entry carries a dated source. Undated moves are dropped, not guessed
+   - [ ] Pricing rows carry the date scraped
+   - [ ] Battle card fits on one screen and every claim on it also appears, with its source, in the full analysis
+   - [ ] The Sources section lists every URL with its access date, and the count matches the number of sourced cells
+
+   **Stop conditions.** Do not write the executive summary to `knowledge/markets/competitors.md`
+   when any of these hold, and say which one triggered:
+   - Fewer than 3 competitors had 2 sourceable evidence types
+   - More than a third of the canvas cells are unsourced
+   - No CREATE factor survived the check against competitor sites, and the curve is the same shape as the industry's. That is a real finding, and it belongs in `output/` with the recommendation to reposition, not in the shared file as a competitor map
 
 9. **Offer follow-ups**:
    - Update `knowledge/markets/positioning.md` if the ERRC analysis surfaced a repositioning opportunity
@@ -217,3 +266,41 @@ Most companies compete in "red oceans" - the same market space, the same factors
 - Pricing comparisons must reference the date scraped. Pricing changes frequently.
 - Comparison pages from the competitor (their "vs you" page) are a goldmine. Read theirs before writing yours.
 - Do not produce sales battle cards without confirming with the user that sales reps will actually use them. Otherwise it's dead documentation.
+- **Never invent a competitor's pricing, headcount, funding, customer count, roadmap, or weakness.** A competitive doc is read as fact by sales, and an invented weakness becomes a claim a rep makes on a call to a prospect who knows better. Unverified goes under Open questions as `[UNVERIFIED: <what would confirm it>]`.
+- Never make up a canvas score to complete a row. See the scoring rule in the Strategy Canvas step: blank plus an open question beats a plausible number.
+- Do not fabricate the competitor's own words. Messaging comparison uses pasted H1s, subheads and CTAs, quoted exactly with the URL and date. Paraphrase from memory is not evidence.
+
+## Shared file ownership: knowledge/markets/competitors.md
+
+**This skill owns `knowledge/markets/competitors.md`.** It owns the file's structure and every
+competitor entry in it. `/brand-context` may create a lightweight placeholder version of this file
+when the knowledge base is first set up. Once this skill has written a full analysis, `/brand-context`
+does not overwrite it.
+
+| Part of the file | This skill may | Other skills may |
+|---|---|---|
+| Competitor entries, ERRC summary, quick comparison, win and lose lists | Create and replace in full | Read only |
+| `knowledge/markets/positioning.md` | Read only. Recommend the change, never make it | `/positioning-doc` owns it |
+
+The write gate, which is not optional:
+
+1. Show the user a diff of the exact lines you would change in `knowledge/markets/competitors.md`, and wait for an explicit yes before writing. `/positioning-doc`, `/landing-page-writer`, `/ab-copy-writer` and the sales-facing skills all read this file as truth.
+2. Apply the stop conditions in the self-check. If any triggered, save to `output/competitor-analysis/` only and say plainly which one, rather than writing a thin map into the shared file.
+3. When the analysis surfaces a repositioning opportunity, write it as a recommendation in the output document and route the user to `/positioning-doc`. Never edit `knowledge/markets/positioning.md` from here.
+
+## What this skill cannot know
+
+1. **What the competitor is about to do.** Everything here is scraped from public surfaces, so an unannounced release, a repricing, or an acquisition invalidates the canvas without warning. Date-stamp every row so a reader can judge staleness.
+2. **Whether a competitor's marketing matches their product.** A homepage is a claim. Feature parity read off a pricing page is a claim about a claim, and it is routinely wrong in both directions.
+3. **How buyers actually score these factors.** The canvas scores are the analyst's read of the evidence, not measured buyer preference. Only win/loss interviews or a conjoint study give real weights, and without them focus and divergence are hypotheses.
+4. **Enterprise pricing.** Public price pages rarely describe what large deals actually close at, so any pricing comparison above the self-serve tier is directional at best.
+
+## Related skills
+
+- `/positioning-doc` for turning a CREATE factor into a positioning statement, and it owns the positioning file this skill must not edit
+- `/icp-research` for the buyer-side view that decides which competing factors belong on the canvas at all
+- `/brand-context` for creating the knowledge base when `knowledge/markets/competitors.md` does not exist yet
+- `/landing-page-writer` for rebuilding a page around the divergence the canvas found
+- `/thought-leadership-writer` for a point of view that stakes out the blue ocean territory before a competitor names it
+- `/ab-copy-writer` for testing the new angle against the current one rather than assuming the analysis was right
+- `/customer-research` for when "where we lose" is empty, because losses live in lost-deal interviews, not on competitor websites

@@ -238,60 +238,6 @@
         "stakeholders"
       ]
     },
-    "content-creator/linkedin-post": {
-      "role": "content-creator",
-      "description": "Write high-performing LinkedIn posts for professional audiences",
-      "tags": [
-        "social",
-        "linkedin",
-        "writing"
-      ]
-    },
-    "content-creator/newsletter-ideation": {
-      "role": "content-creator",
-      "description": "Generate newsletter topic angles using design thinking frameworks",
-      "tags": [
-        "content",
-        "ideation",
-        "newsletter"
-      ]
-    },
-    "content-creator/reddit-post": {
-      "role": "content-creator",
-      "description": "Write Reddit posts that earn genuine engagement",
-      "tags": [
-        "social",
-        "reddit",
-        "writing"
-      ]
-    },
-    "content-creator/substack-notes": {
-      "role": "content-creator",
-      "description": "Generate high-performing short-form Substack notes",
-      "tags": [
-        "content",
-        "substack",
-        "writing"
-      ]
-    },
-    "content-creator/substack-post": {
-      "role": "content-creator",
-      "description": "Write long-form Substack articles and newsletter posts",
-      "tags": [
-        "content",
-        "substack",
-        "writing"
-      ]
-    },
-    "content-creator/substack-toc": {
-      "role": "content-creator",
-      "description": "Create table of contents with anchor links for Substack articles",
-      "tags": [
-        "content",
-        "substack",
-        "formatting"
-      ]
-    },
     "customer-success/churn-risk-analysis": {
       "role": "customer-success",
       "description": "Analyze customer health signals, identify churn risk flags, and generate an intervention playbook",
@@ -471,6 +417,16 @@
         "figma",
         "copy",
         "ux-writing"
+      ]
+    },
+    "designer/interactive-flowchart-builder": {
+      "role": "designer",
+      "description": "Build interactive 'living workflow' flowcharts (vanilla HTML/CSS/JS) with step bar, vertical trunk, tool-to-tool columns, and animated payload pills",
+      "tags": [
+        "flowchart",
+        "diagram",
+        "workflow",
+        "visualization"
       ]
     },
     "designer/ux-audit": {
@@ -702,6 +658,33 @@
         "empowerment"
       ]
     },
+    "marketing/ab-copy-writer": {
+      "role": "marketing",
+      "description": "Generate A/B copy variants with a stated hypothesis per variant",
+      "tags": [
+        "marketing",
+        "copywriting",
+        "testing"
+      ]
+    },
+    "marketing/ad-campaign-writer": {
+      "role": "marketing",
+      "description": "Write paid ad copy for LinkedIn, Google, Meta, and YouTube by awareness stage",
+      "tags": [
+        "marketing",
+        "ads",
+        "copywriting"
+      ]
+    },
+    "marketing/brand-context": {
+      "role": "marketing",
+      "description": "Create and maintain the shared knowledge/ context files every marketing skill reads",
+      "tags": [
+        "marketing",
+        "context",
+        "onboarding"
+      ]
+    },
     "marketing/campaign-brief": {
       "role": "marketing",
       "description": "Write a marketing campaign brief with One Metric That Matters, audience definition, and channel plan using Lean Analytics",
@@ -710,6 +693,51 @@
         "campaign",
         "brief",
         "planning"
+      ]
+    },
+    "marketing/case-study-writer": {
+      "role": "marketing",
+      "description": "Write customer case studies using the Situation-Complication-Resolution structure",
+      "tags": [
+        "marketing",
+        "case-study",
+        "storytelling"
+      ]
+    },
+    "marketing/competitor-analyst": {
+      "role": "marketing",
+      "description": "Analyze competitors with the ERRC Grid and Strategy Canvas",
+      "tags": [
+        "marketing",
+        "competitive",
+        "strategy"
+      ]
+    },
+    "marketing/content-repurposer": {
+      "role": "marketing",
+      "description": "Turn one long-form asset into a multi-channel content pack",
+      "tags": [
+        "marketing",
+        "content",
+        "repurposing"
+      ]
+    },
+    "marketing/content-writer": {
+      "role": "marketing",
+      "description": "Write marketing content in brand voice using PAS and AIDA",
+      "tags": [
+        "marketing",
+        "content",
+        "copywriting"
+      ]
+    },
+    "marketing/copy-review": {
+      "role": "marketing",
+      "description": "Review and improve existing marketing copy with a fixed six-pass edit",
+      "tags": [
+        "marketing",
+        "copywriting",
+        "editing"
       ]
     },
     "marketing/customer-persona": {
@@ -722,6 +750,24 @@
         "jtbd"
       ]
     },
+    "marketing/customer-research": {
+      "role": "marketing",
+      "description": "Turn raw customer material into evidence-backed personas and verbatim voice-of-customer language",
+      "tags": [
+        "marketing",
+        "research",
+        "voice-of-customer"
+      ]
+    },
+    "marketing/email-nurture": {
+      "role": "marketing",
+      "description": "Write multi-email nurture sequences for lead-gen, onboarding, and lifecycle",
+      "tags": [
+        "marketing",
+        "email",
+        "lifecycle"
+      ]
+    },
     "marketing/growth-experiment": {
       "role": "marketing",
       "description": "Design and document a channel growth experiment using Traction's Bullseye Framework with pre-committed success thresholds",
@@ -730,6 +776,42 @@
         "growth",
         "experimentation",
         "traction"
+      ]
+    },
+    "marketing/icp-research": {
+      "role": "marketing",
+      "description": "Build or refine the Ideal Customer Profile and personas using JTBD",
+      "tags": [
+        "marketing",
+        "icp",
+        "research"
+      ]
+    },
+    "marketing/kpi-review": {
+      "role": "marketing",
+      "description": "Review marketing KPIs and write an executive summary with recommended actions",
+      "tags": [
+        "marketing",
+        "metrics",
+        "reporting"
+      ]
+    },
+    "marketing/landing-page-writer": {
+      "role": "marketing",
+      "description": "Write landing page copy for product, campaign, lead-gen, and pricing pages",
+      "tags": [
+        "marketing",
+        "landing-page",
+        "copywriting"
+      ]
+    },
+    "marketing/linkedin-post": {
+      "role": "marketing",
+      "description": "Write a LinkedIn post in brand voice using Hook-Story-Offer",
+      "tags": [
+        "marketing",
+        "linkedin",
+        "social"
       ]
     },
     "marketing/messaging-framework": {
@@ -742,6 +824,24 @@
         "copywriting"
       ]
     },
+    "marketing/newsletter-writer": {
+      "role": "marketing",
+      "description": "Write recurring newsletter issues with a consistent format and POV",
+      "tags": [
+        "marketing",
+        "newsletter",
+        "content"
+      ]
+    },
+    "marketing/page-cro": {
+      "role": "marketing",
+      "description": "Diagnose why a page is not converting and produce a ranked fix and test plan",
+      "tags": [
+        "marketing",
+        "cro",
+        "conversion"
+      ]
+    },
     "marketing/positioning-doc": {
       "role": "marketing",
       "description": "Write a product positioning document using Ries and Trout's competitive alternatives framework and owned attributes",
@@ -750,6 +850,78 @@
         "positioning",
         "messaging",
         "strategy"
+      ]
+    },
+    "marketing/ppt-maker": {
+      "role": "marketing",
+      "description": "Build branded PowerPoint decks for pitches, QBRs, and board updates",
+      "tags": [
+        "marketing",
+        "presentation",
+        "deck"
+      ]
+    },
+    "marketing/pr-pitch-writer": {
+      "role": "marketing",
+      "description": "Write personalized pitch emails to journalists, podcasters, and analysts",
+      "tags": [
+        "marketing",
+        "pr",
+        "outreach"
+      ]
+    },
+    "marketing/press-release-writer": {
+      "role": "marketing",
+      "description": "Write press releases using the Inverted Pyramid structure",
+      "tags": [
+        "marketing",
+        "pr",
+        "press-release"
+      ]
+    },
+    "marketing/retro": {
+      "role": "marketing",
+      "description": "Capture campaign and launch learnings using Five Whys root cause analysis",
+      "tags": [
+        "marketing",
+        "retro",
+        "learning"
+      ]
+    },
+    "marketing/seo-article-writer": {
+      "role": "marketing",
+      "description": "Write SEO-optimized long-form articles using the Big 5 framework",
+      "tags": [
+        "marketing",
+        "seo",
+        "content"
+      ]
+    },
+    "marketing/social-calendar": {
+      "role": "marketing",
+      "description": "Plan a monthly multi-channel content calendar using the Content Marketing Matrix",
+      "tags": [
+        "marketing",
+        "social",
+        "planning"
+      ]
+    },
+    "marketing/thought-leadership-writer": {
+      "role": "marketing",
+      "description": "Write thought leadership articles and founder bylines using SUCCESs",
+      "tags": [
+        "marketing",
+        "thought-leadership",
+        "content"
+      ]
+    },
+    "marketing/webinar-planner": {
+      "role": "marketing",
+      "description": "Plan a webinar end to end using positioning to find the topic angle",
+      "tags": [
+        "marketing",
+        "webinar",
+        "planning"
       ]
     },
     "pm/11-star-framework": {
@@ -833,15 +1005,6 @@
         "spec",
         "meetings",
         "documentation"
-      ]
-    },
-    "pm/metrics-dashboard-spec": {
-      "role": "pm",
-      "description": "Generate dashboard specifications from product spec success metrics",
-      "tags": [
-        "product",
-        "analytics",
-        "metrics"
       ]
     },
     "pm/okr-writer": {
@@ -991,15 +1154,6 @@
         "handoff"
       ]
     },
-    "pm/sprint-review-prep": {
-      "role": "pm",
-      "description": "Generate sprint review talking points and demo scripts",
-      "tags": [
-        "agile",
-        "sprint",
-        "demo"
-      ]
-    },
     "pm/stakeholder-update": {
       "role": "pm",
       "description": "Generate structured weekly status updates for leadership",
@@ -1018,15 +1172,6 @@
         "empowerment"
       ]
     },
-    "pm/workshop-synthesizer": {
-      "role": "pm",
-      "description": "Distill workshop notes into ranked themes and roadmap findings",
-      "tags": [
-        "product",
-        "workshops",
-        "research"
-      ]
-    },
     "pm/write-prd": {
       "role": "pm",
       "description": "Write a Product Requirements Document from a brief or problem statement",
@@ -1043,15 +1188,6 @@
         "product",
         "agile",
         "user-stories"
-      ]
-    },
-    "pm/wsjf-scorer": {
-      "role": "pm",
-      "description": "Calculate WSJF scores for feature prioritization",
-      "tags": [
-        "product",
-        "prioritization",
-        "wsjf"
       ]
     },
     "program-delivery-manager/delivery-risk-review": {
@@ -1349,6 +1485,27 @@
         "reporting"
       ]
     },
+    "shared/confluence-to-md": {
+      "role": "shared",
+      "description": "Convert Confluence pages to clean GitHub-Flavored Markdown files",
+      "tags": [
+        "confluence",
+        "markdown",
+        "docs"
+      ]
+    },
+    "shared/diagram-generator": {
+      "role": "shared",
+      "description": "Generate any Mermaid diagram (flowchart, sequence, state, ER, journey, mindmap, timeline, gantt, sankey, quadrant, class, gitgraph) from a description, ticket, spec, or file - with optional one-file HTML preview",
+      "tags": [
+        "diagrams",
+        "mermaid",
+        "visualization",
+        "flowchart",
+        "sequence",
+        "state"
+      ]
+    },
     "shared/draft-email": {
       "role": "shared",
       "description": "Draft professional HTML emails (MoM, status, decisions) and save as provider drafts",
@@ -1356,15 +1513,6 @@
         "communication",
         "email",
         "writing"
-      ]
-    },
-    "shared/flowchart": {
-      "role": "shared",
-      "description": "Generate Mermaid flowchart diagrams from any input source",
-      "tags": [
-        "diagrams",
-        "mermaid",
-        "visualization"
       ]
     },
     "shared/jira-ticket-creator": {
@@ -1376,12 +1524,30 @@
         "productivity"
       ]
     },
+    "shared/md-to-confluence": {
+      "role": "shared",
+      "description": "Push markdown files to Confluence, creating or updating pages",
+      "tags": [
+        "confluence",
+        "markdown",
+        "docs"
+      ]
+    },
     "shared/presentation-builder": {
       "role": "shared",
       "description": "Build structured presentations for any audience",
       "tags": [
         "productivity",
         "presentations"
+      ]
+    },
+    "shared/youtube-transcript": {
+      "role": "shared",
+      "description": "Fetch transcripts and captions from YouTube videos",
+      "tags": [
+        "youtube",
+        "transcript",
+        "research"
       ]
     }
   }

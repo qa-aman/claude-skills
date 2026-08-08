@@ -1,14 +1,17 @@
 ---
 name: seo-article-writer
-description: Write SEO-optimized long-form articles targeting specific keywords using the They Ask You Answer Big 5 framework (Marcus Sheridan). Articles are categorized by Big 5 type (Cost, Problems, Versus, Best/Reviews, How-To) and structured accordingly. The "answer first" rule applies to every article. Use when the user asks for an SEO article, blog post for ranking, "rank for keyword X", organic content, search-optimized post, pillar page, or content for organic traffic. Includes keyword targeting, search intent matching, internal linking suggestions, and meta tags.
-reads:
-  - knowledge/brand/voice.md
-  - knowledge/icp/personas.md
-  - knowledge/services/
-  - knowledge/markets/positioning.md
-  - knowledge/content-library/
-writes:
-  - output/seo-article/
+description: Write SEO-optimized long-form articles targeting specific keywords using the They Ask You Answer Big 5 framework (Marcus Sheridan). Articles are categorized by Big 5 type (Cost, Problems, Versus, Best/Reviews, How-To) and structured accordingly. The "answer first" rule applies to every article. Use when the user asks for an SEO article, blog post for ranking, "rank for keyword X", organic content, search-optimized post, pillar page, or content for organic traffic. Includes keyword targeting, search intent matching, internal linking suggestions, and meta tags. For improving an existing article, see copy-review. For deciding what to write about, see social-calendar pillars and icp-research. For repurposing it, see content-repurposer.
+metadata:
+  grounded_in:
+    - "They Ask You Answer - Sheridan"
+  reads:
+    - knowledge/brand/voice.md
+    - knowledge/icp/personas.md
+    - knowledge/services/
+    - knowledge/markets/positioning.md
+    - knowledge/content-library/
+  writes:
+    - output/seo-article/
 ---
 
 # seo-article-writer
@@ -49,6 +52,32 @@ Buyers ask questions. Companies avoid answering the hard ones (price, problems, 
 
 Every article must be categorized as one of the Big 5 before the outline is built.
 
+### Publishing priority when the user has no single keyword in mind
+
+Sheridan's argument in *They Ask You Answer* is that the value of a topic tracks how much the
+company would rather not write it. Use that as the ordering rule, worst-avoided first.
+
+| Priority | Type | Why it goes first | The objection you will hear |
+|---|---|---|---|
+| 1 | Cost and Price | Highest search volume, lowest supply, and the question every buyer asks first | "We don't publish pricing" |
+| 2 | Versus and Comparisons | Late-funnel, and someone else is already writing it about you | "We don't want to name competitors" |
+| 3 | Problems | Builds more trust than any claim, and pre-qualifies bad fits out | "We don't want to highlight our weaknesses" |
+| 4 | Best and Reviews | Wins the shortlist search, but needs editorial independence to be believed | "We can't recommend a competitor" |
+| 5 | How-To | Safest and easiest, which is exactly why the SERP is already full of it | None, which is the tell |
+
+**Decision rule:** if the user wants to start at 5, say so plainly. How-To is the type with the
+most existing competition and the weakest purchase intent. Starting there feels productive and
+usually moves nothing. Recommend the highest-priority type the user will actually approve, and
+name the trade they are making.
+
+### Assignment selling, the reason the article has to be honest
+
+Sheridan's second idea is that this content is not only for strangers arriving from search. Sales
+sends these articles to live deals before the call, so the article has to survive being read by
+someone who will then talk to a salesperson about it. That is the real quality bar here: **would
+your own sales team send this to a prospect, and would the call afterwards be easier or harder?**
+A hedged cost article makes that call harder, which is why "contact us for pricing" fails twice.
+
 ## Process
 
 1. **Load context.** Read `knowledge/brand/voice.md`, relevant `knowledge/services/`, and `knowledge/content-library/` to find related pieces for internal linking.
@@ -80,7 +109,7 @@ Every article must be categorized as one of the Big 5 before the outline is buil
 
    ### Cost and Price structure
    ```
-   H1: How Much Does [X] Cost? (2026 Pricing Guide)
+   H1: How Much Does [X] Cost? ([current year] Pricing Guide)
    - Intro (answer first): give the range in the first paragraph. Do not hedge.
    - H2: What is the typical price range?
    - H2: What factors affect the price?
@@ -90,7 +119,15 @@ Every article must be categorized as one of the Big 5 before the outline is buil
    - H2: FAQ (pricing objections, contract terms, ROI)
    - Conclusion + CTA
    ```
-   Honesty check: Did you give a real number in the first 200 words? If not, rewrite.
+   Honesty check: did you give a real number in the first 200 words, and did it come from
+   `knowledge/services/` or from the user? If you do not have the number, STOP and ask:
+   "What is the actual price or range, and what moves it up or down?"
+
+   **Never estimate a price, infer one from competitors, or write a plausible range.** A
+   hallucinated price on a page built to rank is public, indexed, and gets quoted back to
+   your own sales team by prospects. Waiting a day for the real figure always beats it.
+   If the user genuinely cannot give a range, write `[NEEDS INPUT: price range]` and do not
+   publish the article.
 
    ### Problems structure
    ```
@@ -189,8 +226,17 @@ Every article must be categorized as one of the Big 5 before the outline is buil
    - [ ] At least one table or list for scanability
    - [ ] FAQ section present
    - [ ] Word count matches target ±10%
-   - [ ] No em dashes
-   - [ ] Trust check: would a buyer trust this more than a competitor's article on the same topic? If not, what needs to change?
+   - [ ] No em dashes and no en dashes
+   - [ ] Keyword density is under 2%. Compute it: keyword occurrences divided by word count
+   - [ ] Every statistic, price, competitor fact and customer result is listed with its source and
+         the date it was fetched. Anything without both is removed or marked `[NEEDS INPUT: ...]`
+   - [ ] Every external link was fetched in this session and resolved
+   - [ ] Assignment-selling check: name the specific objection a prospect would raise on a sales
+         call after reading this, and point at the paragraph that answers it. If no paragraph
+         answers it, the article is not finished
+   - [ ] Comparison check, for Versus and Best articles only: quote the sentence where a
+         competitor is recommended over the user's product for a named use case. If there is no
+         such sentence, the article reads as advertising and will be judged that way
 
 9. **Save** to `output/seo-article/<DD-MM-YYYY>-<keyword-slug>.md` with frontmatter:
    ```yaml
@@ -234,3 +280,87 @@ Every article must be categorized as one of the Big 5 before the outline is buil
 | Versus | "X vs Y: Which Is Right for You?" | Give verdict in paragraph 1 | Acknowledge where the competitor wins |
 | Best / Reviews | "Best X for [Situation]" | Name top pick in paragraph 1 | Include options you don't sell |
 | How-To | "How to [Achieve Outcome]" | State core process in intro | Answer the question. Don't bury the steps. |
+
+## Never invent
+
+- **No price, competitor fact, statistic, or customer result may be written from inference.**
+  Source it from `knowledge/`, from the user, or from a page you actually fetched and dated.
+- If a required number is missing, `[NEEDS INPUT: <what>]` and stop. Do not publish around it.
+- Do not hardcode a year. Ask for the current year or omit it.
+- Competitor claims go stale. Date every fetched fact so a reader knows how old it is.
+
+## Stop conditions
+
+Do not draft or do not publish, and say which condition fired.
+
+1. **No top-3 SERP URLs.** Ask for them. Without them you are guessing what the page has to beat,
+   and the outline will default to a generic guide.
+2. **A Cost article with no confirmed price or range.** `[NEEDS INPUT: price range and what
+   moves it]`, and do not publish. An invented price gets indexed and quoted back by prospects.
+3. **A Versus or Best article where the user will not allow any honest competitor advantage.**
+   Say plainly that the article will read as advertising, will not earn the comparison query, and
+   should either change scope or not ship.
+4. **A Problems article the user wants softened to the point of hedges.** Hedged problems content
+   is worse than none, because it signals evasion on the exact page a skeptical buyer landed on.
+5. **A claim about the user's own product that is not in `knowledge/services/`.** Ask. Product
+   claims written from inference are the ones support and sales inherit.
+6. **Any regulated claim** (medical, financial, legal, safety). Mark `[LEGAL REVIEW]` and say the
+   page must not publish unreviewed.
+
+## Warning signs in your own draft
+
+Ranked worst first. The first four block publication.
+
+1. A price, statistic or competitor fact with no source and no fetch date. Blocker.
+2. A customer name or result the user did not supply. Blocker.
+3. A hardcoded year that nobody confirmed. Blocker, it dates the page the moment it publishes.
+4. A regulated claim with no `[LEGAL REVIEW]` marker. Blocker.
+5. The headline question is not answered until after word 200. Rewrite the intro before anything
+   else, this single defect undoes the whole Big 5 approach.
+6. A Problems article whose problems are all things the product happens to solve. Those are
+   features in costume, and a reader spots it immediately.
+7. Every H2 is a statement rather than a question a person would type or ask.
+8. Keyword density above 2%, or the exact keyword repeated in consecutive sentences.
+9. No table on a Versus or Best article.
+
+## Related skills
+
+- `/copy-review` to grade and tighten an article that already exists
+- `/competitor-analyst` before a Versus or Best article, to establish what competitors actually do
+- `/page-cro` when the article ranks but the conversion path off it does not work
+- `/content-repurposer` to turn a published pillar into posts, emails and a newsletter issue
+- `/social-calendar` to plan the cluster this article belongs to rather than writing one-offs
+- `/icp-research` when it is not clear which buyer question is worth answering first
+- `/case-study-writer` when the article needs a real documented result to be credible
+- `/linkedin-post` for the distribution post once the article is live
+- `/kpi-review` to check afterwards whether the cluster is producing qualified traffic
+- `/brand-context` first, whenever `knowledge/brand/voice.md` does not exist yet
+
+## What this skill cannot know
+
+These are real limitations of this skill. Ask the user, fetch the page, or emit
+`[NEEDS INPUT: <what>]` rather than filling the gap from memory.
+
+1. **Whether a competitor changed pricing, packaging or positioning since the page was fetched.**
+   Every competitor fact in the draft carries a fetch date for exactly this reason.
+2. **Whether the SERP has moved since the top-3 URLs were pulled.** Results are personalised,
+   localised and reranked continuously, so the analysis is a snapshot, not a standing description.
+3. **Whether a claim about your own product is still accurate.** Roadmaps ship and features get
+   deprecated faster than `knowledge/services/` gets updated.
+4. **Whether the current search guidance rewards this format.** Ranking systems change without
+   announcement, and nothing in this file is a published rule from a search engine.
+5. **Whether the page will be published with the schema, canonical and internal links intact.**
+   Those are implementation decisions made after the copy is handed over.
+
+## Platform figures are not facts
+
+Any cadence, character count, best-day, format spec or benchmark in this skill is a starting
+default recorded at authoring time, not a published platform rule. Two obligations:
+
+1. **Verify current specs in the platform itself before shipping** anything that depends on them.
+2. **This account's own historical data always wins.** Where `knowledge/learnings.md` or the
+   team's analytics contradict a default here, follow the data and say so in the output.
+
+Never present a default from this file to a client as though the platform published it. That is
+the claim their in-house specialist corrects in the meeting, and the correction discredits
+everything else in the document.

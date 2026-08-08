@@ -1,12 +1,15 @@
 ---
 name: content-repurposer
-description: Take one piece of long-form content (blog post, podcast, talk, article, newsletter) and turn it into a multi-channel asset pack using the STEPPS framework (Jonah Berger, Contagious) to make each derivative asset more shareable. Use when the user says "repurpose this", "turn this into LinkedIn/Twitter/etc", "atomize this", "break this down for social", "create derivative content from X", "make a content pack from this", or wants to maximize output from one input. Each channel is mapped to its strongest STEPPS element. Orchestrates linkedin-post, content-writer, and other skills.
-reads:
-  - knowledge/brand/voice.md
-  - knowledge/icp/personas.md
-  - knowledge/content-library/
-writes:
-  - output/repurposed/
+description: Take one piece of long-form content (blog post, podcast, talk, article, newsletter) and turn it into a multi-channel asset pack using the STEPPS framework (Jonah Berger, Contagious) to make each derivative asset more shareable. Use when the user says "repurpose this", "turn this into LinkedIn/Twitter/etc", "atomize this", "break this down for social", "create derivative content from X", "make a content pack from this", or wants to maximize output from one input. Each channel is mapped to its strongest STEPPS element. Orchestrates linkedin-post, content-writer, and other skills. For writing the original anchor piece, see thought-leadership-writer or newsletter-writer. For scheduling the derivatives, see social-calendar.
+metadata:
+  grounded_in:
+    - "Contagious - Berger (STEPPS)"
+  reads:
+    - knowledge/brand/voice.md
+    - knowledge/icp/personas.md
+    - knowledge/content-library/
+  writes:
+    - output/repurposed/
 ---
 
 # content-repurposer
@@ -42,7 +45,11 @@ Orchestrator skill. One source piece becomes a coordinated asset pack across cha
 | YouTube short script | spoken | 45-60 seconds | Stories + Emotion | inline |
 | SEO snippet variant | optimized intro | 150 words | Practical Value | inline |
 
-## Framework: STEPPS (Jonah Berger, Contagious)
+## Framework: STEPPS (Jonah Berger, *Contagious: Why Things Catch On*)
+
+Berger's argument in *Contagious* is that virality is a property of the **content**, not of the person sharing it. Six characteristics predict whether something gets passed on, and they are designable. That is why this skill scores the source before atomising it: if the source has none of the six, nine derivative assets inherit nothing, and you have produced nine posts that will not travel.
+
+The trap *Contagious* is most often misread into: treating Emotion as "make it emotional". Berger's finding is narrower and more useful. **High-arousal** emotions drive sharing (awe, anger, anxiety, excitement, amusement). **Low-arousal** emotions suppress it (contentment, sadness), even when they are strongly felt. A warm, satisfying, gently positive post is a low-arousal post, and it will not move.
 
 Six reasons things spread. Run this on the source piece before producing any assets.
 
@@ -57,9 +64,31 @@ Six reasons things spread. Run this on the source piece before producing any ass
 
 A score of 4+ out of 6 indicates high virality potential. Below 3, flag it.
 
+### What to do with the score
+
+The score is a routing decision, not a grade. Act on it:
+
+| Total /18 | Verdict | Action |
+|---|---|---|
+| 14-18 | Strong source | Produce the full pack. Lead with the two highest-scoring elements |
+| 10-13 | Workable | Produce the pack, but drop the channels whose target element scored 1. A Twitter thread built on a Practical Value score of 1 is filler |
+| 7-9 | Weak | **Stop and say so.** Name the two weakest elements and what would fix them. Offer to produce a reduced pack of three assets rather than nine |
+| Below 7 | Not repurposable | **Stop.** The source has no spine to atomise. Nine assets from it produce nine weak posts and burn the channel's attention. Recommend rewriting the source first, or repurposing a different piece |
+
+**Never raise a low score by adding material the source does not contain.** That is the failure mode this table exists to prevent: an agent that finds Emotion scoring 1, invents a dramatic anecdote, and ships a story the author never told under the author's name.
+
+**Which element to fix first when the score is low**, in priority order: Practical Value, then Stories, then Social Currency. Practical Value is the only one that can usually be added honestly, by making the existing advice more specific. Emotion and Public are the hardest to add without inventing, so treat a low score on those as a fact about the source rather than a task.
+
 ## Process
 
+0. **Load context.** Read `knowledge/brand/voice.md` and the relevant persona from `knowledge/icp/personas.md` before touching the source. Nine assets in the wrong voice is nine rewrites. If `knowledge/brand/voice.md` is missing, stop: "I need voice context. Run `/brand-context` first." Also check `knowledge/content-library/` for whether this source has already been repurposed, so the pack does not duplicate live posts.
+
 1. **Load source.** If it's a file, read it. If it's a URL, use WebFetch. If pasted, use the chat content. Confirm with the user: "I read X. Source has N words and covers <main themes>. Proceed?"
+
+   Stop conditions on the source itself:
+   - **Not the user's to republish.** A third-party article, a client's content, or a talk recorded at someone else's event. Confirm the right to reuse before producing anything
+   - **Contains customer names or figures whose consent covered only the original placement.** Consent for a blog post is not consent for a paid carousel. Flag each one and ask
+   - **A transcript with speakers other than the author.** Their words are quotes, not raw material. Attribute or cut
 
 2. **Run STEPPS scoring on the source piece.** Score each element 1-3 (1 = weak, 2 = present, 3 = strong). Show the table to the user before producing assets.
 
@@ -111,7 +140,7 @@ A score of 4+ out of 6 indicates high virality potential. Below 3, flag it.
 5. **Produce each channel asset.** For each one, include a one-line STEPPS note at the top of the file:
 
    ```
-   <!-- STEPPS target: Social Currency — this post is designed to make the sharer
+   <!-- STEPPS target: Social Currency - this post is designed to make the sharer
    look ahead of the curve on [topic]. The hook uses [specific element] to signal
    insider knowledge. -->
    ```
@@ -145,7 +174,19 @@ A score of 4+ out of 6 indicates high virality potential. Below 3, flag it.
    - Where each asset is meant to be published
    - Suggested publishing sequence and cadence
 
-8. **Self-check: STEPPS coverage.** The asset pack as a whole must cover at least 4 of 6 STEPPS elements. If it doesn't, name which are missing and suggest one asset type that would fill the gap.
+8. **Self-check.** Every item is checkable against the saved files. Name the file and line, or the item fails.
+
+   - Each asset file opens with its `STEPPS target:` comment, and the named element scored 2 or 3 on the source. An asset targeting an element that scored 1 is unsupported by the source
+   - The asset pack covers at least 4 of 6 STEPPS elements. Show the coverage table
+   - Every number, name, quote, date and claim in every derivative appears verbatim or in equivalent form in the source. Grep each derivative's numbers against the source text and list the matches
+   - No derivative contains a quote attributed to the author that is not in the source. If the source has no quotable line, the quote-graphics file says so and is empty
+   - No two derivatives share their opening sentence, and no derivative is the source's paragraph with words swapped. Compare the first 15 words of each
+   - Every derivative stands alone: read each one with the source closed and confirm it makes sense
+   - Every asset is inside its stated length, with the count written in the file
+   - Every claim about a platform spec in the pack is labelled `[UNVERIFIED default]` or sourced to the platform's current docs
+   - Voice matches `knowledge/brand/voice.md`. Name two specific voice traits and where each appears
+
+9. **STEPPS coverage check.** The asset pack as a whole must cover at least 4 of 6 STEPPS elements. If it doesn't, name which are missing and suggest one asset type that would fill the gap.
 
    ```
    STEPPS Coverage Check
@@ -219,7 +260,12 @@ A score of 4+ out of 6 indicates high virality potential. Below 3, flag it.
 - Never paraphrase the source word for word. Each asset must add framing or context appropriate to its channel.
 - Never produce identical content with different word counts. A 220-word LinkedIn post is structurally different from a 220-word Substack note.
 - The source's killer line should appear in at least one derivative, often the LinkedIn post or a quote graphic.
-- If the source has no killer line, flag it: "I cannot find a quotable line. Want me to write one or skip the quote graphics?"
+- If the source has no killer line, **skip the quote graphics.** Never write a quote and
+  attribute it to the source's author. A quote graphic ships with a name and often a face on it,
+  so an authored line is a fabricated attribution, not a draft. Offering the user the choice does
+  not fix it, because they say yes and the graphic ships.
+- **Every number, claim and quote in a derivative must already appear in the source.** If a
+  derivative needs a fact the source does not contain, cut the fact, not the sourcing rule.
 - Each asset file must include its STEPPS target as a comment at the top.
 - If the STEPPS score is below 9/18, address it with the user before producing 9 assets from weak source material.
 
@@ -233,3 +279,48 @@ A score of 4+ out of 6 indicates high virality potential. Below 3, flag it.
 | Public | Carousel, thread | Add visible social proof or community signal |
 | Practical Value | Thread, Reddit, carousel, SEO snippet | Specific, actionable, saves time |
 | Stories | Substack note, YouTube short | Tension + resolution. Start mid-scene. |
+
+## Platform figures are not facts
+
+Any cadence, character count, best-day, format spec or benchmark in this skill is a starting
+default recorded at authoring time, not a published platform rule. Two obligations:
+
+1. **Verify current specs in the platform itself before shipping** anything that depends on them.
+2. **This account's own historical data always wins.** Where `knowledge/learnings.md` or the
+   team's analytics contradict a default here, follow the data and say so in the output.
+
+Never present a default from this file to a client as though the platform published it. That is
+the claim their in-house specialist corrects in the meeting, and the correction discredits
+everything else in the document.
+
+## Never invent
+
+Repurposing has a specific fabrication risk that original writing does not: the derivative is published **as if it were the source**, so anything added travels with the author's name on it and the source's authority behind it.
+
+- **Never invent a statistic, a customer name, a date, a result, or an example** to make a derivative land harder. If the source does not contain it, cut the beat, not the sourcing rule. Nine assets is nine chances to add one small thing that was never true.
+- **Never invent a quote.** A quote graphic ships with a name and often a face. An authored line is a fabricated attribution regardless of how well it captures the source's meaning.
+- **Never sharpen a hedge.** If the source says "roughly a third" or "we think", the derivative says the same. Tightening a hedged claim into a hard number is the most common way a true source becomes a false post.
+- **Never invent the source's opinion on something it does not discuss** to fill a channel that wants a contrarian take. Mark it `[NEEDS INPUT: does the author hold a view on <X>?]` and ask.
+- If a channel cannot be produced honestly from this source, produce fewer assets. The pack size is not a target.
+
+## What this skill cannot know
+
+These are limitations of the skill. Anything below that reaches the output must be labelled `[UNVERIFIED]` there.
+
+- **Current platform specs, character limits, image dimensions and format support.** Everything in this file is a starting default from authoring time.
+- **Current community rules for a suggested subreddit or forum.** Self-promotion rules, flair requirements and posting frequency limits are set per community and change. Read the sidebar and recent moderator posts before posting, and treat any subreddit suggestion here as a candidate to verify, not a recommendation.
+- **Whether the source's claims are still true.** A post repurposed a year later carries last year's numbers into this year's feed.
+- **Whether the people, customers or partners named in the source consented to appear in these placements.** Consent is usually scoped to the original piece.
+- **Whether the derivative duplicates something already published.** Check `knowledge/content-library/` and the live channels.
+
+## Related skills
+
+- `/brand-context` first, if `knowledge/brand/voice.md` does not exist yet
+- `/linkedin-post` for the LinkedIn derivative, which this skill calls rather than duplicating
+- `/social-calendar` for scheduling the pack, so nine assets do not all ship in one week
+- `/thought-leadership-writer` or `/newsletter-writer` when the STEPPS score says the source itself needs strengthening before it is worth atomising
+- `/seo-article-writer` when the source should become a search-targeted article rather than social derivatives
+- `/case-study-writer` when the source is a customer story, because consent and approval rules apply that this skill does not enforce
+- `/content-writer` for the email teaser and any one-off asset outside the standard pack
+- `/copy-review` for a pass over the finished pack before it is scheduled
+- `/retro` after the pack has run, to record which derivative actually travelled

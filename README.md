@@ -9,9 +9,41 @@
 
 A curated collection of [Claude Code](https://claude.ai/claude-code) skills organized by job role. Each skill is a packaged workflow grounded in a proven book or methodology - Claude invokes it automatically, or you trigger it with a `/skill-name` command.
 
-**137 skills across 21 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Data Scientist, Security, Researcher, Accountant, Business Analyst, Content Creator, and more.
+**163 skills across 19 roles.** PM, QA, Engineer, Designer, DevOps, Leadership, Program Delivery, Customer Success, Recruiter, Consultant, Sales, Marketing, Founder, Data Engineer, Data Scientist, Security, Researcher, Accountant, and Business Analyst, plus shared skills installed with every role.
+
+## Install as a plugin
+
+The whole collection ships as a Claude Code plugin, so you install it once and get updates through
+`/plugin update` instead of re-cloning. Inside Claude Code:
+
+```shell
+/plugin marketplace add qa-aman/claude-skills
+/plugin install claude-skills@claude-skills
+```
+
+The install command opens a details view where you pick the installation scope. If the install
+summary says `Run /reload-plugins to activate.`, run that command.
+
+Plugin skills are namespaced by the plugin name, so a skill is invoked as
+`/claude-skills:<skill-name>`, for example `/claude-skills:write-prd`.
+
+To refresh the catalog and pull newer skills later:
+
+```shell
+/plugin marketplace update claude-skills
+/plugin update claude-skills@claude-skills
+```
+
+See [VERSIONS.md](VERSIONS.md) for the version and last-updated date of every skill, so you can
+tell what changed before you update. Docs for the plugin system:
+[plugins](https://code.claude.com/docs/en/plugins),
+[plugin marketplaces](https://code.claude.com/docs/en/plugin-marketplaces),
+[discover and install plugins](https://code.claude.com/docs/en/discover-plugins).
 
 ## Install
+
+Prefer the script if you want the skills copied into `.claude/skills/` as plain skills with
+un-namespaced `/skill-name` commands, or you only want one role's skills on disk.
 
 ```bash
 # Clone once
@@ -75,7 +107,6 @@ bash scripts/install.sh --role pm --project
 | `discovery-interview-prep` | Generate user research interview scripts using Mom Test principles | The Mom Test - Fitzpatrick |
 | `epic-breakdown` | Decompose large epics into sprint-ready sub-epics using 9 splitting patterns | Agile Estimating and Planning - Cohn |
 | `go-to-market-checklist` | Generate pre-launch readiness checklists for feature releases | Crossing the Chasm - Moore |
-| `metrics-dashboard-spec` | Generate dashboard specifications from product spec success metrics | Lean Analytics - Croll |
 | `opportunity-solution-tree` | Build OSTs mapping outcome to opportunities, solutions, experiments | Continuous Discovery Habits - Torres |
 | `persona-updater` | Update user personas from new feedback, pilot data, or research | About Face - Cooper |
 | `pilot-debrief` | Synthesize pilot observations into structured debrief reports | Lean Startup - Ries |
@@ -85,10 +116,7 @@ bash scripts/install.sh --role pm --project
 | `retro-synthesizer` | Synthesize sprint retro notes into categorized action items and patterns | Agile Retrospectives - Derby & Larsen |
 | `risk-register` | Maintain a centralized living risk register with likelihood x impact matrix | The Art of Project Management - Berkun |
 | `spec-reviewer` | Quality gate for specs — pass/fail scorecard before stakeholder review | Shape Up + enterprise spec standards |
-| `sprint-review-prep` | Generate sprint review talking points and demo scripts | Agile ceremonies best practices |
 | `stakeholder-update` | Generate structured weekly status updates for leadership | Radical Candor - Kim Scott |
-| `workshop-synthesizer` | Distill workshop notes into ranked themes and roadmap findings | Design Sprint - Knapp |
-| `wsjf-scorer` | Calculate WSJF scores for data-driven feature prioritization | SAFe - Leffingwell |
 | `meeting-to-spec-update` | Update a product spec from a meeting transcript with decisions, open questions, and flowcharts | Zero-assumption doc discipline |
 | `pm-weekly-update` | Generate weekly or monthly PM status updates from local data (meetings, tickets, decisions) | Lean Analytics + status-reporting best practices |
 | `spec-to-ux-tasks` | Extract UX tasks from a product spec and save as prioritised ux-tasks.md | Shape Up + UX handoff best practices |
@@ -123,6 +151,7 @@ bash scripts/install.sh --role pm --project
 | `component-spec` | Write a component spec for engineering handoff | Atomic Design - Frost |
 | `design-system-doc` | Document a design system component with usage rules and tokens | Atomic Design - Frost |
 | `figma-copy-rewriter` | Rewrite UI copy on Figma files for clarity, consistency, and plain language | Strategic Writing for UX - Podmajersky + 8 UX-writing frameworks |
+| `interactive-flowchart-builder` | Build interactive "living workflow" flowcharts (vanilla HTML/CSS/JS) with animated payload pills between tool nodes | Nebor revenue-engine reference site |
 
 ### DevOps (`--role devops`)
 | Skill | What it does | Grounded in |
@@ -199,6 +228,30 @@ bash scripts/install.sh --role pm --project
 | `messaging-framework` | Build brand messaging using customer-as-hero structure | Building a StoryBrand - Miller |
 | `campaign-brief` | Write a campaign brief with OMTM, audience, and channel plan | Lean Analytics - Croll & Yoskovitz |
 | `growth-experiment` | Design a channel growth experiment using Bullseye Framework | Traction - Weinberg & Mares |
+| `icp-research` | Build or refine the Ideal Customer Profile and personas | Jobs-to-be-Done - Christensen & Moesta |
+| `content-writer` | Write marketing content in your brand voice | PAS + AIDA copywriting frameworks |
+| `content-repurposer` | Turn one long-form asset into a multi-channel content pack | Contagious - Berger (STEPPS) |
+| `seo-article-writer` | Write SEO-optimized long-form articles for target keywords | They Ask You Answer - Sheridan |
+| `thought-leadership-writer` | Write opinion pieces, industry POV essays, and founder bylines | Made to Stick - Heath & Heath |
+| `newsletter-writer` | Write recurring newsletter issues with a consistent format and POV | Curiosity Gap - Loewenstein + Perell |
+| `linkedin-post` | Write a LinkedIn post in your brand voice | $100M Offers - Hormozi (Hook-Story-Offer) |
+| `social-calendar` | Plan a monthly multi-channel content calendar | Content Marketing Matrix - Chaffey |
+| `landing-page-writer` | Write copy for product, campaign, lead-gen, and pricing pages | Conversion copywriting frameworks |
+| `ad-campaign-writer` | Write paid ad copy for LinkedIn, Google, Meta, and YouTube | Breakthrough Advertising - Schwartz |
+| `ab-copy-writer` | Generate A/B copy variants selected by awareness stage, with a falsifiable hypothesis each | Tested Advertising Methods - Caples + Breakthrough Advertising - Schwartz |
+| `email-nurture` | Write multi-email nurture, onboarding, and lifecycle sequences | Hooked - Eyal |
+| `case-study-writer` | Write customer case studies and success stories | Pyramid Principle - Minto (SCR) |
+| `press-release-writer` | Write press releases for launches, funding, and milestones | Inverted Pyramid - AP journalism |
+| `pr-pitch-writer` | Write pitch emails to journalists, podcasters, and analysts | Trust Me, I'm Lying - Holiday |
+| `webinar-planner` | Plan a webinar end to end, starting from the topic angle | Obviously Awesome - Dunford |
+| `competitor-analyst` | Analyze competitors with the ERRC Grid and Strategy Canvas | Blue Ocean Strategy - Kim & Mauborgne |
+| `kpi-review` | Review marketing KPIs and write an executive summary | Storytelling with Data - Knaflic |
+| `retro` | Capture campaign and launch learnings with root cause analysis | Five Whys - Ohno |
+| `ppt-maker` | Build branded PowerPoint decks for pitches, QBRs, and board updates | Pyramid Principle - Minto |
+| `brand-context` | Create the shared `knowledge/` files every other marketing skill reads. **Run this first.** | NN/g tone dimensions + Dunford + Lean Analytics |
+| `copy-review` | Review and improve copy that already exists, six passes with before/after scores | Zinsser + Williams + Ogilvy + Handley |
+| `page-cro` | Diagnose why a page is not converting, ranked fixes with a test plan | MECLABS heuristic + Fogg Behavior Model + Krug |
+| `customer-research` | Turn raw customer material into evidence-backed personas and verbatim VOC language | The Mom Test - Fitzpatrick + JTBD |
 
 ### Founder (`--role founder`)
 | Skill | What it does | Grounded in |
@@ -215,6 +268,15 @@ bash scripts/install.sh --role pm --project
 | `pipeline-design-doc` | Document a data pipeline's architecture, data flow, contracts, and failure modes | Fundamentals of Data Engineering - Reis & Housley |
 | `schema-spec` | Write a schema spec with field definitions, constraints, business rules, and evolution policy | DDIA - Kleppmann |
 | `etl-runbook` | Operational runbook for ETL jobs covering monitoring, diagnosis, and backfill | Data Pipelines Pocket Reference - Densmore |
+
+### Data Scientist (`--role data-scientist`)
+| Skill | What it does | Grounded in |
+|-------|-------------|-------------|
+| `eda-report` | Run structured exploratory analysis and report quality findings with recommended treatments | Practical Statistics for Data Scientists - Bruce, Bruce & Gedeck |
+| `experiment-design` | Design A/B and hypothesis tests with pre-committed sample sizes and stopping rules | The Art of Statistics - Spiegelhalter |
+| `feature-engineering` | Design features from raw data with encoding, transformations, and leakage prevention | Feature Engineering for Machine Learning - Zheng & Casari |
+| `model-card` | Document a model with performance, subgroup analysis, failure modes, and monitoring plan | Interpretable Machine Learning - Molnar + Model Cards - Mitchell et al. |
+| `data-story` | Communicate insights to non-technical stakeholders, conclusion first | Storytelling with Data - Knaflic |
 
 ### Security (`--role security`)
 | Skill | What it does | Grounded in |
@@ -258,25 +320,16 @@ bash scripts/install.sh --role pm --project
 | `traceability-matrix` | Create an RTM linking requirements to design, test, and delivery | Requirements Engineering - Hull + BABOK Guide - IIBA |
 | `uat-plan` | Generate a UAT plan with scenarios derived from use cases and fit criteria | Writing Effective Use Cases - Cockburn + Mastering the Requirements Process - Robertson |
 
-### Content Creator (`--role content-creator`)
-| Skill | What it does | Grounded in |
-|-------|-------------|-------------|
-| `linkedin-post` | Write high-performing LinkedIn posts with proven hook types and structures | LinkedIn content strategy |
-| `newsletter-ideation` | Generate 5-7 differentiated topic angles using SCAMPER, JTBD, Contrarian frameworks | Design thinking + JTBD - Christensen |
-| `reddit-post` | Write Reddit posts that earn genuine engagement without triggering spam flags | Community-first content strategy |
-| `substack-notes` | Generate short-form Substack notes using 10 proven structural patterns | Content psychology + platform best practices |
-| `substack-post` | Write long-form Substack articles with narrative arc and sustained depth | On Writing - King + Show Your Work - Kleon |
-| `substack-toc` | Create numbered TOC with working anchor links for Substack articles | Substack platform mechanics |
-
 ### Shared (installed with every role)
 | Skill | What it does |
 |-------|-------------|
 | `presentation-builder` | Build structured presentations for any audience |
 | `jira-ticket-creator` | Create Jira tickets from meeting notes, user stories, or quick lists |
-| `flowchart` | Generate Mermaid flowchart diagrams from any input source |
+| `diagram-generator` | Generate any Mermaid diagram (flowchart, sequence, state, ER, journey, mindmap, timeline, gantt, sankey, quadrant, class, gitgraph) from a description, ticket, spec, or file, with optional one-file HTML preview |
 | `confluence-to-md` | Pull Confluence pages into clean GitHub-Flavored Markdown with image download, @mention resolution, and 10 storage format edge case handlers |
 | `md-to-confluence` | Push markdown to Confluence with image upload, TOC, wide tables, auto-numbering, date macros, and 9 post-push quality checks |
 | `draft-email` | Draft professional HTML emails (MoM, status, decisions) and save as provider drafts (Zoho reference impl) |
+| `youtube-transcript` | Fetch transcripts and captions from YouTube videos |
 
 ## Update Skills
 
