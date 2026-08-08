@@ -58,7 +58,7 @@ CI (`.github/workflows/validate.yml`) runs only on PRs touching `skills/**` or `
 
 ## Required Reading
 
-`.claude/rules/prompt-writing.md` - the prompt-writing rubric (scored out of 100, target >95). Follow it when authoring or editing any skill description or body.
+`.claude/rules/prompt-writing.md` - the prompt-writing rubric (scored out of 100, target >95). Follow it when authoring or editing any skill description or body. This file is local and gitignored, so it is not present in a fresh clone. If it is missing, the rubric it enforces is still reflected in `scripts/skill_quality.py` and in the house structure every skill follows.
 
 ## Internal Skills
 

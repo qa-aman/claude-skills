@@ -38,6 +38,6 @@ evals.json
 .eval-cache/
 evals/run.log
 
-# Personal lessons ledger: contains colleague names, employer and venture details.
-# The canonical copy lives at ~/.claude/rules/feedback-driven-lessons.md
-.claude/rules/feedback-driven-lessons.md
+# Local rules: personal ledgers and working rules, not for a public repo.
+# Canonical copies live in ~/.claude/rules/
+.claude/rules/
