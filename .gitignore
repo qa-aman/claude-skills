@@ -36,7 +36,8 @@ evals.json
 
 # Eval runner: local cache and raw run logs. The benchmark report IS committed.
 .eval-cache/
-evals/run.log
+evals/*.log
+evals/benchmark-invalid-*.json
 
 # Local rules: personal ledgers and working rules, not for a public repo.
 # Canonical copies live in ~/.claude/rules/

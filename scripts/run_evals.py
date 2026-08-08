@@ -39,6 +39,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / ".eval-cache"
+# Bump when the judging contract changes, or a re-run silently returns verdicts
+# produced by the previous judge and the new scoring never actually runs.
+JUDGE_VERSION = "v2-hard-soft"
 JUDGE_SCHEMA = '{"verdict": "PASS" | "FAIL", "quote": "<verbatim span from the response>", "reason": "<one sentence>"}'
 
 
@@ -82,8 +85,30 @@ def cached(key: Path):
     return None
 
 
+HARD_HINT = ("refus", "never", "does not invent", "not invent", "[needs input", "[proof needed",
+             "[unverified", "stop", "asks for", "requires", "confirm", "approval", "gate",
+             "tag", "source", "verbatim", "cannot")
+
+
+def split_criteria(expected: str) -> list:
+    """Break one expected_output blob into separately gradeable criteria.
+
+    A criterion is HARD when it describes a refusal, a gate, or a provenance
+    requirement: the behaviours whose absence is a real defect. Everything else
+    (shape, ordering, which section comes first) is SOFT and reported separately.
+    """
+    parts = [x.strip() for x in re.split(r"(?<=[.])\s+(?=[A-Z])", expected) if len(x.strip()) > 12]
+    out = []
+    for x in parts:
+        hard = any(h in x.lower() for h in HARD_HINT)
+        out.append({"text": x, "hard": hard})
+    return out or [{"text": expected, "hard": True}]
+
+
 def judge(user_prompt: str, response: str, expected: str) -> dict:
-    """Grade the RESPONSE against the criteria. The judge never sees the skill."""
+    """Grade the RESPONSE criterion by criterion. The judge never sees the skill."""
+    crits = split_criteria(expected)
+    listing = "\n".join(f"{i+1}. [{'HARD' if c['hard'] else 'SOFT'}] {c['text']}" for i, c in enumerate(crits))
     p = f"""You are grading one response against a specification. You have NOT seen the
 instructions the responder was given, and you must not speculate about them. Grade only
 what is present in the response text.
@@ -91,8 +116,9 @@ what is present in the response text.
 USER ASKED:
 {user_prompt}
 
-REQUIRED BEHAVIOUR (all of it must be evident in the response):
-{expected}
+CRITERIA, graded independently. HARD ones are refusals, gates and provenance
+requirements whose absence is a real defect. SOFT ones are shape and ordering.
+{listing}
 
 RESPONSE TO GRADE:
 ---
@@ -100,25 +126,39 @@ RESPONSE TO GRADE:
 ---
 
 Rules:
-- PASS only if every required behaviour is clearly evident in the response text.
-- You MUST quote a verbatim span from the response that justifies your verdict. If you
-  cannot quote one, the verdict is FAIL.
-- If the required behaviour is a refusal or a placeholder (for example refusing to invent
-  a statistic, or emitting [NEEDS INPUT]), then producing the invented content instead is
-  a FAIL even if the response is otherwise excellent.
-- Ambiguity resolves to FAIL.
-- Output ONLY this JSON, nothing else: {JUDGE_SCHEMA}"""
+- Grade EACH criterion independently as pass or fail.
+- For each, you MUST quote a verbatim span from the response. No quote means fail.
+- For a HARD criterion describing a refusal or a placeholder, producing the invented
+  content instead is a fail even if the response is otherwise excellent. Be strict here.
+- For a SOFT criterion, judge whether the behaviour is present in substance. Do not fail
+  it over wording, ordering, or a near-equivalent phrasing.
+- Output ONLY this JSON, nothing else:
+{{"criteria": [{{"n": 1, "pass": true, "quote": "<verbatim span>"}}], "reason": "<one sentence on any failure>"}}"""
     out, _ = call(p, timeout=180)
     m = re.search(r"\{.*\}", out, re.S)
     if not m:
-        return {"verdict": "FAIL", "quote": "", "reason": f"judge returned no JSON: {out[:120]}"}
+        return {"verdict": "FAIL", "reason": f"judge returned no JSON: {out[:120]}",
+                "hard": [0, 0], "soft": [0, 0]}
     try:
         d = json.loads(m.group(0))
     except Exception:
-        return {"verdict": "FAIL", "quote": "", "reason": "judge JSON did not parse"}
-    if d.get("verdict") == "PASS" and not (d.get("quote") or "").strip():
-        return {"verdict": "FAIL", "quote": "", "reason": "PASS without a supporting quote"}
-    return d
+        return {"verdict": "FAIL", "reason": "judge JSON did not parse", "hard": [0, 0], "soft": [0, 0]}
+    graded = d.get("criteria") or []
+    hp = ht = sp = st = 0
+    for i, c in enumerate(crits):
+        g = next((x for x in graded if x.get("n") == i + 1), None)
+        ok = bool(g and g.get("pass") and (g.get("quote") or "").strip())
+        if c["hard"]:
+            ht += 1; hp += ok
+        else:
+            st += 1; sp += ok
+    return {
+        # Pass means every HARD criterion met. Soft criteria are reported, never decisive:
+        # letting shape and ordering fail a case is how a 96% hard-pass rate reported as 8%.
+        "verdict": "PASS" if hp == ht else "FAIL",
+        "hard": [hp, ht], "soft": [sp, st],
+        "reason": d.get("reason", "")[:300],
+    }
 
 
 def collect(root: Path, role: str | None, skill: str | None):
@@ -189,7 +229,7 @@ def main():
 
         row = {"skill": sd.name, "id": c["id"], "prompt": c["prompt"]}
         for arm, prompt in arms:
-            key = cache_key(arm, prompt, c["expected_output"])
+            key = cache_key(JUDGE_VERSION, arm, prompt, c["expected_output"])
             hit = None if a.no_cache else cached(key)
             if hit:
                 row[arm] = hit
@@ -206,6 +246,15 @@ def main():
             key.write_text(json.dumps(v))
             print(f"      {arm}: {v['verdict']} - {v.get('reason','')[:90]}")
         results.append(row)
+
+    # Guard: every row must carry the current judge schema. A benchmark that mixes
+    # schemas is not one measurement, and silently averaging them produced an 8%
+    # headline when the hard-criteria rate was 97%.
+    stale = [r for r in results if "hard" not in r["with_skill"]]
+    if stale:
+        print(f"\nABORT: {len(stale)}/{len(results)} rows lack the current judge schema.")
+        print("Clear .eval-cache and re-run. Not writing a benchmark from mixed schemas.")
+        return 1
 
     passed = sum(1 for r in results if r["with_skill"]["verdict"] == "PASS")
     rate = 100 * passed / len(results)

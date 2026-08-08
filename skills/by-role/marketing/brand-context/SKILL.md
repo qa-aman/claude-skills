@@ -62,7 +62,27 @@ Ask which mode, or infer from what the user gives you.
 
 3. **Work through the sections below in order.** Positioning depends on personas, and KPIs depend on positioning, so the order matters.
 
-4. **Write each file** as you complete it, rather than at the end. A user who runs out of time keeps what is done.
+4. **Drafting and writing are different acts. Always draft. Gate only the write.**
+
+   The gates in this skill protect the `knowledge/` folder from unreviewed content. They are not
+   a reason to withhold work. Refusing to produce a draft is a failure of this skill, not caution.
+
+   | Act | Gate |
+   |---|---|
+   | **Draft** the content and show it in full in your response | None. Always do this |
+   | **Write** it to `knowledge/` for the first time | Show it, then write. Say what you wrote |
+   | **Overwrite** a populated file | Show current content, show the change, wait for an explicit yes |
+
+   In mode 2, draft every file from the sources, present each one complete, and mark anything you
+   inferred rather than found with `[NEEDS INPUT]` or `[UNVERIFIED]`. Do not stop at "I need more
+   information": produce the draft from what the sources give you and name the gaps inside it.
+
+   In mode 3, perform the update. Read the current section, produce the revised version in full,
+   show the difference, and write on confirmation. Do not refuse an update because the request was
+   short.
+
+   Write each file as you complete it rather than at the end, so a user who runs out of time keeps
+   what is done.
 
 5. **Run the completeness gate** and report the score.
 
@@ -217,6 +237,9 @@ Report as `Context completeness: N/12` plus the specific gaps. Then say which sk
 
 - **Never invent a customer quote, a competitor claim, or a metric baseline.** Tag it and move on. An invented persona pain propagates into every downstream artifact and is very hard to trace back.
 - **Never overwrite a populated file silently.** Show the current content, propose the change, wait.
+- **Never refuse to draft.** The gates above cover writing to disk, not producing work. If inputs
+  are thin, draft what they support, tag the rest, and say what would improve it. A response that
+  contains no drafted content has not done this skill's job.
 - Keep every file under 200 lines. These are read by other skills on every run and long files cost context on every invocation.
 - Date every file `DD-MM-YYYY` in frontmatter and update it on any edit.
 - If the user only has ten minutes, do voice and one persona. Those two unblock the most skills.
